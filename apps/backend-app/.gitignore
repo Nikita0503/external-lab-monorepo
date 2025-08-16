@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# TypeScript build output
+dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE / editor
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+.DS_Store
+*.swp
+
+# Nodemon temp files
+*.tsbuildinfo
