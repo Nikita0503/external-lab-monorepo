@@ -1,7 +1,7 @@
 {
   "name": "backend-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "scr/index.ts",
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "build": "tsc"
@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "description": "",
-    "dependencies": {
-    "express": "^5.1.0"
+  "dependencies": {
+    "express": "^5.1.0",
+    "@external-lab-monorepo/types": "*",
+    "@external-lab-monorepo/api": "*",
+    "@external-lab-monorepo/store": "*"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
