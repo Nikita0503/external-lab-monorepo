@@ -26,9 +26,6 @@ logs/
 *.tmp
 
 # React Native / Mobile
-android/
-ios/
-*.keystore
 *.hprof
 
 # React / Web
