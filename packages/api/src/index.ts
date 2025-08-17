@@ -5,4 +5,4 @@ export interface ExampleType {
 
 export const exampleFunctionApi = (): void => {};
 
-export const TEST_CONSTANT = "This is a test constant!";
+export const TEST_CONSTANT = "This is a constant from common packages!";
