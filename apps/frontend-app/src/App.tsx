@@ -1,8 +1,12 @@
-import { SPRINTS } from "@external-lab-monorepo/constants";
+import { TASK } from "@external-lab-monorepo/types";
 import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+
+import { AUTH_HEADER } from "@external-lab-monorepo/api";
+import { SPRINTS } from "@external-lab-monorepo/constants";
+import { authReducer } from "@external-lab-monorepo/store";
 
 const App = () => {
   const [count, setCount] = useState(0);
@@ -17,7 +21,10 @@ const App = () => {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React {SPRINTS.SPRINT_4} </h1>
+      <h1>Vite + React {AUTH_HEADER} </h1>
+      <h1>Vite + React {SPRINTS.SPRINT_3} </h1>
+      <h1>Vite + React {authReducer} </h1>
+      <h1>Vite + React {TASK} </h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
