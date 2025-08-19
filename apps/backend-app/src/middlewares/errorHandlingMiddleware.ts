@@ -1,7 +1,12 @@
 import { Request, Response } from "express";
 import ApiError from "../errors/ApiError";
 
-const errorHandlingMiddleware = (err: any, _: Request, res: Response) => {
+const errorHandlingMiddleware = (
+  err: any,
+  _: Request,
+  res: Response,
+  next: Function
+) => {
   if (err instanceof ApiError) {
     let message = { message: err.message };
     if (err.errors) {
