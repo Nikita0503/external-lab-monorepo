@@ -14,7 +14,8 @@
     "react-dom": "^19.1.1",
     "@external-lab-monorepo/types": "*",
     "@external-lab-monorepo/api": "*",
-    "@external-lab-monorepo/store": "*"
+    "@external-lab-monorepo/store": "*",
+    "@external-lab-monorepo/constants": "*"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

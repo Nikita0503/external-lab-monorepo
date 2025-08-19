@@ -5,7 +5,7 @@
  * @format
  */
 
-import { TEST_CONSTANT } from '@external-lab-monorepo/api';
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import {
   StatusBar,
   StyleSheet,
@@ -20,7 +20,7 @@ function App() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <Text>{TEST_CONSTANT}</Text>
+      <Text>{SPRINTS.SPRINT_2}</Text>
     </View>
   );
 }

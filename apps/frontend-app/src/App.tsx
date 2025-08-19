@@ -1,4 +1,4 @@
-import { TEST_CONSTANT } from "@external-lab-monorepo/api";
+import { SPRINTS } from "@external-lab-monorepo/constants";
 import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
@@ -17,7 +17,7 @@ const App = () => {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React {TEST_CONSTANT} </h1>
+      <h1>Vite + React {SPRINTS.SPRINT_4} </h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}

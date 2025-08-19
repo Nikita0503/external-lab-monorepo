@@ -16,7 +16,8 @@
     "react-native": "0.80.0",
     "@external-lab-monorepo/types": "*",
     "@external-lab-monorepo/api": "*",
-    "@external-lab-monorepo/store": "*"
+    "@external-lab-monorepo/store": "*",
+    "@external-lab-monorepo/constants": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
