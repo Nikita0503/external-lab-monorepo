@@ -1,4 +1,4 @@
-import { TEST_CONSTANT } from "@external-lab-monorepo/api";
+import { SPRINTS } from "@external-lab-monorepo/constants";
 import { Request, Response } from "express";
 import { initApp, initSequelize } from "./utils/init";
 
@@ -6,7 +6,7 @@ const PORT = 4000;
 const app = initApp();
 
 app.get("/", (req: Request, res: Response) => {
-  res.json({ message: TEST_CONSTANT });
+  res.json({ message: SPRINTS.SPRINT_3 });
 });
 
 app.listen(PORT, async () => {
