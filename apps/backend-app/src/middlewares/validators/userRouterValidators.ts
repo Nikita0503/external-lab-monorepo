@@ -5,7 +5,7 @@ const loginValidators = () => {
   return [
     check("email").isEmail().withMessage("Not an email"),
     check("password")
-      .isLength({ min: 6, max: 32 })
+      .isLength({ min: 8 })
       .withMessage("Not suitable length"),
   ];
 };
@@ -14,13 +14,15 @@ const registrationValidators = () => {
   return [
     check("email").isEmail().withMessage("Not an email"),
     check("password")
-      .isLength({ min: 6, max: 32 })
+      .isLength({ min: 8 })
       .withMessage("Not suitable length"),
     check("password")
       .not()
       .isNumeric()
       .withMessage("Password should contain letters"),
-    check("name").notEmpty().withMessage("Name is required"),
+    check("name")
+      .isLength({ min: 2 })
+      .withMessage("Name is required"),
     check("avatar")
       .custom((value, { req }) => {
         const avatar = req.files?.avatar?.name;

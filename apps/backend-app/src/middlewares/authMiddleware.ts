@@ -16,7 +16,7 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     if (!token) {
       return next(ApiError.unauthorized());
     }
-    const decoded = jwt.verify(token, process.env.SECRET_KEY as string); // Use actual secret key from env
+    const decoded = jwt.verify(token, process.env.SECRET_KEY as string);
     (req as any).user = decoded;
     next();
   } catch (e) {

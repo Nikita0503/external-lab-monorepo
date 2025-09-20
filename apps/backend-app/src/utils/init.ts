@@ -3,6 +3,7 @@ import express, { Express } from "express";
 import fileUpload from "express-fileupload";
 import sequelize from "../db";
 import errorHandler from "../middlewares/errorHandlingMiddleware";
+import router from "../sprint1/routes";
 
 const MAX_RETRIES = 5;
 const DELAY = 1000;
@@ -12,6 +13,7 @@ export const initApp = (): Express => {
   app.use(cors());
   app.use(express.json());
   app.use(fileUpload({}));
+  app.use('/api', router);
   app.use(errorHandler);
   return app;
 };
