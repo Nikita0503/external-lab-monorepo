@@ -3,26 +3,30 @@ import path from "path";
 
 const loginValidators = () => {
   return [
-    check("email").isEmail().withMessage("Email is incorrect"),
+    check("email")
+      .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+      .withMessage("Invalid email"),
     check("password")
-      .isLength({ min: 8 })
-      .withMessage("Password should be at least 8 characters"),
+      .matches(/^(?=.*[a-zA-Z]).{8,}$/)
+      .withMessage(
+        "Invalid password: minimum 8 characters, must include letters"
+      ),
   ];
 };
 
 const registrationValidators = () => {
   return [
-    check("email").isEmail().withMessage("Email is incorrect"),
+    check("email")
+      .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+      .withMessage("Invalid email"),
     check("password")
-      .isLength({ min: 8 })
-      .withMessage("Password should be at least 8 characters"),
-    check("password")
-      .not()
-      .isNumeric()
-      .withMessage("Password should contain letters"),
+      .matches(/^(?=.*[a-zA-Z]).{8,}$/)
+      .withMessage(
+        "Invalid password: minimum 8 characters, must include letters"
+      ),
     check("name")
       .isLength({ min: 2 })
-      .withMessage("Name should be at least 2 characters"),
+      .withMessage("Invalid username: minimum 2 characters"),
     check("avatar")
       .custom((value, { req }) => {
         const avatar = req.files?.avatar?.name;
@@ -42,7 +46,9 @@ const registrationValidators = () => {
           return false;
         }
       })
-      .withMessage("Avatar should be image"),
+      .withMessage(
+        "Invalid avatar: allowed formats are jpg, jpeg, png, gif, webp"
+      ),
   ];
 };
 

@@ -19,7 +19,7 @@ class ApiError extends Error {
   }
 
   static unauthorized() {
-    return new ApiError(401, "Unauthorized user");
+    return new ApiError(401, "User is not authorized");
   }
 
   static forbidden(message: string) {
