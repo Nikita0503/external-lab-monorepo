@@ -7,9 +7,9 @@ import { Attachment } from "../../models/models";
 
 class AttachmentService {
   async attachAttachment(file: UploadedFile, ids: string[]) {
-    const addedFileData = await this.saveFile(file);
+    const savedFileData = await this.saveFile(file);
     const attatchmentInfo = await Attachment.create({
-      name: addedFileData.fileName,
+      name: savedFileData.fileName,
       ...ids,
     });
     return attatchmentInfo.name;
