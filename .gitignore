@@ -7,11 +7,6 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 
-# Env
-.env
-.env.local
-.env.*.local
-
 # Logs
 logs/
 *.log
