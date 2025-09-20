@@ -22,3 +22,6 @@ npm-debug.log*
 
 # Database
 database.sqlite
+
+# Uploaded files
+static/
