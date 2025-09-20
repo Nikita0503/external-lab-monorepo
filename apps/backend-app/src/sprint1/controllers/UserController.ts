@@ -24,10 +24,10 @@ class UserController {
             if (!errors.isEmpty()) {
                 return next(ApiError.badRequest("Invalid data", errors));
             }
-            const { email, password, name, accessTokenExpiresIn, refreshTokenExpiresIn, fcmToken } = req.body;
+            const { email, password, name } = req.body;
             const avatar = (req.files as any)?.avatar;
             const accessToken = await UserService.registration(email, password, name, avatar);
-            return res.json({ access_token: accessToken });
+            return res.status(201).json({ access_token: accessToken });
         } catch (e) {
             console.log("ERROR", e)
             next(e);
