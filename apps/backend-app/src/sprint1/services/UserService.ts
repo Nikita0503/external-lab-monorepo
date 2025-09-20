@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import { User } from "../../models/models";
 import ApiError from "../../errors/ApiError";
 import AttachmentService from './AttachmentService';
+import { UploadedFile } from 'express-fileupload';
 
 const generateToken = (id: string, email: string, name: string) => {
     const accessToken = jwt.sign(
@@ -27,10 +28,10 @@ class UserService {
         return accessToken;
     }
 
-    async registration(email: string, password: string, name: string, avatar: File){
+    async registration(email: string, password: string, name: string, avatar?: UploadedFile){
         const candidate = await User.findOne({where: {email}});
         if(candidate){
-            throw ApiError.badRequest(`User with email '${email}' already exist`);
+            throw ApiError.conflict("A user with this email is already registered");
         }
         const hashPassword = await bcrypt.hash(password, 3);
         let avatarData;

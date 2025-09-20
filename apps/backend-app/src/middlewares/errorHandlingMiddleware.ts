@@ -8,16 +8,19 @@ const errorHandlingMiddleware = (
   next: Function
 ) => {
   if (err instanceof ApiError) {
-    let message = { message: err.message };
-    if (err.errors) {
+    let message;
+    if (err.errors?.array().length) {
+      const errors = err.errors.array().map((e: any) => e.msg);
       message = {
-        ...message,
-        ...err.errors,
+        errors,
       };
+    }
+    else if (err.message){
+      message = { error: err.message }
     }
     return res.status(err.status).json(message);
   }
-  return res.status(500).json({ message: "Unknown error :(" });
+  return res.status(500).json({ error: "Internal server error" });
 };
 
 export default errorHandlingMiddleware;

@@ -3,18 +3,19 @@ import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import fs from 'fs';
 import ApiError from "../../errors/ApiError";
+import { UploadedFile } from "express-fileupload";
 
 class AttachmentService {
-    async attachAttachment(file: File, ids: string[]){
+    async attachAttachment(file: UploadedFile, ids: string[]){
         const addedFileData = await this.saveFile(file); 
         const attatchmentInfo = await Attachment.create({name: addedFileData.fileName, ...ids})
         return attatchmentInfo.name;
     }
 
-    async saveFile(file: File){
+    async saveFile(file: UploadedFile){
         const fileName = uuidv4() + '.jpg';
         const filePath = path.resolve('static', fileName);
-        await fs.promises.writeFile(filePath, (file as any).buffer);
+        await file.mv(filePath);
         return {fileName};
     }
 
