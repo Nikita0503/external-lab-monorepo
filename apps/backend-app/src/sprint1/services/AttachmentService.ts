@@ -27,9 +27,9 @@ class AttachmentService {
       where: { id: attachmentId },
     });
     if (!atttachment) {
-      throw ApiError.badRequest(
-        `Attachment with id '${attachmentId}' not found`
-      );
+      throw ApiError.badRequest("Invalid data", [
+        `Attachment with id '${attachmentId}' not found`,
+      ]);
     }
     this.deleteFile(atttachment.name);
     const deletedAttachmentId = Attachment.destroy({

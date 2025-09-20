@@ -16,11 +16,11 @@ class UserService {
   async login(email: string, password: string) {
     const user = await User.findOne({ where: { email } });
     if (!user) {
-      throw ApiError.badRequest("User not found");
+      throw ApiError.unauthorized();
     }
     const comparePassword = bcrypt.compareSync(password, user.password);
     if (!comparePassword) {
-      throw ApiError.badRequest("Wrong password");
+      throw ApiError.unauthorized();
     }
     const accessToken = generateToken(user.id, user.email, user.name);
     return accessToken;
