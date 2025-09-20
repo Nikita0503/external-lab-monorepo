@@ -14,7 +14,7 @@ class UserController {
       const accessToken = await UserService.login(email, password);
       return res.json({ access_token: accessToken });
     } catch (e) {
-      console.log("🔴 UserController::registration error:", e);
+      console.log("🔴 UserController::login error:", e);
       next(e);
     }
   }
