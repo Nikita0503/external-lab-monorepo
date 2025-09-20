@@ -1,5 +1,5 @@
-import { initApp, initSequelize } from "./utils/init";
 import dotenv from "dotenv";
+import { initApp, initSequelize } from "./utils/init";
 
 dotenv.config();
 const PORT = 4000;
