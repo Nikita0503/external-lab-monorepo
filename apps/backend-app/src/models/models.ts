@@ -16,7 +16,7 @@ const User = sequelize.define("user", {
   avatar: { type: DataTypes.STRING },
 });
 
-const Attachment = sequelize.define("attachment", {
+const File = sequelize.define("file", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING, allowNull: false },
 });
@@ -24,7 +24,7 @@ const Attachment = sequelize.define("attachment", {
 User.hasMany(Task, { onDelete: "CASCADE" });
 Task.belongsTo(User);
 
-Task.hasMany(Attachment, { onDelete: "CASCADE" });
-Attachment.belongsTo(Task);
+Task.hasMany(File, { onDelete: "CASCADE" });
+File.belongsTo(Task);
 
-export { Attachment, Task, User };
+export { File, Task, User };

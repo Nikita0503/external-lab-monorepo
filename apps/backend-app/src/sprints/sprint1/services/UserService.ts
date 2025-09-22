@@ -3,7 +3,7 @@ import { UploadedFile } from "express-fileupload";
 import jwt from "jsonwebtoken";
 import ApiError from "../../../errors/ApiError";
 import { User } from "../../../models/models";
-import AttachmentService from "./AttachmentService";
+import FileService from "./FileService";
 
 const generateToken = (id: string, email: string, name: string) => {
   const accessToken = jwt.sign({ id, email, name }, process.env.SECRET_KEY!, {
@@ -39,7 +39,7 @@ class UserService {
     const hashPassword = await bcrypt.hash(password, 3);
     let avatarData;
     if (avatar) {
-      avatarData = await AttachmentService.saveFile(avatar);
+      avatarData = await FileService.saveFile(avatar);
     }
     const user = await User.create({
       email,
