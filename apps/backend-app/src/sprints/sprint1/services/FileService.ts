@@ -43,7 +43,7 @@ class FileService {
       const filePath = path.resolve("static", fileName);
       fs.unlinkSync(filePath);
     } catch (e) {
-      console.log("Delete file error: ", e);
+      console.log("🔴 Delete file error: ", e);
     }
   }
 }
