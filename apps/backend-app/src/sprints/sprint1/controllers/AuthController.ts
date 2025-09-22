@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 import ApiError from "../../../errors/ApiError";
-import UserService from "../services/UserService";
+import AuthService from "../services/AuthService";
 
-class UserController {
+class AuthController {
   async login(req: Request, res: Response, next: NextFunction) {
     try {
       const errors = validationResult(req);
@@ -11,10 +11,10 @@ class UserController {
         return next(ApiError.badRequest("Invalid data", errors));
       }
       const { email, password } = req.body;
-      const accessToken = await UserService.login(email, password);
+      const accessToken = await AuthService.login(email, password);
       return res.json({ access_token: accessToken });
     } catch (e) {
-      console.log("🔴 UserController::login error:", e);
+      console.log("🔴 AuthController::login error:", e);
       next(e);
     }
   }
@@ -27,7 +27,7 @@ class UserController {
       }
       const { email, password, name } = req.body;
       const avatar = (req.files as any)?.avatar;
-      const accessToken = await UserService.registration(
+      const accessToken = await AuthService.registration(
         email,
         password,
         name,
@@ -35,10 +35,10 @@ class UserController {
       );
       return res.status(201).json({ access_token: accessToken });
     } catch (e) {
-      console.log("🔴 UserController::registration error:", e);
+      console.log("🔴 AuthController::registration error:", e);
       next(e);
     }
   }
 }
 
-export default new UserController();
+export default new AuthController();

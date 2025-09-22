@@ -12,7 +12,7 @@ const generateToken = (id: string, email: string, name: string) => {
   return accessToken;
 };
 
-class UserService {
+class AuthService {
   async login(email: string, password: string) {
     const user = await User.findOne({ where: { email } });
     if (!user) {
@@ -52,4 +52,4 @@ class UserService {
   }
 }
 
-export default new UserService();
+export default new AuthService();
