@@ -3,7 +3,7 @@ import express, { Express } from "express";
 import fileUpload from "express-fileupload";
 import sequelize from "../db";
 import errorHandler from "../middlewares/errorHandlingMiddleware";
-import router from "../sprint1/routes";
+import router from "../sprints/sprint1/routes";
 
 const MAX_RETRIES = 5;
 const DELAY = 1000;

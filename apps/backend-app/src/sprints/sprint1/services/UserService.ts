@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
 import { UploadedFile } from "express-fileupload";
 import jwt from "jsonwebtoken";
-import ApiError from "../../errors/ApiError";
-import { User } from "../../models/models";
+import ApiError from "../../../errors/ApiError";
+import { User } from "../../../models/models";
 import AttachmentService from "./AttachmentService";
 
 const generateToken = (id: string, email: string, name: string) => {

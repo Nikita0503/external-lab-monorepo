@@ -2,8 +2,8 @@ import { UploadedFile } from "express-fileupload";
 import fs from "fs";
 import path from "path";
 import { v4 as uuidv4 } from "uuid";
-import ApiError from "../../errors/ApiError";
-import { Attachment } from "../../models/models";
+import ApiError from "../../../errors/ApiError";
+import { Attachment } from "../../../models/models";
 
 class AttachmentService {
   async attachAttachment(file: UploadedFile, ids: string[]) {
