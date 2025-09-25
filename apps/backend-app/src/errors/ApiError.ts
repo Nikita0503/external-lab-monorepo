@@ -1,14 +1,8 @@
-import { Result, ValidationError } from "express-validator";
-
 class ApiError extends Error {
   status: number;
-  errors?: Result<ValidationError>;
+  errors?: any;
 
-  constructor(
-    status: number,
-    message: string,
-    errors?: Result<ValidationError>
-  ) {
+  constructor(status: number, message: string, errors?: any) {
     super(message);
     this.status = status;
     this.errors = errors;

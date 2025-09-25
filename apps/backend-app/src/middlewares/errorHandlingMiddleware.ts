@@ -9,14 +9,18 @@ const errorHandlingMiddleware = (
 ) => {
   if (err instanceof ApiError) {
     let message;
-    if (err.errors?.array().length) {
+    if (err.errors?.length) {
+      const errors = err.errors;
+      message = {
+        errors,
+      };
+    } else if (err.errors?.array().length) {
       const errors = err.errors.array().map((e: any) => e.msg);
       message = {
         errors,
       };
-    }
-    else if (err.message){
-      message = { error: err.message }
+    } else if (err.message) {
+      message = { error: err.message };
     }
     return res.status(err.status).json(message);
   }
