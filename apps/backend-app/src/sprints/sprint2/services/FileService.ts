@@ -6,10 +6,10 @@ import ApiError from "../../../errors/ApiError";
 import { File } from "../../../models/models";
 
 class FileService {
-  async attachFile(file: UploadedFile, ids: string[]) {
+  async attachFile(file: UploadedFile, ids: any) {
     const savedFileData = await this.saveFile(file);
     const fileInfo = await File.create({
-      name: savedFileData.fileName,
+      image: savedFileData.fileName,
       ...ids,
     });
     return fileInfo.name;

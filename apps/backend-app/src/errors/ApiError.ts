@@ -26,6 +26,10 @@ class ApiError extends Error {
     return new ApiError(403, message);
   }
 
+  static notFound(message: string, errors: any) {
+    return new ApiError(404, message, errors);
+  }
+
   static conflict(message: string) {
     return new ApiError(409, message);
   }

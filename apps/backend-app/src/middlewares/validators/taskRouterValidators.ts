@@ -1,20 +1,14 @@
 import { check } from "express-validator";
 import path from "path";
 
-const getTaskValidators = () => {
-  return [check("taskId").isNumeric().withMessage("Must be a number")];
-};
-
 const createTaskValidators = () => {
   return [
-    check("title").notEmpty().withMessage("Title is required"),
-    check("description")
-      .optional()
-      .notEmpty()
-      .withMessage("Description is required"),
-    check("file")
+    check("title")
+      .isLength({ min: 2 })
+      .withMessage("Invalid title: minimum 2 characters"),
+    check("files")
       .custom((value, { req }) => {
-        let files = req?.files?.file;
+        let files = req?.files?.files;
         if (!files) {
           return true;
         }
@@ -35,95 +29,18 @@ const createTaskValidators = () => {
         }
         return true;
       })
-      .withMessage("Files should be images"),
-  ];
-};
-
-const editTaskValidators = () => {
-  return [
-    check("title").notEmpty().withMessage("Title is required"),
-    check("description")
-      .optional()
-      .notEmpty()
-      .withMessage("Description is required"),
-    check("done")
-      .notEmpty()
-      .isBoolean()
-      .withMessage("Done is required as boolean value"),
-    check("file")
-      .custom((value, { req }) => {
-        let files = req?.files?.file;
-        if (!files) {
-          return true;
-        }
-        if (!files?.length && files?.name) {
-          files = [files];
-        }
-        for (let i = 0; i < files.length; i++) {
-          var extension = path.extname(files[i].name).toLowerCase();
-          if (
-            extension !== ".jpg" &&
-            extension !== ".jpeg" &&
-            extension !== ".png" &&
-            extension !== ".gif" &&
-            extension !== ".webp"
-          ) {
-            return false;
-          }
-        }
-        return true;
-      })
-      .withMessage("Files should be images"),
-  ];
-};
-
-const patchTaskValidators = () => {
-  return [
-    check("title").optional().notEmpty().withMessage("Title is required"),
-    check("description")
-      .optional()
-      .notEmpty()
-      .withMessage("Description is required"),
-    check("done")
-      .optional()
-      .notEmpty()
-      .isBoolean()
-      .withMessage("Done is required as boolean value"),
-    check("file")
-      .custom((value, { req }) => {
-        let files = req?.files?.file;
-        if (!files) {
-          return true;
-        }
-        if (!files?.length && files?.name) {
-          files = [files];
-        }
-        for (let i = 0; i < files.length; i++) {
-          var extension = path.extname(files[i].name).toLowerCase();
-          if (
-            extension !== ".jpg" &&
-            extension !== ".jpeg" &&
-            extension !== ".png" &&
-            extension !== ".gif" &&
-            extension !== ".webp"
-          ) {
-            return false;
-          }
-        }
-        return true;
-      })
-      .withMessage("Files should be images"),
+      .withMessage(
+        "Invalid files: allowed formats are jpg, jpeg, png, gif, webp"
+      ),
   ];
 };
 
 const deleteTaskValidators = () => {
-  return [check("taskId").isNumeric().withMessage("Must be a number")];
+  return [
+    check("taskId")
+      .isNumeric()
+      .withMessage("Invalid taskId: taskId is required"),
+  ];
 };
 
-export {
-  createTaskValidators,
-  deleteTaskValidators,
-  editTaskValidators,
-  getTaskValidators,
-  patchTaskValidators,
-};
+export { createTaskValidators, deleteTaskValidators };

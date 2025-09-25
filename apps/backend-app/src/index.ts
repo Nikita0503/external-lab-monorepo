@@ -3,7 +3,7 @@ import { initApp, initSequelize } from "./utils/init";
 
 dotenv.config();
 const PORT = 4000;
-const app = initApp();
+const app = initApp(__dirname);
 
 app.listen(PORT, async () => {
   await initSequelize();

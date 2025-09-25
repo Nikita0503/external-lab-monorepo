@@ -2,7 +2,7 @@ import { check, oneOf } from "express-validator";
 
 const attachFileValidators = () => {
   return [
-    check("file")
+    check("image")
       .custom((value, { req }) => {
         return req.files.file;
       })

@@ -30,7 +30,7 @@ class UserService {
       }
       avatarData = await FileService.saveFile(avatar);
     }
-    const updatedUserId = await User.update(
+    await User.update(
       { name, avatar: avatarData?.fileName },
       { where: { id: user.id } }
     );

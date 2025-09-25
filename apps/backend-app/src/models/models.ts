@@ -18,7 +18,7 @@ const User = sequelize.define("user", {
 
 const File = sequelize.define("file", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  name: { type: DataTypes.STRING, allowNull: false },
+  image: { type: DataTypes.STRING, allowNull: false },
 });
 
 User.hasMany(Task, { onDelete: "CASCADE" });

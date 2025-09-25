@@ -1,6 +1,7 @@
 import cors from "cors";
 import express, { Express } from "express";
 import fileUpload from "express-fileupload";
+import path from "path";
 import sequelize from "../db";
 import errorHandler from "../middlewares/errorHandlingMiddleware";
 import router from "../sprints/sprint2/routes";
@@ -8,10 +9,12 @@ import router from "../sprints/sprint2/routes";
 const MAX_RETRIES = 5;
 const DELAY = 1000;
 
-export const initApp = (): Express => {
+export const initApp = (dirname: string): Express => {
+  console.log(dirname);
   const app = express();
   app.use(cors());
   app.use(express.json());
+  app.use(express.static(path.resolve(dirname, "..", "static")));
   app.use(fileUpload({}));
   app.use("/api", router);
   app.use(errorHandler);
