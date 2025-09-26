@@ -25,7 +25,7 @@ class FileService {
     const file = await File.findOne({
       where: { id: fileId },
     });
-    this.deleteFile(file.name);
+    this.deleteFile(file.dataValues.image);
     const deletedFileId = File.destroy({
       where: { id: fileId },
     });
