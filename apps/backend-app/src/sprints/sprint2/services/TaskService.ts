@@ -86,6 +86,10 @@ class TaskService {
     if (task.userId !== user.id) {
       throw ApiError.forbidden("User does not have access to this resource");
     }
+    const filesToDelete = await File.findAll({ where: { taskId: task.id } });
+    for (let i = 0; i < filesToDelete.length; i++) {
+      await FileService.deleteFile(filesToDelete[i].dataValues.image);
+    }
     const deletedTaskId = await Task.destroy({ where: { id: taskId } });
     return !!deletedTaskId;
   }
