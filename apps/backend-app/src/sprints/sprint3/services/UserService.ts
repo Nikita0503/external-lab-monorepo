@@ -47,7 +47,7 @@ class UserService {
       throw ApiError.unauthorized();
     }
     const user = await User.findOne({ where: { id: candidate.id } });
-    FileService.deleteFile(user.avatar);
+    await FileService.deleteFile(user.avatar);
     const updatedUserId = await User.update(
       { avatar: null },
       { where: { id: user.id } }
