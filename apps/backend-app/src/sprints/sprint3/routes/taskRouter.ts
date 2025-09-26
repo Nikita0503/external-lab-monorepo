@@ -6,6 +6,7 @@ import {
   deleteTaskValidators,
   editTaskValidators,
   getTaskValidators,
+  patchTaskValidators,
 } from "../../../middlewares/validators/taskRouterValidators";
 import TaskController from "../controllers/TaskController";
 
@@ -29,6 +30,12 @@ router.put(
   authMiddleware,
   ...editTaskValidators(),
   TaskController.editTask
+);
+router.patch(
+  "/:taskId",
+  authMiddleware,
+  ...patchTaskValidators(),
+  TaskController.patchTask
 );
 router.delete(
   "/:taskId",
