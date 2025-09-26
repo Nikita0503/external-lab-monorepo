@@ -5,6 +5,7 @@ import {
   deleteTaskAttachmentValidators,
   deleteTaskValidators,
   editTaskValidators,
+  getAllTasksValidators,
   getTaskValidators,
   patchTaskValidators,
 } from "../../../middlewares/validators/taskRouterValidators";
@@ -12,6 +13,12 @@ import TaskController from "../controllers/TaskController";
 
 const router = Router();
 
+router.get(
+  "/all",
+  authMiddleware,
+  ...getAllTasksValidators(),
+  TaskController.getCommonTasks
+);
 router.get("/", authMiddleware, TaskController.getTasks);
 router.get(
   "/:taskId",

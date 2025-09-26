@@ -1,6 +1,15 @@
 import { check } from "express-validator";
 import path from "path";
 
+const getAllTasksValidators = () => {
+  return [
+    check("page").notEmpty().withMessage("Invalid page: page is required"),
+    check("tasksPerPage")
+      .notEmpty()
+      .withMessage("Invalid tasksPerPage: tasksPerPage is required"),
+  ];
+};
+
 const getTaskValidators = () => {
   return [
     check("taskId")
@@ -149,6 +158,7 @@ export {
   deleteTaskAttachmentValidators,
   deleteTaskValidators,
   editTaskValidators,
+  getAllTasksValidators,
   getTaskValidators,
   patchTaskValidators,
 };

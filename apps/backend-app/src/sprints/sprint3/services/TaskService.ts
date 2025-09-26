@@ -34,6 +34,20 @@ async function saveFilesOfNewTask(
 }
 
 class TaskService {
+  async getCommonTasks(page: number, tasksPerPage: number) {
+    const offset = (page - 1) * tasksPerPage;
+    const { count, rows: tasks } = await Task.findAndCountAll({
+      limit: tasksPerPage,
+      offset: offset,
+      order: [["createdAt", "DESC"]],
+      attributes: ["id", "title"],
+    });
+    return {
+      tasks: tasks,
+      taskTotalCount: count,
+    };
+  }
+
   async getTasks(token: string) {
     const user = jwt.decode(token) as { id?: string } | null;
     if (!user || !user.id) {

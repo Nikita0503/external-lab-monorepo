@@ -4,6 +4,26 @@ import ApiError from "../../../errors/ApiError";
 import TaskService from "../services/TaskService";
 
 class TaskController {
+  async getCommonTasks(req: Request, res: Response, next: NextFunction) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(ApiError.badRequest("Invalid data", errors));
+      }
+      const { page, tasksPerPage } = req.query;
+      const correctPage = parseInt(page as string) || 1;
+      const correctTasksPerPage = parseInt(tasksPerPage as string) || 10;
+      const result = await TaskService.getCommonTasks(
+        correctPage,
+        correctTasksPerPage
+      );
+      return res.json(result);
+    } catch (e) {
+      console.log("🔴 TaskController::getCommonTasks error:", e);
+      next(e);
+    }
+  }
+
   async getTasks(req: Request, res: Response, next: NextFunction) {
     try {
       const errors = validationResult(req);
