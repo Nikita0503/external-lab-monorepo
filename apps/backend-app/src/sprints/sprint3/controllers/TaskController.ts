@@ -75,6 +75,7 @@ class TaskController {
       );
       return res.json(task);
     } catch (e) {
+      console.log("🔴 TaskController::editTask error:", e);
       next(e);
     }
   }
