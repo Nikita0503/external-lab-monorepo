@@ -2,7 +2,6 @@ import { UploadedFile } from "express-fileupload";
 import fs from "fs";
 import path from "path";
 import { v4 as uuidv4 } from "uuid";
-import ApiError from "../../../errors/ApiError";
 import { File } from "../../../models/models";
 
 class FileService {
@@ -26,11 +25,6 @@ class FileService {
     const file = await File.findOne({
       where: { id: fileId },
     });
-    if (!file) {
-      throw ApiError.badRequest("Invalid data", [
-        `File with id '${fileId}' not found`,
-      ]);
-    }
     this.deleteFile(file.name);
     const deletedFileId = File.destroy({
       where: { id: fileId },

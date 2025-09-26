@@ -1,6 +1,14 @@
 import { check } from "express-validator";
 import path from "path";
 
+const getTaskValidators = () => {
+  return [
+    check("taskId")
+      .notEmpty()
+      .withMessage("Invalid taskId: taskId is required"),
+  ];
+};
+
 const createTaskValidators = () => {
   return [
     check("title")
@@ -38,9 +46,25 @@ const createTaskValidators = () => {
 const deleteTaskValidators = () => {
   return [
     check("taskId")
-      .isNumeric()
+      .notEmpty()
       .withMessage("Invalid taskId: taskId is required"),
   ];
 };
 
-export { createTaskValidators, deleteTaskValidators };
+const deleteTaskAttachmentValidators = () => {
+  return [
+    check("taskId")
+      .notEmpty()
+      .withMessage("Invalid taskId: taskId is required"),
+    check("fileId")
+      .notEmpty()
+      .withMessage("Invalid fileId: fileId is required"),
+  ];
+};
+
+export {
+  createTaskValidators,
+  deleteTaskAttachmentValidators,
+  deleteTaskValidators,
+  getTaskValidators,
+};

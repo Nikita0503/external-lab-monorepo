@@ -19,6 +19,20 @@ class TaskController {
     }
   }
 
+  async getFullTask(req: Request, res: Response, next: NextFunction) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(ApiError.badRequest("Invalid data", errors));
+      }
+      const { taskId } = req.params;
+      const task = await TaskService.getFullTask(taskId);
+      return res.json(task);
+    } catch (e) {
+      next(e);
+    }
+  }
+
   async createTask(req: Request, res: Response, next: NextFunction) {
     try {
       const errors = validationResult(req);
@@ -53,6 +67,26 @@ class TaskController {
       return res.json({ deleted: isDone });
     } catch (e) {
       console.log("🔴 TaskController::deleteTask error:", e);
+      next(e);
+    }
+  }
+
+  async deleteTaskAttachment(req: Request, res: Response, next: NextFunction) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(ApiError.badRequest("Invalid data", errors));
+      }
+      const { taskId, fileId } = req.params;
+      const token = req.headers.authorization!.split(" ")[1];
+      const isDone = await TaskService.deleteTaskAttachment(
+        taskId,
+        fileId,
+        token
+      );
+      return res.json({ deleted: isDone });
+    } catch (e) {
+      console.log("🔴 TaskController::deleteTaskAttachment error:", e);
       next(e);
     }
   }
