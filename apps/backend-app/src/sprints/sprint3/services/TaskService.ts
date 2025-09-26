@@ -86,6 +86,35 @@ class TaskService {
     return formedTask;
   }
 
+  async editTask(
+    taskId: string,
+    title: string,
+    description: string,
+    done: boolean,
+    files: UploadedFile[],
+    token: string
+  ) {
+    const user = jwt.decode(token) as { id?: string } | null;
+    if (!user || !user.id) {
+      throw ApiError.unauthorized();
+    }
+    const task = await Task.findOne({ where: { id: taskId } });
+    if (!task) {
+      throw ApiError.notFound("Invalid data", [
+        "Invalid taskId: no task found with this taskId",
+      ]);
+    }
+    if (task.userId !== user.id) {
+      throw ApiError.forbidden("User does not have access to this resource");
+    }
+    await Task.update({ title, description, done }, { where: { id: taskId } });
+    if (files) {
+      await saveFilesOfNewTask(files, task.id);
+    }
+    const formedTask = await formTask(taskId);
+    return formedTask;
+  }
+
   async deleteTask(taskId: string, token: string) {
     const user = jwt.decode(token) as { id?: string } | null;
     if (!user || !user.id) {

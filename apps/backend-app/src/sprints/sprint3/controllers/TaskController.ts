@@ -55,6 +55,30 @@ class TaskController {
     }
   }
 
+  async editTask(req: Request, res: Response, next: NextFunction) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(ApiError.badRequest("Invalid data", errors));
+      }
+      const { taskId } = req.params;
+      const { title, description, done } = req.body;
+      const token = req.headers.authorization!.split(" ")[1];
+      const files = (req.files as any)?.files;
+      const task = await TaskService.editTask(
+        taskId,
+        title,
+        description,
+        done,
+        files,
+        token
+      );
+      return res.json(task);
+    } catch (e) {
+      next(e);
+    }
+  }
+
   async deleteTask(req: Request, res: Response, next: NextFunction) {
     try {
       const errors = validationResult(req);

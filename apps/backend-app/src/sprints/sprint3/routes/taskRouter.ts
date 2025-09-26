@@ -4,6 +4,7 @@ import {
   createTaskValidators,
   deleteTaskAttachmentValidators,
   deleteTaskValidators,
+  editTaskValidators,
   getTaskValidators,
 } from "../../../middlewares/validators/taskRouterValidators";
 import TaskController from "../controllers/TaskController";
@@ -22,6 +23,12 @@ router.post(
   authMiddleware,
   ...createTaskValidators(),
   TaskController.createTask
+);
+router.put(
+  "/:taskId",
+  authMiddleware,
+  ...editTaskValidators(),
+  TaskController.editTask
 );
 router.delete(
   "/:taskId",
