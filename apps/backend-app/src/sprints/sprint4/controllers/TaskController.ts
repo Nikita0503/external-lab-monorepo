@@ -4,6 +4,16 @@ import ApiError from "../../../errors/ApiError";
 import TaskService from "../services/TaskService";
 
 class TaskController {
+  async getPriorities(req: Request, res: Response, next: NextFunction) {
+    try {
+      const priorities = await TaskService.getPriorities();
+      return res.json({ priorities });
+    } catch (e) {
+      console.log("🔴 TaskController::getPriorities error:", e);
+      next(e);
+    }
+  }
+
   async getCommonTasks(req: Request, res: Response, next: NextFunction) {
     try {
       const errors = validationResult(req);

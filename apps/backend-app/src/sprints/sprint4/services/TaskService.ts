@@ -39,6 +39,10 @@ async function saveFilesOfNewTask(
 }
 
 class TaskService {
+  async getPriorities() {
+    return ["high", "low"];
+  }
+
   async getCommonTasks(page: number, tasksPerPage: number) {
     const offset = (page - 1) * tasksPerPage;
     const { count, rows: tasks } = await Task.findAndCountAll({

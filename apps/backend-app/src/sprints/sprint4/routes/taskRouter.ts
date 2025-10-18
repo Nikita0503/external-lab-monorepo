@@ -13,6 +13,7 @@ import TaskController from "../controllers/TaskController";
 
 const router = Router();
 
+router.get("/priorities", authMiddleware, TaskController.getPriorities);
 router.get(
   "/all",
   authMiddleware,
