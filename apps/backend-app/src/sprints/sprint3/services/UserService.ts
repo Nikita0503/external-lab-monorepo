@@ -25,14 +25,14 @@ class UserService {
     const user = await User.findOne({ where: { id: candidate.id } });
     let avatarData;
     if (avatar) {
-      if (user.avatar) {
-        FileService.deleteFile(user.avatar);
+      if (user?.dataValues.avatar) {
+        FileService.deleteFile(user.dataValues.avatar);
       }
       avatarData = await FileService.saveFile(avatar);
     }
     await User.update(
       { name, avatar: avatarData?.fileName },
-      { where: { id: user.id } }
+      { where: { id: user?.dataValues.id } }
     );
     const updatedUser = await User.findOne({
       attributes: { exclude: ["id", "password", "createdAt", "updatedAt"] },
@@ -47,10 +47,13 @@ class UserService {
       throw ApiError.unauthorized();
     }
     const user = await User.findOne({ where: { id: candidate.id } });
-    await FileService.deleteFile(user.avatar);
+    if (!user?.dataValues.avatar) {
+      return false;
+    }
+    await FileService.deleteFile(user.dataValues.avatar);
     const updatedUserId = await User.update(
       { avatar: null },
-      { where: { id: user.id } }
+      { where: { id: user.dataValues.id } }
     );
     return !!updatedUserId;
   }

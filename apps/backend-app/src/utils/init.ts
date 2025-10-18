@@ -4,7 +4,7 @@ import fileUpload from "express-fileupload";
 import path from "path";
 import sequelize from "../db";
 import errorHandler from "../middlewares/errorHandlingMiddleware";
-import router from "../sprints/sprint4/routes";
+import router from "../sprints/sprint3/routes";
 
 const MAX_RETRIES = 5;
 const DELAY = 1000;

@@ -5,7 +5,7 @@ import ApiError from "../../../errors/ApiError";
 import { User } from "../../../models/models";
 import FileService from "./FileService";
 
-const generateToken = (id: string, email: string, name: string) => {
+const generateToken = (id: number, email: string, name: string) => {
   const accessToken = jwt.sign({ id, email, name }, process.env.SECRET_KEY!, {
     expiresIn: "24h",
   });
@@ -18,11 +18,18 @@ class AuthService {
     if (!user) {
       throw ApiError.unauthorized();
     }
-    const comparePassword = bcrypt.compareSync(password, user.password);
+    const comparePassword = bcrypt.compareSync(
+      password,
+      user.dataValues.password
+    );
     if (!comparePassword) {
       throw ApiError.unauthorized();
     }
-    const accessToken = generateToken(user.id, user.email, user.name);
+    const accessToken = generateToken(
+      user.dataValues.id,
+      user.dataValues.email,
+      user.dataValues.name
+    );
     return accessToken;
   }
 
@@ -47,7 +54,11 @@ class AuthService {
       name,
       avatar: avatarData?.fileName,
     });
-    const accessToken = generateToken(user.id, user.email, user.name);
+    const accessToken = generateToken(
+      user.dataValues.id,
+      user.dataValues.email,
+      user.dataValues.name
+    );
     return accessToken;
   }
 }

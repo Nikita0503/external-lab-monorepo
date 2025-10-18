@@ -4,7 +4,7 @@ import ApiError from "../../../errors/ApiError";
 import { File, Task } from "../../../models/models";
 import FileService from "./FileService";
 
-async function formTask(id: number) {
+async function formTask(id: number | string) {
   const task = await Task.findOne({
     attributes: { exclude: ["createdAt", "updatedAt", "userId", "priority"] },
     where: { id },
