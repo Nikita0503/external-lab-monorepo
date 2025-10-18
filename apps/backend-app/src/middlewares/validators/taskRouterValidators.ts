@@ -153,12 +153,49 @@ const deleteTaskAttachmentValidators = () => {
   ];
 };
 
+const createTaskValidatorsWithPriority = () => {
+  return [
+    ...createTaskValidators(),
+    check("priority")
+      .isIn(["low", "high"])
+      .withMessage(
+        "Invalid priority: the priority must be either 'high' or 'low'"
+      ),
+  ];
+};
+
+const editTaskValidatorsWithPriority = () => {
+  return [
+    ...editTaskValidators(),
+    check("priority")
+      .isIn(["low", "high"])
+      .withMessage(
+        "Invalid priority: the priority must be either 'high' or 'low'"
+      ),
+  ];
+};
+
+const patchTaskValidatorsWithPriority = () => {
+  return [
+    ...patchTaskValidators(),
+    check("priority")
+      .optional()
+      .isIn(["low", "high"])
+      .withMessage(
+        "Invalid priority: the priority must be either 'high' or 'low'"
+      ),
+  ];
+};
+
 export {
   createTaskValidators,
+  createTaskValidatorsWithPriority,
   deleteTaskAttachmentValidators,
   deleteTaskValidators,
   editTaskValidators,
+  editTaskValidatorsWithPriority,
   getAllTasksValidators,
   getTaskValidators,
   patchTaskValidators,
+  patchTaskValidatorsWithPriority,
 };

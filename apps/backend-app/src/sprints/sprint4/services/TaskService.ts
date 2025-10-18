@@ -6,7 +6,7 @@ import FileService from "./FileService";
 
 async function formTask(id: number | string) {
   const task = await Task.findOne({
-    attributes: { exclude: ["createdAt", "updatedAt", "userId", "priority"] },
+    attributes: { exclude: ["createdAt", "updatedAt", "userId"] },
     where: { id },
   });
   if (!task) {
@@ -85,6 +85,7 @@ class TaskService {
   async createTask(
     title: string,
     description: string,
+    priority: "high" | "low",
     files: UploadedFile[],
     token: string
   ) {
@@ -97,6 +98,7 @@ class TaskService {
       description,
       userId: user.id,
       done: false,
+      priority,
     });
     if (files) {
       await saveFilesOfNewTask(files, task.dataValues.id);
@@ -110,6 +112,7 @@ class TaskService {
     title: string,
     description: string,
     done: boolean,
+    priority: "high" | "low",
     files: UploadedFile[],
     token: string
   ) {
@@ -126,7 +129,10 @@ class TaskService {
     if (task.dataValues.userId !== user.id) {
       throw ApiError.forbidden("User does not have access to this resource");
     }
-    await Task.update({ title, description, done }, { where: { id: taskId } });
+    await Task.update(
+      { title, description, done, priority },
+      { where: { id: taskId } }
+    );
     if (files) {
       await saveFilesOfNewTask(files, task.dataValues.id);
     }
@@ -139,6 +145,7 @@ class TaskService {
     title: string,
     description: string,
     done: boolean,
+    priority: "high" | "low",
     files: UploadedFile[],
     token: string
   ) {
@@ -164,6 +171,9 @@ class TaskService {
     }
     if (done) {
       updateData.done = done;
+    }
+    if (priority) {
+      updateData.priority = priority;
     }
     if (Object.keys(updateData).length > 0) {
       await Task.update(updateData, { where: { id: taskId } });

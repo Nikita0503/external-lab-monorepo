@@ -1,13 +1,13 @@
 import { Router } from "express";
 import authMiddleware from "../../../middlewares/authMiddleware";
 import {
-  createTaskValidators,
+  createTaskValidatorsWithPriority,
   deleteTaskAttachmentValidators,
   deleteTaskValidators,
-  editTaskValidators,
+  editTaskValidatorsWithPriority,
   getAllTasksValidators,
   getTaskValidators,
-  patchTaskValidators,
+  patchTaskValidatorsWithPriority,
 } from "../../../middlewares/validators/taskRouterValidators";
 import TaskController from "../controllers/TaskController";
 
@@ -29,19 +29,19 @@ router.get(
 router.post(
   "/",
   authMiddleware,
-  ...createTaskValidators(),
+  ...createTaskValidatorsWithPriority(),
   TaskController.createTask
 );
 router.put(
   "/:taskId",
   authMiddleware,
-  ...editTaskValidators(),
+  ...editTaskValidatorsWithPriority(),
   TaskController.editTask
 );
 router.patch(
   "/:taskId",
   authMiddleware,
-  ...patchTaskValidators(),
+  ...patchTaskValidatorsWithPriority(),
   TaskController.patchTask
 );
 router.delete(

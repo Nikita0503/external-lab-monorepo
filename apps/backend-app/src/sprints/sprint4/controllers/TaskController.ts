@@ -59,12 +59,13 @@ class TaskController {
       if (!errors.isEmpty()) {
         return next(ApiError.badRequest("Invalid data", errors));
       }
-      const { title, description } = req.body;
+      const { title, description, priority } = req.body;
       const files = (req.files as any)?.files;
       const token = req.headers.authorization!.split(" ")[1];
       const task = await TaskService.createTask(
         title,
         description,
+        priority,
         files,
         token
       );
@@ -82,7 +83,7 @@ class TaskController {
         return next(ApiError.badRequest("Invalid data", errors));
       }
       const { taskId } = req.params;
-      const { title, description, done } = req.body;
+      const { title, description, done, priority } = req.body;
       const token = req.headers.authorization!.split(" ")[1];
       const files = (req.files as any)?.files;
       const task = await TaskService.editTask(
@@ -90,6 +91,7 @@ class TaskController {
         title,
         description,
         done,
+        priority,
         files,
         token
       );
@@ -107,7 +109,7 @@ class TaskController {
         return next(ApiError.badRequest("Invalid data", errors));
       }
       const { taskId } = req.params;
-      const { title, description, done } = req.body;
+      const { title, description, done, priority } = req.body;
       const token = req.headers.authorization!.split(" ")[1];
       const files = (req.files as any)?.files;
       const task = await TaskService.patchTask(
@@ -115,6 +117,7 @@ class TaskController {
         title,
         description,
         done,
+        priority,
         files,
         token
       );
