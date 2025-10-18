@@ -5,13 +5,13 @@ import { v4 as uuidv4 } from "uuid";
 import { File } from "../../../models/models";
 
 class FileService {
-  async attachFile(file: UploadedFile, ids: any) {
+  async attachFile(file: UploadedFile, ids: object) {
     const savedFileData = await this.saveFile(file);
     const fileInfo = await File.create({
       image: savedFileData.fileName,
       ...ids,
     });
-    return fileInfo.name;
+    return fileInfo.dataValues.image;
   }
 
   async saveFile(file: UploadedFile) {
@@ -25,6 +25,9 @@ class FileService {
     const file = await File.findOne({
       where: { id: fileId },
     });
+    if (!file) {
+      return false;
+    }
     this.deleteFile(file.dataValues.image);
     const deletedFileId = File.destroy({
       where: { id: fileId },

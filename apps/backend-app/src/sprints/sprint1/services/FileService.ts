@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { File } from "../../../models/models";
 
 class FileService {
-  async attachFile(file: UploadedFile, ids: string[]) {
+  async attachFile(file: UploadedFile, ids: object) {
     const savedFileData = await this.saveFile(file);
     const fileInfo = await File.create({
       image: savedFileData.fileName,

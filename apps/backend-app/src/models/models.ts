@@ -6,7 +6,7 @@ interface UserAttributes {
   email: string;
   name: string;
   password: string;
-  avatar?: string;
+  avatar?: string | null;
 }
 
 interface UserCreationAttributes
