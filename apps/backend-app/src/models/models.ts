@@ -1,25 +1,70 @@
-import DataTypes from "sequelize";
+import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../db";
 
-const Task = sequelize.define("task", {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  title: { type: DataTypes.STRING, allowNull: false },
-  description: { type: DataTypes.STRING },
-  done: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
-});
+interface UserAttributes {
+  id: number;
+  email: string;
+  name: string;
+  password: string;
+  avatar?: string;
+}
 
-const User = sequelize.define("user", {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  email: { type: DataTypes.STRING, unique: true, allowNull: false },
-  name: { type: DataTypes.STRING, allowNull: false },
-  password: { type: DataTypes.STRING, allowNull: false },
-  avatar: { type: DataTypes.STRING },
-});
+interface UserCreationAttributes
+  extends Optional<UserAttributes, "id" | "avatar"> {}
 
-const File = sequelize.define("file", {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  image: { type: DataTypes.STRING, allowNull: false },
-});
+const User = sequelize.define<Model<UserAttributes, UserCreationAttributes>>(
+  "user",
+  {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    email: { type: DataTypes.STRING, unique: true, allowNull: false },
+    name: { type: DataTypes.STRING, allowNull: false },
+    password: { type: DataTypes.STRING, allowNull: false },
+    avatar: { type: DataTypes.STRING },
+  }
+);
+
+interface TaskAttributes {
+  id: number;
+  title: string;
+  description?: string;
+  done: boolean;
+  priority?: "high" | "low";
+  userId?: number;
+}
+
+interface TaskCreationAttributes
+  extends Optional<
+    TaskAttributes,
+    "id" | "description" | "priority" | "userId"
+  > {}
+
+const Task = sequelize.define<Model<TaskAttributes, TaskCreationAttributes>>(
+  "task",
+  {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    title: { type: DataTypes.STRING, allowNull: false },
+    description: { type: DataTypes.STRING },
+    done: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+    priority: { type: DataTypes.ENUM("high", "low"), allowNull: true },
+  }
+);
+
+interface FileAttributes {
+  id: number;
+  image: string;
+  taskId?: number;
+}
+
+interface FileCreationAttributes
+  extends Optional<FileAttributes, "id" | "taskId"> {}
+
+const File = sequelize.define<Model<FileAttributes, FileCreationAttributes>>(
+  "file",
+  {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    image: { type: DataTypes.STRING, allowNull: false },
+  }
+);
 
 User.hasMany(Task, { onDelete: "CASCADE" });
 Task.belongsTo(User);

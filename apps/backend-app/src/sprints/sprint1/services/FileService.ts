@@ -8,10 +8,10 @@ class FileService {
   async attachFile(file: UploadedFile, ids: string[]) {
     const savedFileData = await this.saveFile(file);
     const fileInfo = await File.create({
-      name: savedFileData.fileName,
+      image: savedFileData.fileName,
       ...ids,
     });
-    return fileInfo.name;
+    return fileInfo.dataValues.image;
   }
 
   async saveFile(file: UploadedFile) {
@@ -25,6 +25,9 @@ class FileService {
     const file = await File.findOne({
       where: { id: fileId },
     });
+    if (!file) {
+      return false;
+    }
     this.deleteFile(file.dataValues.image);
     const deletedFileId = File.destroy({
       where: { id: fileId },
