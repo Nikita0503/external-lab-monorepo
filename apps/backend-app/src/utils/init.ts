@@ -4,7 +4,7 @@ import fileUpload from "express-fileupload";
 import path from "path";
 import sequelize from "../db";
 import errorHandler from "../middlewares/errorHandlingMiddleware";
-import router from "../sprints/sprint4/routes";
+import rootRouter from "../sprints";
 
 const MAX_RETRIES = 5;
 const DELAY = 1000;
@@ -16,7 +16,7 @@ export const initApp = (dirname: string): Express => {
   app.use(express.json());
   app.use(express.static(path.resolve(dirname, "..", "static")));
   app.use(fileUpload({}));
-  app.use("/api", router);
+  app.use("/api", rootRouter);
   app.use(errorHandler);
   return app;
 };
