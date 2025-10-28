@@ -6,7 +6,7 @@ import sprint4Router from "./sprint4/routes";
 
 const app = express();
 
-function sprintRouter(req: Request, res: Response, next: NextFunction) {
+const sprintRouter = (req: Request, res: Response, next: NextFunction) => {
   const sprint = req.header("sprint");
   switch (sprint) {
     case "1":
@@ -20,7 +20,7 @@ function sprintRouter(req: Request, res: Response, next: NextFunction) {
     default:
       return sprint4Router(req, res, next);
   }
-}
+};
 
 app.use("/", sprintRouter);
 
