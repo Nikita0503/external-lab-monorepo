@@ -1,8 +1,9 @@
-export interface ITask {
+export type TaskPriority = "low" | "high";
+
+export interface Task {
   id: string;
   title: string;
   description: string;
   done: boolean;
+  priority?: TaskPriority;
 }
-
-export const TASK = "123Task";
