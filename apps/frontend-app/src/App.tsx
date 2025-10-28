@@ -3,7 +3,6 @@ import "./App.css";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
-import { AUTH_HEADER } from "@external-lab-monorepo/api";
 import { SPRINTS } from "@external-lab-monorepo/constants";
 import { authReducer } from "@external-lab-monorepo/store";
 
@@ -20,7 +19,6 @@ const App = () => {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React {AUTH_HEADER} </h1>
       <h1>Vite + React {SPRINTS.SPRINT_3} </h1>
       <h1>Vite + React {authReducer} </h1>
       <div className="card">
