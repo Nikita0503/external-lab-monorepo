@@ -1,4 +1,3 @@
-import { TASK } from "@external-lab-monorepo/types";
 import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
@@ -24,7 +23,6 @@ const App = () => {
       <h1>Vite + React {AUTH_HEADER} </h1>
       <h1>Vite + React {SPRINTS.SPRINT_3} </h1>
       <h1>Vite + React {authReducer} </h1>
-      <h1>Vite + React {TASK} </h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
