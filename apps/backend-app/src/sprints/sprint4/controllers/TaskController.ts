@@ -1,3 +1,4 @@
+import { TASKS_PER_PAGE } from "@external-lab-monorepo/constants";
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 import ApiError from "../../../errors/ApiError";
@@ -22,7 +23,8 @@ class TaskController {
       }
       const { page, tasksPerPage } = req.query;
       const correctPage = parseInt(page as string) || 1;
-      const correctTasksPerPage = parseInt(tasksPerPage as string) || 10;
+      const correctTasksPerPage =
+        parseInt(tasksPerPage as string) || TASKS_PER_PAGE;
       const result = await TaskService.getCommonTasks(
         correctPage,
         correctTasksPerPage

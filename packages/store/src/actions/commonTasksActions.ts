@@ -1,4 +1,5 @@
 import { fetchCommonTaskApi } from "@external-lab-monorepo/api";
+import { TASKS_PER_PAGE } from "@external-lab-monorepo/constants";
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../index";
 import {
@@ -50,7 +51,7 @@ export const fetchCommonTasksAsyncAction = createAsyncThunk(
   async (_, { dispatch }) => {
     try {
       dispatch(setLoadingAction({ loading: true }));
-      const res = await fetchCommonTaskApi(1, 10);
+      const res = await fetchCommonTaskApi(1, TASKS_PER_PAGE);
       const tasks = res.data.tasks;
       const totalCount = res.data.taskTotalCount;
       dispatch(setCommonTasksAction({ tasks: tasks }));
@@ -81,7 +82,7 @@ export const fetchMoreCommonTasksAsyncAction = createAsyncThunk<
       }
       const page = getState().commonTasks.page;
       dispatch(setMoreCommonTasksLoading({ loading: true }));
-      const res = await fetchCommonTaskApi(page, 10);
+      const res = await fetchCommonTaskApi(page, TASKS_PER_PAGE);
       const tasks = res.data.tasks;
       dispatch(addCommonTasksAction({ tasks: tasks }));
       dispatch(setMoreCommonTasksError({ error: undefined }));

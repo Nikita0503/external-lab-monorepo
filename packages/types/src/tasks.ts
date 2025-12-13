@@ -6,6 +6,7 @@ export interface Task {
   description: string;
   done: boolean;
   priority?: TaskPriority;
+  files: any[];
 }
 
 export interface CommonTask {

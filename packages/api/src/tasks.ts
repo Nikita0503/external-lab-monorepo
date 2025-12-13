@@ -10,6 +10,10 @@ export const fetchCommonTaskApi = async (
   );
 };
 
+export const fetchTaskApi = async (id: string) => {
+  return axiosInstance.get(`/tasks/${id}`);
+};
+
 export const fetchTasksApi = async () => {
   return axiosInstance.get("/tasks");
 };
@@ -40,6 +44,7 @@ export const createTaskApi = async (
 };
 
 export const editTaskApi = async (
+  id: string,
   title: string,
   description: string,
   files: any[],
@@ -58,17 +63,56 @@ export const editTaskApi = async (
       formData.append("files", files[i]);
     }
   }
-  return axiosInstance.put("/tasks", formData, {
+  return axiosInstance.put(`/tasks/${id}`, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
   });
 };
 
-export const partialEditTaskApi = async (id: string, done: boolean) => {
-  return axiosInstance.patch("/tasks", { id, done });
+export const partialEditTaskApi = async (
+  id: string,
+  title: string | undefined,
+  description: string | undefined,
+  files: any[] | undefined,
+  done: boolean | undefined,
+  priority?: TaskPriority | undefined
+) => {
+  const formData = new FormData();
+  if (title) {
+    formData.append("title", title);
+  }
+  if (description) {
+    formData.append("description", description);
+  }
+  if (typeof done === "boolean") {
+    formData.append("done", String(done));
+  }
+  if (priority) {
+    formData.append("priority", priority);
+  }
+  if (files && files.length) {
+    for (let i = 0; i < files.length; i++) {
+      formData.append("files", files[i]);
+    }
+  }
+  return axiosInstance.put(`/tasks/${id}`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
 export const deleteTaskApi = async (id: string) => {
-  return axiosInstance.delete("/tasks", { data: { id } });
+  return axiosInstance.delete(`/tasks/${id}`);
+};
+
+export const deleteTaskAttachmentApi = async (
+  taskId: string,
+  fileId: string
+) => {
+  const res = await axiosInstance.delete(
+    `tasks/${taskId}/attachments/${fileId}`
+  );
+  return res.data;
 };

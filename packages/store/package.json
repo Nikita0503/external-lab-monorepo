@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
+    "reselect": "^5.1.1",
     "@external-lab-monorepo/api": "*",
-    "@external-lab-monorepo/types": "*"
+    "@external-lab-monorepo/types": "*",
+    "@external-lab-monorepo/constants": "*"
   }
 }

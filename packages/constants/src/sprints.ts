@@ -4,3 +4,5 @@ export const SPRINTS = {
   SPRINT_3: "3",
   SPRINT_4: "4",
 };
+
+export const TASKS_PER_PAGE = 10;
