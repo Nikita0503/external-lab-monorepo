@@ -1,6 +1,15 @@
 import { TaskPriority } from "@external-lab-monorepo/types";
 import axiosInstance from "./axiosInstance";
 
+export const fetchCommonTaskApi = async (
+  page: number,
+  tasksPerPage: number
+) => {
+  return await axiosInstance.get(
+    `/tasks/all?page=${page}&tasksPerPage=${tasksPerPage}`
+  );
+};
+
 export const fetchTasksApi = async () => {
   return axiosInstance.get("/tasks");
 };
