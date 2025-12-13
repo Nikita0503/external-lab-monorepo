@@ -7,3 +7,8 @@ export interface Task {
   done: boolean;
   priority?: TaskPriority;
 }
+
+export interface CommonTask {
+  id: string;
+  title: string;
+}
