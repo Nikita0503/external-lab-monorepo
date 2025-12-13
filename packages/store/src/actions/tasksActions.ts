@@ -49,20 +49,29 @@ export const setLoadingAction = createAction<ISetLoadingAction>(
 export const fetchTasksAsyncAction = createAsyncThunk<
   void,
   IFetchTaskAsyncAction
->("tasks/fetchTasksAsyncAction", async (_, { dispatch }) => {
-  try {
-    dispatch(setLoadingAction({ loading: true }));
-    const res = await fetchTasksApi();
-    const tasks = res.data;
-    dispatch(setTasksAction({ tasks: tasks }));
-    dispatch(setErrorAction({ error: undefined }));
-  } catch (e: any) {
-    dispatch(setErrorAction({ error: e }));
-    console.log("tasksActions::fetchTasksAsyncAction error:", e);
-  } finally {
-    dispatch(setLoadingAction({ loading: false }));
+>(
+  "tasks/fetchTasksAsyncAction",
+  async ({ onSuccess, onError }, { dispatch }) => {
+    try {
+      dispatch(setLoadingAction({ loading: true }));
+      const res = await fetchTasksApi();
+      const tasks = res.data;
+      dispatch(setTasksAction({ tasks: tasks }));
+      dispatch(setErrorAction({ error: undefined }));
+      if (onSuccess) {
+        onSuccess();
+      }
+    } catch (e: any) {
+      dispatch(setErrorAction({ error: e }));
+      console.log("🔴 tasksActions::fetchTasksAsyncAction error:", e);
+      if (onError) {
+        onError(e);
+      }
+    } finally {
+      dispatch(setLoadingAction({ loading: false }));
+    }
   }
-});
+);
 
 export const createTaskAsyncAction = createAsyncThunk<
   void,
