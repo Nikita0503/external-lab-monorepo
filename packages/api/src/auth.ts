@@ -7,7 +7,19 @@ export const loginApi = async (email: string, password: string) => {
 export const registrationApi = async (
   email: string,
   password: string,
-  name: string
+  name: string,
+  avatar?: any
 ) => {
-  return axiosInstance.post("/auth/register", { email, password, name });
+  const formData = new FormData();
+  formData.append("email", email);
+  formData.append("name", name);
+  formData.append("password", password);
+  if (avatar) {
+    formData.append("avatar", avatar);
+  }
+  return axiosInstance.post("/auth/register", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
