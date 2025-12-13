@@ -4,7 +4,6 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
 import { SPRINTS } from "@external-lab-monorepo/constants";
-import { authReducer } from "@external-lab-monorepo/store";
 
 const App = () => {
   const [count, setCount] = useState(0);
@@ -20,7 +19,6 @@ const App = () => {
         </a>
       </div>
       <h1>Vite + React {SPRINTS.SPRINT_3} </h1>
-      <h1>Vite + React {authReducer} </h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
