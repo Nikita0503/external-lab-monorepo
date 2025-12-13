@@ -79,12 +79,19 @@ export const createTaskAsyncAction = createAsyncThunk<
 >(
   "tasks/createTaskAsyncAction",
   async (
-    { title, description, files, onSuccess, onError }: ICreateTaskAsyncAction,
+    {
+      title,
+      description,
+      priority,
+      files,
+      onSuccess,
+      onError,
+    }: ICreateTaskAsyncAction,
     { dispatch }
   ) => {
     try {
       dispatch(setLoadingAction({ loading: true }));
-      await createTaskApi(title, description, files);
+      await createTaskApi(title, description, files, priority);
       dispatch(fetchTasksAsyncAction({}));
       if (onSuccess) {
         onSuccess();
@@ -111,6 +118,7 @@ export const updateTaskAsyncAction = createAsyncThunk<
       title,
       description,
       done,
+      priority,
       files,
       oldFiles,
       onSuccess,
@@ -130,7 +138,7 @@ export const updateTaskAsyncAction = createAsyncThunk<
           await deleteTaskAttachmentApi(taskId, deletedFiles[i].id);
         }
       }
-      await editTaskApi(taskId, title, description, files, done);
+      await editTaskApi(taskId, title, description, files, done, priority);
       dispatch(fetchTasksAsyncAction({}));
       if (onSuccess) {
         onSuccess();
@@ -157,6 +165,7 @@ export const patchTaskAsyncAction = createAsyncThunk<
       title,
       description,
       done,
+      priority,
       files,
       oldFiles,
       onSuccess,
@@ -176,7 +185,14 @@ export const patchTaskAsyncAction = createAsyncThunk<
           await deleteTaskAttachmentApi(taskId, deletedFiles[i].id);
         }
       }
-      await partialEditTaskApi(taskId, title, description, files, done);
+      await partialEditTaskApi(
+        taskId,
+        title,
+        description,
+        files,
+        done,
+        priority
+      );
       dispatch(fetchTasksAsyncAction({}));
       if (onSuccess) {
         onSuccess();

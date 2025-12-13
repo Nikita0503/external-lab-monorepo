@@ -1,4 +1,4 @@
-import { Task } from "@external-lab-monorepo/types";
+import { Task, TaskPriority } from "@external-lab-monorepo/types";
 
 export interface ISetTasksAction {
   tasks: Task[];
@@ -32,6 +32,7 @@ export interface IFetchTaskAsyncAction {
 export interface ICreateTaskAsyncAction {
   title: string;
   description: string;
+  priority?: TaskPriority;
   files: any[];
   onSuccess?: () => void;
   onError?: (error: any) => void;
@@ -42,6 +43,7 @@ export interface IUpdateTaskAsyncAction {
   title: string;
   description: string;
   done: boolean;
+  priority?: TaskPriority;
   files: any[];
   oldFiles: any[];
   onSuccess?: () => void;
@@ -53,6 +55,7 @@ export interface IPatchTaskAsyncAction {
   title: string | undefined;
   description: string | undefined;
   done: boolean | undefined;
+  priority?: TaskPriority;
   files?: any[];
   oldFiles?: any[];
   onSuccess?: () => void;
