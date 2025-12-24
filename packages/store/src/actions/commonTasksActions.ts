@@ -4,6 +4,8 @@ import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../index";
 import {
   IAddCommonTasksAction,
+  IFetchCommonTasksAsyncAction,
+  IFetchMoreCommonTasksAsyncAction,
   ISetCommonTasksAction,
   ISetCommonTasksPageAction,
   ISetCommonTasksTotalCount,
@@ -46,34 +48,34 @@ export const setMoreCommonTasksLoading =
     "commonTasks/setMoreCommonTasksLoading"
   );
 
-export const fetchCommonTasksAsyncAction = createAsyncThunk(
-  "commonTasks/fetchCommonTasksAsyncAction",
-  async (_, { dispatch }) => {
-    try {
-      dispatch(setLoadingAction({ loading: true }));
-      const res = await fetchCommonTaskApi(1, TASKS_PER_PAGE);
-      const tasks = res.data.tasks;
-      const totalCount = res.data.taskTotalCount;
-      dispatch(setCommonTasksAction({ tasks: tasks }));
-      dispatch(setCommonTasksTotalCount({ totalCount: totalCount }));
-      dispatch(setErrorAction({ error: undefined }));
-      dispatch(setCommonTasksPageAction({ page: 2 }));
-    } catch (e: any) {
-      dispatch(setErrorAction({ error: e }));
-      console.log("🔴 commonTasks::fetchCommonTasksAsyncAction error:", e);
-    } finally {
-      dispatch(setLoadingAction({ loading: false }));
-    }
+export const fetchCommonTasksAsyncAction = createAsyncThunk<
+  void,
+  IFetchCommonTasksAsyncAction
+>("commonTasks/fetchCommonTasksAsyncAction", async (_, { dispatch }) => {
+  try {
+    dispatch(setLoadingAction({ loading: true }));
+    const res = await fetchCommonTaskApi(1, TASKS_PER_PAGE);
+    const tasks = res.data.tasks;
+    const totalCount = res.data.taskTotalCount;
+    dispatch(setCommonTasksAction({ tasks: tasks }));
+    dispatch(setCommonTasksTotalCount({ totalCount: totalCount }));
+    dispatch(setErrorAction({ error: undefined }));
+    dispatch(setCommonTasksPageAction({ page: 2 }));
+  } catch (e: any) {
+    dispatch(setErrorAction({ error: e }));
+    console.log("🔴 commonTasks::fetchCommonTasksAsyncAction error:", e);
+  } finally {
+    dispatch(setLoadingAction({ loading: false }));
   }
-);
+});
 
 export const fetchMoreCommonTasksAsyncAction = createAsyncThunk<
   void,
-  void,
+  IFetchMoreCommonTasksAsyncAction,
   { state: RootState }
 >(
   "commonTasks/fetchMoreCommonTasksAsyncAction",
-  async (_, { getState, dispatch }) => {
+  async ({ onSuccess, onError }, { getState, dispatch }) => {
     try {
       const commonTasksCount = getState().commonTasks.commonTasks.length;
       const totalCount = getState().commonTasks.totalCount;
@@ -87,9 +89,15 @@ export const fetchMoreCommonTasksAsyncAction = createAsyncThunk<
       dispatch(addCommonTasksAction({ tasks: tasks }));
       dispatch(setMoreCommonTasksError({ error: undefined }));
       dispatch(setCommonTasksPageAction({ page: page + 1 }));
+      if (onSuccess) {
+        onSuccess();
+      }
     } catch (e: any) {
       dispatch(setMoreCommonTasksError({ error: e }));
       console.log("🔴 commonTasks::fetchMoreCommonTasksAsyncAction error:", e);
+      if (onError) {
+        onError(e);
+      }
     } finally {
       dispatch(setMoreCommonTasksLoading({ loading: false }));
     }

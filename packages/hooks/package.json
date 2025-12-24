@@ -1,0 +1,23 @@
+{
+  "name": "@external-lab-monorepo/hooks",
+  "version": "1.0.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@external-lab-monorepo/store": "*",
+    "@external-lab-monorepo/types": "*",
+    "@reduxjs/toolkit": "^2.3.0",
+    "react-redux": "^9.2.0"
+  }
+}

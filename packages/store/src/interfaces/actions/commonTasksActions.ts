@@ -31,3 +31,13 @@ export interface ISetMoreCommonTasksError {
 export interface ISetMoreCommonTasksLoading {
   loading: boolean;
 }
+
+export interface IFetchCommonTasksAsyncAction {
+  onSuccess?: () => void;
+  onError?: (error: any) => void;
+}
+
+export interface IFetchMoreCommonTasksAsyncAction {
+  onSuccess?: () => void;
+  onError?: (error: any) => void;
+}
