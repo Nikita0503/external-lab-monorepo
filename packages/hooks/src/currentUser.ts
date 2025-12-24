@@ -3,7 +3,7 @@ import { User } from "@external-lab-monorepo/types";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const useCurrentUser = () => {
+export const useCurrentUser = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const currentUser = useSelector<RootState, User | undefined>(
@@ -57,5 +57,3 @@ const useCurrentUser = () => {
     updateCurrentUser,
   };
 };
-
-export default useCurrentUser;

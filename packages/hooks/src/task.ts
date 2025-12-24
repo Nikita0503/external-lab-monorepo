@@ -2,7 +2,7 @@ import { fetchTaskApi } from "@external-lab-monorepo/api";
 import { Task } from "@external-lab-monorepo/types";
 import React from "react";
 
-const useTask = (taskId: string) => {
+export const useTask = (taskId: string) => {
   const [task, setTask] = React.useState<Task | undefined>(undefined);
   const [error, setError] = React.useState<any>(undefined);
   const [loading, setLoading] = React.useState<boolean>(true);
@@ -28,5 +28,3 @@ const useTask = (taskId: string) => {
 
   return { task, error, loading };
 };
-
-export default useTask;

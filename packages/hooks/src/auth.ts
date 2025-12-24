@@ -2,7 +2,7 @@ import { actions, AppDispatch, RootState } from "@external-lab-monorepo/store";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const useAuth = () => {
+export const useAuth = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const accessToken = useSelector<RootState, string | undefined>(
@@ -64,5 +64,3 @@ const useAuth = () => {
     signUp,
   };
 };
-
-export default useAuth;

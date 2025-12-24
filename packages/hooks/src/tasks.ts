@@ -3,7 +3,7 @@ import { Task } from "@external-lab-monorepo/types";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const useTasks = () => {
+export const useTasks = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const tasks = useSelector<RootState, Task[]>(
@@ -133,5 +133,3 @@ const useTasks = () => {
     deleteTask,
   };
 };
-
-export default useTasks;

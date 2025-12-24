@@ -3,7 +3,7 @@ import { CommonTask } from "@external-lab-monorepo/types";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const useCommonTasks = () => {
+export const useCommonTasks = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const allTasks = useSelector<RootState, CommonTask[]>(
@@ -60,5 +60,3 @@ const useCommonTasks = () => {
     fetchMoreCommonTasks,
   };
 };
-
-export default useCommonTasks;

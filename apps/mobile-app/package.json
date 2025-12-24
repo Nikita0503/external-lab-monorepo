@@ -17,7 +17,8 @@
     "@external-lab-monorepo/types": "*",
     "@external-lab-monorepo/api": "*",
     "@external-lab-monorepo/store": "*",
-    "@external-lab-monorepo/constants": "*"
+    "@external-lab-monorepo/constants": "*",
+    "@external-lab-monorepo/hooks": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
