@@ -17,6 +17,7 @@
   "dependencies": {
     "@external-lab-monorepo/store": "*",
     "@external-lab-monorepo/types": "*",
+    "@external-lab-monorepo/api": "*",
     "@reduxjs/toolkit": "^2.3.0",
     "react-redux": "^9.2.0"
   }
