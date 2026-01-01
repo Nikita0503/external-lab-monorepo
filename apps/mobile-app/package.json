@@ -11,14 +11,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "@external-lab-monorepo/api": "*",
+    "@external-lab-monorepo/constants": "*",
+    "@external-lab-monorepo/hooks": "*",
+    "@external-lab-monorepo/store": "*",
+    "@external-lab-monorepo/types": "*",
     "@react-native/new-app-screen": "0.80.0",
     "react": "19.1.0",
     "react-native": "0.80.0",
-    "@external-lab-monorepo/types": "*",
-    "@external-lab-monorepo/api": "*",
-    "@external-lab-monorepo/store": "*",
-    "@external-lab-monorepo/constants": "*",
-    "@external-lab-monorepo/hooks": "*"
+    "react-native-svg": "^15.15.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
