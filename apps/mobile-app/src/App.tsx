@@ -6,9 +6,6 @@
  */
 
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import CommonTasksScreenTabActive from './assets/icons/tabs/CommonTasksScreenTabActive';
-import ProfileScreenTabActive from './assets/icons/tabs/ProfileScreenTabActive';
-import TasksScreenTabActive from './assets/icons/tabs/TasksScreenTabActive';
 import { COLORS } from './theme/colors';
 
 function App() {
@@ -16,9 +13,6 @@ function App() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <CommonTasksScreenTabActive />
-      <ProfileScreenTabActive />
-      <TasksScreenTabActive />
     </View>
   );
 }
