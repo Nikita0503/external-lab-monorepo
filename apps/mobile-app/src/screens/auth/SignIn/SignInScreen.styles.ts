@@ -1,0 +1,56 @@
+import { Dimensions, StyleSheet } from 'react-native';
+import { COLORS } from '../../../theme/colors';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.violet,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  scrollViewContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
+  appLogoContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 24,
+    flex: 2,
+  },
+  appLogoText: {
+    color: COLORS.white,
+    fontSize: 32,
+    textAlign: 'center',
+    fontWeight: '700',
+    marginTop: 20,
+  },
+  textInputsContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 16,
+    flex: 2,
+  },
+  textInputContainer: {
+    flexDirection: 'column',
+    marginBottom: 14,
+  },
+  textInput: {
+    height: 50,
+    width: Dimensions.get('screen').width * 0.9,
+    borderWidth: 1,
+    borderColor: COLORS.white,
+    borderRadius: 12,
+    color: COLORS.white,
+    paddingHorizontal: 10,
+  },
+  textInputTitle: {
+    color: '#ffffff90',
+    marginBottom: 4,
+  },
+  button: {
+    marginBottom: 12,
+  },
+});
+
+export default styles;

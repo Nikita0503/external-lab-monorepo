@@ -1,29 +1,20 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import store from '@external-lab-monorepo/store';
+import { SafeAreaView } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Provider } from 'react-redux';
+import AppNavigation from './navigation';
+import styles from './styles';
 
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import { COLORS } from './theme/colors';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <GestureHandlerRootView style={styles.container}>
+        <Provider store={store}>
+          <AppNavigation />
+        </Provider>
+      </GestureHandlerRootView>
+    </SafeAreaView>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: COLORS.white,
-  },
-});
+};
 
 export default App;

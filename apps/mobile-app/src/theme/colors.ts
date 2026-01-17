@@ -6,4 +6,11 @@ export const COLORS = {
   blue: '#3D78F0',
   green: '#008001',
   lightGray: '#F0F0F0',
+  darkBlue: '#262B4F',
+  gray: '#f0f0f0',
+  darkGray: '#5E6178',
+  urgentTaskTypeColor: '#DF7E8D',
+  regularTaskTypeColor: '#F8D94F',
+  lowTaskTypeColor: '#77D4BD',
+  red: '#FF0000',
 };
