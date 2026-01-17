@@ -48,7 +48,7 @@ class TaskController {
         return next(ApiError.badRequest("Invalid data", errors));
       }
       const { taskId } = req.params;
-      const task = await TaskService.getFullTask(taskId);
+      const task = await TaskService.getFullTask(taskId as string);
       return res.json(task);
     } catch (e) {
       next(e);
@@ -88,7 +88,7 @@ class TaskController {
       const token = req.headers.authorization!.split(" ")[1];
       const files = (req.files as any)?.files;
       const task = await TaskService.editTask(
-        taskId,
+        taskId as string,
         title,
         description,
         done,
@@ -113,7 +113,7 @@ class TaskController {
       const token = req.headers.authorization!.split(" ")[1];
       const files = (req.files as any)?.files;
       const task = await TaskService.patchTask(
-        taskId,
+        taskId as string,
         title,
         description,
         done,
@@ -135,7 +135,7 @@ class TaskController {
       }
       const { taskId } = req.params;
       const token = req.headers.authorization!.split(" ")[1];
-      const isDone = await TaskService.deleteTask(taskId, token);
+      const isDone = await TaskService.deleteTask(taskId as string, token);
       return res.json({ deleted: isDone });
     } catch (e) {
       console.log("🔴 TaskController::deleteTask error:", e);
@@ -152,8 +152,8 @@ class TaskController {
       const { taskId, fileId } = req.params;
       const token = req.headers.authorization!.split(" ")[1];
       const isDone = await TaskService.deleteTaskAttachment(
-        taskId,
-        fileId,
+        taskId as string,
+        fileId as string,
         token
       );
       return res.json({ deleted: isDone });

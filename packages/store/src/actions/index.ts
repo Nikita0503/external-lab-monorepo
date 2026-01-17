@@ -1,4 +1,6 @@
-export * as auth from "./authActions";
-export * as commonTasks from "./commonTasksActions";
-export * as currentUser from "./currentUserActions";
-export * as tasks from "./tasksActions";
+import * as auth from "./authActions";
+import * as commonTasks from "./commonTasksActions";
+import * as currentUser from "./currentUserActions";
+import * as tasks from "./tasksActions";
+
+export { auth, commonTasks, currentUser, tasks };

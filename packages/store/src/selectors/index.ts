@@ -1,1 +1,3 @@
-export * as tasks from "./taskSelectors";
+import * as tasks from "./taskSelectors";
+
+export { tasks };

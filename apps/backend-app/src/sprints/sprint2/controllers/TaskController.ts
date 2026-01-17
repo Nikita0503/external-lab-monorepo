@@ -49,7 +49,7 @@ class TaskController {
       }
       const { taskId } = req.params;
       const token = req.headers.authorization!.split(" ")[1];
-      const isDone = await TaskService.deleteTask(taskId, token);
+      const isDone = await TaskService.deleteTask(taskId as string, token);
       return res.json({ deleted: isDone });
     } catch (e) {
       console.log("🔴 TaskController::deleteTask error:", e);
