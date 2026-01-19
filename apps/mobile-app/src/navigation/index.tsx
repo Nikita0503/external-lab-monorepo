@@ -1,6 +1,6 @@
 import { useAuth } from '@external-lab-monorepo/hooks';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { ERouteNames } from '../interfaces/navigation/routeNames';
@@ -16,8 +16,8 @@ import SignUpContainer from '../screens/auth/SignUp/SignUpContainer';
 import styles from './styles';
 import Tabs from './tabs';
 
-const AuthStack = createNativeStackNavigator<AuthStackParamList>();
-const AppStack = createNativeStackNavigator<AppStackParamList>();
+const AuthStack = createStackNavigator<AuthStackParamList>();
+const AppStack = createStackNavigator<AppStackParamList>();
 
 const AppNavigation = () => {
   const { accessToken } = useAuth();
