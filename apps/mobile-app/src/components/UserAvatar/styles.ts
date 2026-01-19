@@ -1,0 +1,34 @@
+import { StyleSheet } from 'react-native';
+import { COLORS } from '../../theme/colors';
+
+const styles = StyleSheet.create({
+  container: {
+    width: 150,
+    height: 150,
+    alignSelf: 'center',
+    position: 'relative',
+  },
+  avatar: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    alignSelf: 'center',
+  },
+  actionContainer: {
+    backgroundColor: COLORS.gray,
+    borderRadius: 50,
+    padding: 8,
+    position: 'absolute',
+    borderWidth: 1,
+  },
+  deleteAvatarAction: {
+    bottom: 5,
+    left: 5,
+  },
+  changeAvatarAction: {
+    bottom: 5,
+    right: 5,
+  },
+});
+
+export default styles;
