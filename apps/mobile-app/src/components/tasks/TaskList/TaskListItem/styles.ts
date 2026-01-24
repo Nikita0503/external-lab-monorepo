@@ -1,5 +1,5 @@
-import { Colors } from '@theme/colors';
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../../../theme/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 8,
     paddingVertical: 8,
-    backgroundColor: Colors.white,
+    backgroundColor: COLORS.white,
   },
   taskStatusContainer: {
     alignItems: 'center',
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 14,
-    color: Colors.darkBlue,
+    color: COLORS.darkBlue,
     fontWeight: '700',
     flexShrink: 1,
   },
