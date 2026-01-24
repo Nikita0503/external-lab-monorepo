@@ -28,7 +28,7 @@ const TaskList = ({ tasks, error, loading, fetchTasks }: IProps) => {
       style={styles.container}
       contentContainerStyle={styles.contentContainerStyle}
       refreshControl={
-        <RefreshControl refreshing={loading} onRefresh={fetchTasks} />
+        <RefreshControl refreshing={false} onRefresh={fetchTasks} />
       }
       data={tasks}
       ItemSeparatorComponent={TaskListSeparator}

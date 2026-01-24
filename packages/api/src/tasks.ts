@@ -96,7 +96,7 @@ export const partialEditTaskApi = async (
       formData.append("files", files[i]);
     }
   }
-  return axiosInstance.put(`/tasks/${id}`, formData, {
+  return axiosInstance.patch(`/tasks/${id}`, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
