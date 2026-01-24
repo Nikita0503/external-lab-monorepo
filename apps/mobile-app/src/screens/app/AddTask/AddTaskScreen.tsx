@@ -33,9 +33,11 @@ const AddTaskScreen = ({ createTask }: IProps) => {
 
   const onDeleteFile = React.useCallback(
     (toDeleteFile: IFile | INewFile) => {
-      setFiles(
-        files.filter((file: INewFile) => file.name !== toDeleteFile.name),
-      );
+      if ('type' in toDeleteFile && 'uri' in toDeleteFile) {
+        setFiles(
+          files.filter((file: INewFile) => file.name !== toDeleteFile.name),
+        );
+      }
     },
     [files],
   );

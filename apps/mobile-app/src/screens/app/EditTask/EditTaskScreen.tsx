@@ -83,9 +83,11 @@ const EditTaskScreen = ({ task, updateTask, deleteTask }: IProps) => {
           newFiles.filter((file: INewFile) => file.name !== toDeleteFile.name),
         );
       }
-      setOldFiles(
-        oldFiles.filter((file: IFile) => file.name !== toDeleteFile.name),
-      );
+      if ('image' in toDeleteFile) {
+        setOldFiles(
+          oldFiles.filter((file: IFile) => file.image !== toDeleteFile.image),
+        );
+      }
     },
     [newFiles, oldFiles],
   );

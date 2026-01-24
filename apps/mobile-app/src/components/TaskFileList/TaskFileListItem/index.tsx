@@ -18,7 +18,7 @@ const TaskFileListItem = ({ file, onDeleteFile }: IProps) => {
     if ('type' in file && 'uri' in file) {
       return file.uri;
     }
-    return `${IMAGE_BASE_URL}/${file.name}`;
+    return `${IMAGE_BASE_URL}/${file.image}`;
   }, [file]);
 
   const onDeleteFilePress = React.useCallback(() => {

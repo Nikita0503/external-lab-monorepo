@@ -1,7 +1,7 @@
 export interface IFile {
   id: number;
   taskId?: number;
-  name: string;
+  image: string;
 }
 
 export interface INewFile {
