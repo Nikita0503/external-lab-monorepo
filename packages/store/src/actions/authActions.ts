@@ -56,10 +56,10 @@ export const signUpAsyncAction = createAsyncThunk<void, ISignUpAsyncAction>(
     { dispatch }
   ) => {
     try {
-      dispatch(setLoadingAction({ loading: true }));
       if (password !== repeatPassword) {
         return;
       }
+      dispatch(setLoadingAction({ loading: true }));
       const res = await registrationApi(
         email.toLowerCase(),
         name,
