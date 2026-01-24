@@ -6,8 +6,8 @@ export const loginApi = async (email: string, password: string) => {
 
 export const registrationApi = async (
   email: string,
-  password: string,
   name: string,
+  password: string,
   avatar?: any
 ) => {
   const formData = new FormData();
