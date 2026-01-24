@@ -16,7 +16,7 @@ const TabsStack = createBottomTabNavigator<TabsStackParamList>();
 
 const Tabs = () => {
   return (
-    <TabsStack.Navigator screenOptions={{ headerShown: false }}>
+    <TabsStack.Navigator>
       <TabsStack.Screen
         name={ERouteNames.TASKS_SCREEN}
         component={TasksContainer}
