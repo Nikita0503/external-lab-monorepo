@@ -1,14 +1,14 @@
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
-import { IProps } from './SignUpScreen.types';
-import styles from './SignUpScreen.styles';
-import { ERouteNames } from '../../../interfaces/navigation/routeNames';
-import UserAvatar from '../../../components/UserAvatar';
-import TextInputWithHint from '../../../components/TextInputWithHint';
 import CustomButton from '../../../components/CustomButton';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { AuthStackParamList } from '../../../interfaces/navigation/routeParams';
+import TextInputWithHint from '../../../components/TextInputWithHint';
+import UserAvatar from '../../../components/UserAvatar';
 import { INewFile } from '../../../interfaces/general';
+import { ERouteNames } from '../../../interfaces/navigation/routeNames';
+import { AuthStackParamList } from '../../../interfaces/navigation/routeParams';
+import styles from './SignUpScreen.styles';
+import { IProps } from './SignUpScreen.types';
 
 const SignUpScreen = ({ signUp }: IProps) => {
   const [email, setEmail] = React.useState<string>('example@gmail.com');
