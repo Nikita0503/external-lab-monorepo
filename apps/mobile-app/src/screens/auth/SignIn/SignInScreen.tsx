@@ -16,8 +16,8 @@ import styles from './SignInScreen.styles';
 import { IProps } from './SignInScreen.types';
 
 const SignInScreen = ({ signIn }: IProps) => {
-  const [email, setEmail] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
+  const [email, setEmail] = React.useState<string>('example@gmail.com');
+  const [password, setPassword] = React.useState<string>('Password12345');
 
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
 
