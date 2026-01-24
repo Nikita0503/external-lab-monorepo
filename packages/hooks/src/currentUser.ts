@@ -19,7 +19,7 @@ export const useCurrentUser = () => {
   );
 
   const fetchCurrentUser = React.useCallback(
-    async (onSuccess: () => void, onError?: (error: any) => void) => {
+    async (onSuccess?: () => void, onError?: (error: any) => void) => {
       dispatch(
         actions.currentUser.fetchCurrentUserAsyncAction({
           onSuccess: onSuccess,
@@ -34,7 +34,7 @@ export const useCurrentUser = () => {
     async (
       name: string,
       avatar: any,
-      onSuccess: () => void,
+      onSuccess?: () => void,
       onError?: (error: any) => void
     ) => {
       dispatch(

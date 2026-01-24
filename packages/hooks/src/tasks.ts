@@ -19,7 +19,7 @@ export const useTasks = () => {
   );
 
   const fetchTasks = React.useCallback(
-    (onSuccess: () => void, onError?: (error: any) => void) => {
+    (onSuccess?: () => void, onError?: (error: any) => void) => {
       dispatch(
         actions.tasks.fetchTasksAsyncAction({
           onSuccess: onSuccess,

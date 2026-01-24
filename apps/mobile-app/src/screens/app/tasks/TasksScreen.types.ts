@@ -4,5 +4,5 @@ export interface IProps {
   tasks: Task[];
   error: any;
   loading: boolean;
-  fetchTasks: (onSuccess: () => void, onError?: (error: any) => void) => void;
+  fetchTasks: (onSuccess?: () => void, onError?: (error: any) => void) => void;
 }

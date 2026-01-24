@@ -1,14 +1,14 @@
+import React from 'react';
+import { Alert, Image, Platform, Pressable, View } from 'react-native';
+import TaskDeleteSvgImage from '../../assets/icons/TaskDeleteSvgImage';
+import TaskEditSvgImage from '../../assets/icons/TaskEditSvgImage';
 import useCamera from '../../hooks/useCamera';
 import useGallery from '../../hooks/useGallery';
 import { INewFile } from '../../interfaces/general';
-import React from 'react';
-import { Alert, Image, Platform, Pressable, View } from 'react-native';
 import styles from './styles';
-import TaskDeleteSvgImage from '../../assets/icons/TaskDeleteSvgImage';
-import TaskEditSvgImage from '../../assets/icons/TaskEditSvgImage';
 
 interface IProps {
-  avatar: INewFile | string | undefined;
+  avatar: INewFile | string | undefined | null;
   setAvatar: (avatar: INewFile | undefined) => void;
 }
 

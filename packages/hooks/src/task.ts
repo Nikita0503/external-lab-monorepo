@@ -8,7 +8,7 @@ export const useTask = (taskId: string) => {
   const [loading, setLoading] = React.useState<boolean>(true);
 
   const fetchTaskData = React.useCallback(
-    async (onSuccess: () => void, onError?: (error: any) => void) => {
+    async (onSuccess?: () => void, onError?: (error: any) => void) => {
       setLoading(true);
       try {
         const response = await fetchTaskApi(taskId);

@@ -1,6 +1,7 @@
 import { actions, AppDispatch, RootState } from "@external-lab-monorepo/store";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setAccessTokenAction } from "../../store/dist/esm/actions/authActions";
 
 export const useAuth = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -57,10 +58,15 @@ export const useAuth = () => {
     []
   );
 
+  const logout = React.useCallback(() => {
+    dispatch(setAccessTokenAction({ accessToken: undefined }));
+  }, []);
+
   return {
     accessToken,
     loading,
     signIn,
     signUp,
+    logout,
   };
 };

@@ -7,11 +7,11 @@ export interface IProps {
   moreCommonTasksError: any;
   moreCommonTasksLoading: boolean;
   fetchCommonTasks: (
-    onSuccess: () => void,
+    onSuccess?: () => void,
     onError?: (error: any) => void,
   ) => void;
   fetchMoreCommonTasks: (
-    onSuccess: () => void,
+    onSuccess?: () => void,
     onError?: (error: any) => void,
   ) => void;
 }

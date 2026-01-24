@@ -2,7 +2,8 @@ import { useCurrentUser } from '@external-lab-monorepo/hooks';
 import ProfileScreen from './ProfileScreen';
 
 const ProfileContainer = () => {
-  const { currentUser, error, loading, fetchCurrentUser } = useCurrentUser();
+  const { currentUser, error, loading, fetchCurrentUser, updateCurrentUser } =
+    useCurrentUser();
 
   return (
     <ProfileScreen
@@ -10,6 +11,7 @@ const ProfileContainer = () => {
       error={error}
       loading={loading}
       fetchCurrentUser={fetchCurrentUser}
+      updateCurrentUser={updateCurrentUser}
     />
   );
 };

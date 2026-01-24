@@ -27,7 +27,7 @@ export const useCommonTasks = () => {
   );
 
   const fetchCommonTasks = React.useCallback(
-    (onSuccess: () => void, onError?: (error: any) => void) => {
+    async (onSuccess?: () => void, onError?: (error: any) => void) => {
       dispatch(
         actions.commonTasks.fetchCommonTasksAsyncAction({
           onSuccess: onSuccess,
@@ -39,7 +39,7 @@ export const useCommonTasks = () => {
   );
 
   const fetchMoreCommonTasks = React.useCallback(
-    (onSuccess: () => void, onError?: (error: any) => void) => {
+    async (onSuccess?: () => void, onError?: (error: any) => void) => {
       dispatch(
         actions.commonTasks.fetchMoreCommonTasksAsyncAction({
           onSuccess,

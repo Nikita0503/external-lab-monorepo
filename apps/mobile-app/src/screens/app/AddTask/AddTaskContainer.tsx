@@ -2,11 +2,9 @@ import { useTasks } from '@external-lab-monorepo/hooks';
 import TasksScreen from './AddTaskScreen';
 
 const AddTaskContainer = () => {
-  const { createTask, error, loading } = useTasks();
+  const { createTask } = useTasks();
 
-  return (
-    <TasksScreen error={error} loading={loading} createTask={createTask} />
-  );
+  return <TasksScreen createTask={createTask} />;
 };
 
 export default AddTaskContainer;

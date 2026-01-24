@@ -1,5 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
+import CommonTaskList from '../../../components/commonTasks/CommonTaskList';
+import Header from '../../../components/headers/Header';
+import styles from '../Profile/ProfileScreen.styles';
 import { IProps } from './CommonTasksScreen.types';
 
 const CommonTasksScreen = ({
@@ -11,7 +14,24 @@ const CommonTasksScreen = ({
   fetchCommonTasks,
   fetchMoreCommonTasks,
 }: IProps) => {
-  return <View />;
+  React.useEffect(() => {
+    fetchCommonTasks();
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <Header title="Common Tasks" hideBackButton={true} />
+      <CommonTaskList
+        tasks={allTasks}
+        error={error}
+        loading={loading}
+        moreCommonTasksError={moreCommonTasksError}
+        moreCommonTasksLoading={moreCommonTasksLoading}
+        fetchCommonTasks={fetchCommonTasks}
+        fetchMoreCommonTasks={fetchMoreCommonTasks}
+      />
+    </View>
+  );
 };
 
 export default React.memo(CommonTasksScreen);
