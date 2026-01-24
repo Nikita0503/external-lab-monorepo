@@ -1,6 +1,11 @@
-import { loginApi, registrationApi } from "@external-lab-monorepo/api";
+import {
+  authTokens,
+  loginApi,
+  registrationApi,
+} from "@external-lab-monorepo/api";
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  ILogoutAsyncAction,
   ISetAccessTokenAction,
   ISetLoadingAction,
   ISignInAsyncAction,
@@ -26,6 +31,7 @@ export const signInAsyncAction = createAsyncThunk<void, ISignInAsyncAction>(
       const res = await loginApi(email.toLowerCase(), password);
       if (res.data.access_token) {
         dispatch(setAccessTokenAction({ accessToken: res.data.access_token }));
+        authTokens.accessToken = res.data.access_token;
       }
       if (onSuccess) {
         onSuccess();
@@ -68,6 +74,7 @@ export const signUpAsyncAction = createAsyncThunk<void, ISignUpAsyncAction>(
       );
       if (res.data.access_token) {
         dispatch(setAccessTokenAction({ accessToken: res.data.access_token }));
+        authTokens.accessToken = res.data.access_token;
       }
       if (onSuccess) {
         onSuccess();
@@ -79,6 +86,23 @@ export const signUpAsyncAction = createAsyncThunk<void, ISignUpAsyncAction>(
       }
     } finally {
       dispatch(setLoadingAction({ loading: false }));
+    }
+  }
+);
+export const logoutAsyncAction = createAsyncThunk<void, ILogoutAsyncAction>(
+  "auth/logoutAsyncAction",
+  async ({ onSuccess, onError }, { dispatch }) => {
+    try {
+      authTokens.accessToken = undefined;
+      dispatch(setAccessTokenAction({ accessToken: undefined }));
+      if (onSuccess) {
+        onSuccess();
+      }
+    } catch (e: any) {
+      console.log("🔴 authActions::logoutAsyncAction error:", e);
+      if (onError) {
+        onError(e);
+      }
     }
   }
 );

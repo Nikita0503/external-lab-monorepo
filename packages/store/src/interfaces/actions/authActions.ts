@@ -22,3 +22,8 @@ export interface ISignUpAsyncAction {
   onSuccess?: () => void;
   onError?: (error: any) => void;
 }
+
+export interface ILogoutAsyncAction {
+  onSuccess?: () => void;
+  onError?: (error: any) => void;
+}

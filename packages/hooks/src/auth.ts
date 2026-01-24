@@ -57,9 +57,17 @@ export const useAuth = () => {
     []
   );
 
-  const logout = React.useCallback(() => {
-    dispatch(actions.auth.setAccessTokenAction({ accessToken: undefined }));
-  }, []);
+  const logout = React.useCallback(
+    (onSuccess?: () => void, onError?: (error: any) => void) => {
+      dispatch(
+        actions.auth.logoutAsyncAction({
+          onSuccess: onSuccess,
+          onError: onError,
+        })
+      );
+    },
+    []
+  );
 
   return {
     accessToken,
