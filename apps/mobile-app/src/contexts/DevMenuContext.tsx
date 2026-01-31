@@ -12,7 +12,7 @@ const DevMenuContext = createContext<DevMenuContextType | undefined>(undefined);
 
 export const DevMenuProvider = ({ children }: { children: ReactNode }) => {
   const [showDevMenu, setShowDevMenu] = useState<boolean>(false);
-  const [sprint, setSprint] = useState<SPRINTS>(SPRINTS.SPRINT_1);
+  const [sprint, setSprint] = useState<SPRINTS>(SPRINTS.SPRINT_4);
   return (
     <DevMenuContext.Provider
       value={{ sprint, setSprint, showDevMenu, setShowDevMenu }}
