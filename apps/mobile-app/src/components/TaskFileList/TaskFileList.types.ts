@@ -5,3 +5,7 @@ export interface IProps {
   onDeleteFile?: (file: IFile | INewFile) => void;
   onAddFile?: (file: INewFile) => void;
 }
+
+export interface IAddFileListHeaderProps {
+  onAddFile: NonNullable<IProps['onAddFile']>;
+}

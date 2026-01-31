@@ -48,12 +48,12 @@ const CommonTaskList = ({
       renderItem={({ item }) => <CommonTaskListItem task={item} />}
       onEndReached={fetchMoreCommonTasks}
       onEndReachedThreshold={0.2}
-      ListFooterComponent={() => (
+      ListFooterComponent={
         <CommonTaskListFooter
           loading={moreCommonTasksLoading}
           error={moreCommonTasksError}
         />
-      )}
+      }
     />
   );
 };

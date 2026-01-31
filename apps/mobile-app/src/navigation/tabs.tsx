@@ -14,6 +14,11 @@ import TasksScreen from '../screens/app/Tasks';
 
 const TabsStack = createBottomTabNavigator<TabsStackParamList>();
 
+const renderTabIcon =
+  (ActiveIcon: React.ComponentType, InactiveIcon: React.ComponentType) =>
+  ({ focused }: { focused: boolean }) =>
+    focused ? <ActiveIcon /> : <InactiveIcon />;
+
 const Tabs = () => {
   return (
     <TabsStack.Navigator>
@@ -22,8 +27,10 @@ const Tabs = () => {
         component={TasksScreen}
         options={{
           tabBarLabel: 'Tasks',
-          tabBarIcon: ({ focused }) =>
-            focused ? <TasksScreenTabActive /> : <TasksScreenTabInactive />,
+          tabBarIcon: renderTabIcon(
+            TasksScreenTabActive,
+            TasksScreenTabInactive,
+          ),
         }}
       />
       <TabsStack.Screen
@@ -31,8 +38,10 @@ const Tabs = () => {
         component={ProfileScreen}
         options={{
           tabBarLabel: 'Profile',
-          tabBarIcon: ({ focused }) =>
-            focused ? <ProfileScreenTabActive /> : <ProfileScreenTabInactive />,
+          tabBarIcon: renderTabIcon(
+            ProfileScreenTabActive,
+            ProfileScreenTabInactive,
+          ),
         }}
       />
       <TabsStack.Screen
@@ -40,12 +49,10 @@ const Tabs = () => {
         component={CommonTasksScreen}
         options={{
           tabBarLabel: 'Common Tasks',
-          tabBarIcon: ({ focused }) =>
-            focused ? (
-              <CommonTasksScreenTabActive />
-            ) : (
-              <CommonTasksScreenTabInactive />
-            ),
+          tabBarIcon: renderTabIcon(
+            CommonTasksScreenTabActive,
+            CommonTasksScreenTabInactive,
+          ),
         }}
       />
     </TabsStack.Navigator>

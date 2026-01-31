@@ -46,7 +46,7 @@ const AddFileListItem = ({ onAddFile }: IProps) => {
         },
       ],
     );
-  }, []);
+  }, [onAddFile, pickPhoto, takePhoto]);
 
   return (
     <Pressable style={styles.button} onPress={onAddFilePress}>
