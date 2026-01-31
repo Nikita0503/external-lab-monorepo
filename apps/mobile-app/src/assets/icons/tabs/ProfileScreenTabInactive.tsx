@@ -3,8 +3,8 @@ import Svg, { Path } from 'react-native-svg';
 
 const ProfileScreenTabInactive = (props: any) => (
   <Svg
-    width={45}
-    height={45}
+    width={30}
+    height={30}
     viewBox="0 0 45 45"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
