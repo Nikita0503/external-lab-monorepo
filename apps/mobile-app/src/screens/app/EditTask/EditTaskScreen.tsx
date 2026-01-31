@@ -1,7 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -15,92 +13,22 @@ import CustomButton from '../../../components/CustomButton';
 import Header from '../../../components/headers/Header';
 import TaskFileList from '../../../components/TaskFileList';
 import TextInputWithHint from '../../../components/TextInputWithHint';
-import { IFile, INewFile } from '../../../interfaces/general';
 import styles from './EditTaskScreen.styles';
 import { IProps } from './EditTaskScreen.types';
 
-const EditTaskScreen = ({ task, updateTask, deleteTask }: IProps) => {
-  const [title, setTitle] = React.useState<string>(task.title);
-  const [description, setDescription] = React.useState<string>(
-    task.description,
-  );
-  const [done, setDone] = React.useState<boolean>(task.done);
-  const [oldFiles, setOldFiles] = React.useState<IFile[]>(task.files);
-  const [newFiles, setNewFiles] = React.useState<INewFile[]>([]);
-
-  const files = React.useMemo(() => {
-    return [...oldFiles, ...newFiles];
-  }, [oldFiles, newFiles]);
-
-  const navigation = useNavigation();
-
-  const onSwitchDonePress = React.useCallback(() => {
-    setDone(!done);
-  }, [done]);
-
-  const goToTasks = React.useCallback(() => {
-    navigation.goBack();
-  }, [navigation]);
-
-  const onUpdateTaskPress = React.useCallback(() => {
-    updateTask(
-      task.id,
-      title,
-      description,
-      done,
-      newFiles,
-      oldFiles,
-      goToTasks,
-    );
-  }, [
-    updateTask,
-    task.id,
-    title,
-    description,
-    done,
-    newFiles,
-    oldFiles,
-    goToTasks,
-  ]);
-
-  const onDeleteTaskPress = React.useCallback(() => {
-    Alert.alert('Are you sure?', 'Do you wanna delete the task?', [
-      {
-        text: 'Cancel',
-        style: 'cancel',
-      },
-      {
-        text: 'OK',
-        onPress: () => {
-          deleteTask(task.id, goToTasks);
-        },
-      },
-    ]);
-  }, [deleteTask, goToTasks, task.id]);
-
-  const onAddFile = React.useCallback(
-    (file: INewFile) => {
-      setNewFiles([...newFiles, file]);
-    },
-    [newFiles],
-  );
-
-  const onDeleteFile = React.useCallback(
-    (toDeleteFile: IFile | INewFile) => {
-      if ('type' in toDeleteFile && 'uri' in toDeleteFile) {
-        setNewFiles(
-          newFiles.filter((file: INewFile) => file.name !== toDeleteFile.name),
-        );
-      }
-      if ('image' in toDeleteFile) {
-        setOldFiles(
-          oldFiles.filter((file: IFile) => file.image !== toDeleteFile.image),
-        );
-      }
-    },
-    [newFiles, oldFiles],
-  );
-
+const EditTaskScreen = ({
+  title,
+  description,
+  done,
+  files,
+  setTitle,
+  setDescription,
+  onUpdateTaskPress,
+  onAddFile,
+  onDeleteFile,
+  onSwitchDonePress,
+  onDeleteTaskPress,
+}: IProps) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

@@ -1,9 +1,12 @@
+import { IFile, INewFile } from '../../../interfaces/general';
+
 export interface IProps {
-  createTask: (
-    title: string,
-    description: string,
-    files: any[],
-    onSuccess?: () => void,
-    onError?: (error: any) => void,
-  ) => void;
+  title: string;
+  description: string;
+  files: INewFile[];
+  setTitle: (title: string) => void;
+  setDescription: (description: string) => void;
+  onCreateTaskPress: () => void;
+  onAddFile: (file: IFile | INewFile) => void;
+  onDeleteFile: (file: IFile | INewFile) => void;
 }

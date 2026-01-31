@@ -15,10 +15,6 @@ const TasksScreen = ({
   onDeleteTaskPress,
   onSwitchDonePress,
 }: IProps) => {
-  React.useEffect(() => {
-    fetchTasks();
-  }, [fetchTasks]);
-
   return (
     <View style={styles.container}>
       <TaskListHeader taskCount={tasks.length} />

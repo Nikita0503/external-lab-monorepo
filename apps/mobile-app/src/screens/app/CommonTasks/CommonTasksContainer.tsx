@@ -1,4 +1,5 @@
 import { useCommonTasks } from '@external-lab-monorepo/hooks';
+import React from 'react';
 import CommonTasksScreen from './CommonTasksScreen';
 
 const CommonTasksContainer = () => {
@@ -11,6 +12,10 @@ const CommonTasksContainer = () => {
     fetchCommonTasks,
     fetchMoreCommonTasks,
   } = useCommonTasks();
+
+  React.useEffect(() => {
+    fetchCommonTasks();
+  }, [fetchCommonTasks]);
 
   return (
     <CommonTasksScreen

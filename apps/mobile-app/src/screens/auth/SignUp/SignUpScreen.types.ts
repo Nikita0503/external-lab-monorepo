@@ -1,11 +1,16 @@
+import { INewFile } from '../../../interfaces/general';
+
 export interface IProps {
-  signUp: (
-    email: string,
-    name: string,
-    password: string,
-    repeatPassword: string,
-    avatar: any,
-    onSuccess?: () => void,
-    onError?: (error: any) => void,
-  ) => void;
+  email: string;
+  password: string;
+  name: string;
+  repeatPassword: string;
+  avatar: INewFile | undefined;
+  setEmail: (email: string) => void;
+  setPassword: (password: string) => void;
+  setName: (name: string) => void;
+  setRepeatPassword: (repeatPassword: string) => void;
+  setAvatar: (avatar: INewFile | undefined) => void;
+  onSignUpPress: () => void;
+  goToSignIn: () => void;
 }

@@ -1,4 +1,3 @@
-import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
   KeyboardAvoidingView,
@@ -11,31 +10,18 @@ import {
 import AppLogoSvgImage from '../../../assets/AppLogoSvgImage';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithHint from '../../../components/TextInputWithHint';
-import { useDevMenu } from '../../../contexts/DevMenuContext';
-import { ERouteNames } from '../../../interfaces/navigation/routeNames';
-import { AuthStackParamList } from '../../../interfaces/navigation/routeParams';
 import styles from './SignInScreen.styles';
 import { IProps } from './SignInScreen.types';
 
-const SignInScreen = ({ signIn }: IProps) => {
-  const [email, setEmail] = React.useState<string>('example@gmail.com');
-  const [password, setPassword] = React.useState<string>('Password12345');
-
-  const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
-
-  const onLoginPress = React.useCallback(() => {
-    signIn(email, password);
-  }, [email, password, signIn]);
-
-  const goToSignUp = React.useCallback(() => {
-    navigation.reset({
-      index: 0,
-      routes: [{ name: ERouteNames.SIGN_UP_SCREEN }],
-    });
-  }, [navigation]);
-
-  const { setShowDevMenu } = useDevMenu();
-
+const SignInScreen = ({
+  email,
+  password,
+  setEmail,
+  setPassword,
+  onLoginPress,
+  goToSignUp,
+  showDevMenu,
+}: IProps) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -46,7 +32,7 @@ const SignInScreen = ({ signIn }: IProps) => {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.appLogoContainer}>
-          <Pressable onPress={() => setShowDevMenu(true)}>
+          <Pressable onPress={showDevMenu}>
             <AppLogoSvgImage />
           </Pressable>
           <Text style={styles.appLogoText}>Welcome!</Text>

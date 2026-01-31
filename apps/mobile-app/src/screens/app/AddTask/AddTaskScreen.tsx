@@ -1,47 +1,22 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import Header from '../../../components/headers/Header';
 import TaskFileList from '../../../components/TaskFileList';
 import TextInputWithHint from '../../../components/TextInputWithHint';
-import { IFile, INewFile } from '../../../interfaces/general';
 import styles from './AddTaskScreen.styles';
 import { IProps } from './AddTaskScreen.types';
 
-const AddTaskScreen = ({ createTask }: IProps) => {
-  const [title, setTitle] = React.useState<string>('');
-  const [description, setDescription] = React.useState<string>('');
-  const [files, setFiles] = React.useState<INewFile[]>([]);
-
-  const navigation = useNavigation();
-
-  const goToTasks = React.useCallback(() => {
-    navigation.goBack();
-  }, [navigation]);
-
-  const onCreateTaskPress = React.useCallback(() => {
-    createTask(title, description, files, goToTasks);
-  }, [createTask, title, description, files, goToTasks]);
-
-  const onAddFile = React.useCallback(
-    (file: IFile | INewFile) => {
-      setFiles([...files, file as INewFile]);
-    },
-    [files],
-  );
-
-  const onDeleteFile = React.useCallback(
-    (toDeleteFile: IFile | INewFile) => {
-      if ('type' in toDeleteFile && 'uri' in toDeleteFile) {
-        setFiles(
-          files.filter((file: INewFile) => file.name !== toDeleteFile.name),
-        );
-      }
-    },
-    [files],
-  );
-
+const AddTaskScreen = ({
+  title,
+  description,
+  files,
+  setTitle,
+  setDescription,
+  onCreateTaskPress,
+  onAddFile,
+  onDeleteFile,
+}: IProps) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

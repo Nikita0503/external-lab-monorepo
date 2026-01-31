@@ -1,8 +1,9 @@
 export interface IProps {
-  signIn: (
-    email: string,
-    password: string,
-    onSuccess?: () => void,
-    onError?: (error: any) => void,
-  ) => void;
+  email: string;
+  password: string;
+  setEmail: (email: string) => void;
+  setPassword: (password: string) => void;
+  onLoginPress: () => void;
+  goToSignUp: () => void;
+  showDevMenu: () => void;
 }

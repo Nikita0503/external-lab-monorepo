@@ -1,20 +1,15 @@
-import { Task } from '@external-lab-monorepo/types';
+import { IFile, INewFile } from '../../../interfaces/general';
 
 export interface IProps {
-  task: Task;
-  updateTask: (
-    taskId: string,
-    title: string,
-    description: string,
-    done: boolean,
-    files: any[],
-    oldFiles: any[],
-    onSuccess?: () => void,
-    onError?: (error: any) => void,
-  ) => void;
-  deleteTask: (
-    taskId: string,
-    onSuccess?: () => void,
-    onError?: (error: any) => void,
-  ) => void;
+  title: string;
+  description: string;
+  done: boolean;
+  files: (IFile | INewFile)[];
+  setTitle: (title: string) => void;
+  setDescription: (description: string) => void;
+  onUpdateTaskPress: () => void;
+  onAddFile: (file: INewFile) => void;
+  onDeleteFile: (file: IFile | INewFile) => void;
+  onSwitchDonePress: () => void;
+  onDeleteTaskPress: () => void;
 }

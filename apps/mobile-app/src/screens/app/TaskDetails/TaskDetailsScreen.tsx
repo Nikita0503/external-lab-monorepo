@@ -1,7 +1,5 @@
-import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -11,40 +9,14 @@ import {
 import CustomButton from '../../../components/CustomButton';
 import Header from '../../../components/headers/Header';
 import TaskFileList from '../../../components/TaskFileList';
-import { ERouteNames } from '../../../interfaces/navigation/routeNames';
-import { AppStackParamList } from '../../../interfaces/navigation/routeParams';
 import styles from './TaskDetailsScreen.styles';
 import { IProps } from './TaskDetailsScreen.types';
 
-const TaskDetailsScreen = ({ task, deleteTask }: IProps) => {
-  const navigation = useNavigation<NavigationProp<AppStackParamList>>();
-
-  const goToTasks = React.useCallback(() => {
-    navigation.goBack();
-  }, [navigation]);
-
-  const onDeleteTaskPress = React.useCallback(() => {
-    Alert.alert('Are you sure?', 'Do you wanna delete the task?', [
-      {
-        text: 'Cancel',
-        style: 'cancel',
-      },
-      {
-        text: 'OK',
-        onPress: () => {
-          deleteTask(task.id, goToTasks);
-        },
-      },
-    ]);
-  }, [deleteTask, goToTasks, task.id]);
-
-  const goToEditTask = React.useCallback(() => {
-    navigation.goBack();
-    navigation.navigate(ERouteNames.EDIT_TASK, {
-      taskId: task.id,
-    });
-  }, [navigation, task.id]);
-
+const TaskDetailsScreen = ({
+  task,
+  onDeleteTaskPress,
+  goToEditTask,
+}: IProps) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

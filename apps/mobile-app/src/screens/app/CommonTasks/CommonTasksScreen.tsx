@@ -14,10 +14,6 @@ const CommonTasksScreen = ({
   fetchCommonTasks,
   fetchMoreCommonTasks,
 }: IProps) => {
-  React.useEffect(() => {
-    fetchCommonTasks();
-  }, [fetchCommonTasks]);
-
   return (
     <View style={styles.container}>
       <Header title="Common Tasks" hideBackButton={true} />

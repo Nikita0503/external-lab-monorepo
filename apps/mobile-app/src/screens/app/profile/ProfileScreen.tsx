@@ -1,7 +1,5 @@
-import { useAuth } from '@external-lab-monorepo/hooks';
 import React from 'react';
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
   RefreshControl,
@@ -14,7 +12,6 @@ import TextInputWithHint from '../../../components/TextInputWithHint';
 import UniversalError from '../../../components/UniversalError';
 import UniversalLoading from '../../../components/UniversalLoading';
 import UserAvatar from '../../../components/UserAvatar';
-import { INewFile } from '../../../interfaces/general';
 import styles from './ProfileScreen.styles';
 import { IProps } from './ProfileScreen.types';
 
@@ -22,37 +19,15 @@ const ProfileScreen = ({
   currentUser,
   error,
   loading,
+  name,
+  email,
+  avatar,
+  setName,
+  setAvatar,
   fetchCurrentUser,
-  updateCurrentUser,
+  onUpdateCurrentUserPress,
+  onLogoutPress,
 }: IProps) => {
-  const { logout } = useAuth();
-
-  React.useEffect(() => {
-    fetchCurrentUser();
-  }, [fetchCurrentUser]);
-
-  React.useEffect(() => {
-    if (currentUser) {
-      setEmail(currentUser.email);
-      setName(currentUser.name);
-      setAvatar(currentUser.avatar);
-    }
-  }, [currentUser]);
-
-  const [email, setEmail] = React.useState<string>('');
-  const [name, setName] = React.useState<string>('');
-  const [avatar, setAvatar] = React.useState<
-    INewFile | string | undefined | null
-  >(undefined);
-
-  const showCongratulations = React.useCallback(() => {
-    Alert.alert('Congratulations!', 'Profile updated successfully');
-  }, []);
-
-  const onUpdateCurrentUserPress = React.useCallback(() => {
-    updateCurrentUser(name, avatar, showCongratulations);
-  }, [updateCurrentUser, name, avatar, showCongratulations]);
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -102,7 +77,7 @@ const ProfileScreen = ({
               >
                 Update
               </CustomButton>
-              <CustomButton buttonStyle={styles.button} onPress={logout}>
+              <CustomButton buttonStyle={styles.button} onPress={onLogoutPress}>
                 Logout
               </CustomButton>
             </View>

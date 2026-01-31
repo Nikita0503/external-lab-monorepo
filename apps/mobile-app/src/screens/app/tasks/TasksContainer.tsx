@@ -16,6 +16,10 @@ const TasksContainer = () => {
 
   const navigation = useNavigation<NavigationProp<AppStackParamList>>();
 
+  React.useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
+
   const onSwitchDonePress = React.useCallback(
     (task: Task) => {
       if (sprint === SPRINTS.SPRINT_1 || sprint === SPRINTS.SPRINT_2) {
@@ -70,9 +74,9 @@ const TasksContainer = () => {
       error={error}
       loading={loading}
       fetchTasks={fetchTasks}
-      onSwitchDonePress={onSwitchDonePress}
       goToTaskDetails={goToTaskDetails}
       goToEditTask={goToEditTask}
+      onSwitchDonePress={onSwitchDonePress}
       onDeleteTaskPress={onDeleteTaskPress}
     />
   );
