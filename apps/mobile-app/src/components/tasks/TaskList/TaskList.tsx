@@ -7,7 +7,7 @@ import { IProps } from './TaskList.types';
 import TaskListItem from './TaskListItem';
 import TaskListSeparator from './TaskListSeparator';
 
-const TaskList = ({ tasks, error, loading, fetchTasks }: IProps) => {
+const TaskList = ({ tasks, error, fetchTasks }: IProps) => {
   if (error) {
     return (
       <UniversalError

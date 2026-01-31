@@ -18,15 +18,15 @@ const TaskListItem = ({ task }: IProps) => {
 
   const onSwitchDonePress = React.useCallback(() => {
     patchTask(task.id, undefined, undefined, !task.done, [], task.files);
-  }, [task]);
+  }, [patchTask, task.done, task.files, task.id]);
 
   const goToTaskDetails = React.useCallback(() => {
     navigation.navigate(ERouteNames.TASK_DETAILS, { taskId: task.id });
-  }, [task]);
+  }, [navigation, task.id]);
 
   const goToEditTask = React.useCallback(() => {
     navigation.navigate(ERouteNames.EDIT_TASK, { taskId: task.id });
-  }, [task]);
+  }, [navigation, task.id]);
 
   const onDeleteTaskPress = React.useCallback(() => {
     Alert.alert('Are you sure?', 'Do you wanna delete the task?', [
@@ -41,7 +41,7 @@ const TaskListItem = ({ task }: IProps) => {
         },
       },
     ]);
-  }, [task]);
+  }, [deleteTask, task.id]);
 
   return (
     <TouchableOpacity onPress={goToTaskDetails} style={styles.container}>
