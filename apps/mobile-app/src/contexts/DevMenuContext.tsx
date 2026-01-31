@@ -1,5 +1,6 @@
 import { SPRINTS } from '@external-lab-monorepo/constants';
 import React, { createContext, ReactNode, useContext, useState } from 'react';
+import DevMenu from '../components/DevMenu';
 
 type DevMenuContextType = {
   sprint: SPRINTS;
@@ -18,6 +19,7 @@ export const DevMenuProvider = ({ children }: { children: ReactNode }) => {
       value={{ sprint, setSprint, showDevMenu, setShowDevMenu }}
     >
       {children}
+      <DevMenu />
     </DevMenuContext.Provider>
   );
 };
