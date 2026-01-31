@@ -11,4 +11,6 @@ export enum ERouteNames {
   TASK_DETAILS = 'TaskDetailsScreen',
   ADD_TASK = 'AddTaskScreen',
   EDIT_TASK = 'EditTaskScreen',
+  //Stub
+  STUB_SCREEN = 'StubScreen',
 }
