@@ -7,14 +7,14 @@ export type AuthStackParamList = {
 };
 
 export type AppStackParamList = {
-  [ERouteNames.TABS_SCREEN]: NavigatorScreenParams<TabsStackParamList>;
+  [ERouteNames.TABS]: NavigatorScreenParams<TabsStackParamList>;
   [ERouteNames.TASK_DETAILS]: { taskId: string };
-  [ERouteNames.TASK_CREATOR]: undefined;
-  [ERouteNames.TASK_EDITOR]: { taskId: string };
+  [ERouteNames.ADD_TASK]: undefined;
+  [ERouteNames.EDIT_TASK]: { taskId: string };
 };
 
 export type TabsStackParamList = {
   [ERouteNames.TASKS_SCREEN]: undefined;
-  [ERouteNames.CURRENT_USER]: undefined;
+  [ERouteNames.PROFILE_SCREEN]: undefined;
   [ERouteNames.COMMON_TASKS_SCREEN]: undefined;
 };

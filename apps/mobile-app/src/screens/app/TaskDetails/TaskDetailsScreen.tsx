@@ -38,9 +38,9 @@ const TaskDetailsScreen = ({ task, deleteTask }: IProps) => {
     ]);
   }, [task]);
 
-  const goToTaskEditor = React.useCallback(() => {
+  const goToEditTask = React.useCallback(() => {
     navigation.goBack();
-    navigation.navigate(ERouteNames.TASK_EDITOR, {
+    navigation.navigate(ERouteNames.EDIT_TASK, {
       taskId: task.id,
     });
   }, [task]);
@@ -75,7 +75,7 @@ const TaskDetailsScreen = ({ task, deleteTask }: IProps) => {
         <CustomButton buttonStyle={styles.button} onPress={onDeleteTaskPress}>
           Delete
         </CustomButton>
-        <CustomButton buttonStyle={styles.button} onPress={goToTaskEditor}>
+        <CustomButton buttonStyle={styles.button} onPress={goToEditTask}>
           Edit
         </CustomButton>
       </View>

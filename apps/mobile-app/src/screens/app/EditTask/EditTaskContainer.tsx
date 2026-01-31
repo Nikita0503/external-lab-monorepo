@@ -10,7 +10,7 @@ import EditTaskScreen from './EditTaskScreen';
 const EditTaskContainer = () => {
   const {
     params: { taskId },
-  } = useRoute<RouteProp<AppStackParamList, ERouteNames.TASK_EDITOR>>();
+  } = useRoute<RouteProp<AppStackParamList, ERouteNames.EDIT_TASK>>();
 
   const { task, error, loading, fetchTaskData } = useTask(taskId);
   const { updateTask, deleteTask } = useTasks();

@@ -17,7 +17,7 @@ const Header = ({ title, actionButton, hideBackButton }: IProps) => {
       // need to handle universal links proccess
       navigation.reset({
         index: 0,
-        routes: [{ name: ERouteNames.TABS_SCREEN }],
+        routes: [{ name: ERouteNames.TABS }],
       });
     }
   }, [navigation]);

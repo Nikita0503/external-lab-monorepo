@@ -38,17 +38,17 @@ const AppNavigation = () => {
           </AuthStack.Navigator>
         ) : (
           <AppStack.Navigator screenOptions={{ headerShown: false }}>
-            <AppStack.Screen name={ERouteNames.TABS_SCREEN} component={Tabs} />
+            <AppStack.Screen name={ERouteNames.TABS} component={Tabs} />
             <AppStack.Screen
               name={ERouteNames.TASK_DETAILS}
               component={TaskDetailsScreen}
             />
             <AppStack.Screen
-              name={ERouteNames.TASK_CREATOR}
+              name={ERouteNames.ADD_TASK}
               component={AddTaskScreen}
             />
             <AppStack.Screen
-              name={ERouteNames.TASK_EDITOR}
+              name={ERouteNames.EDIT_TASK}
               component={EditTaskScreen}
             />
           </AppStack.Navigator>

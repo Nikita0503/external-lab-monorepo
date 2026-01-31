@@ -19,7 +19,7 @@ const TaskListHeader = ({ taskCount }: IProps) => {
   }, [taskCount]);
 
   const goToAddTaskScreen = React.useCallback(() => {
-    navigation.navigate(ERouteNames.TASK_CREATOR);
+    navigation.navigate(ERouteNames.ADD_TASK);
   }, [navigation]);
 
   return (

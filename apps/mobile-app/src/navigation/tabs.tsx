@@ -27,7 +27,7 @@ const Tabs = () => {
         }}
       />
       <TabsStack.Screen
-        name={ERouteNames.CURRENT_USER}
+        name={ERouteNames.PROFILE_SCREEN}
         component={ProfileScreen}
         options={{
           tabBarLabel: 'Profile',

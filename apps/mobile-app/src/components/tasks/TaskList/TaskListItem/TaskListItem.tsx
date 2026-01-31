@@ -24,8 +24,8 @@ const TaskListItem = ({ task }: IProps) => {
     navigation.navigate(ERouteNames.TASK_DETAILS, { taskId: task.id });
   }, [task]);
 
-  const goToTaskEditor = React.useCallback(() => {
-    navigation.navigate(ERouteNames.TASK_EDITOR, { taskId: task.id });
+  const goToEditTask = React.useCallback(() => {
+    navigation.navigate(ERouteNames.EDIT_TASK, { taskId: task.id });
   }, [task]);
 
   const onDeleteTaskPress = React.useCallback(() => {
@@ -61,7 +61,7 @@ const TaskListItem = ({ task }: IProps) => {
           <Pressable style={styles.actionContainer} onPress={onDeleteTaskPress}>
             <TaskDeleteSvgImage />
           </Pressable>
-          <Pressable style={styles.actionContainer} onPress={goToTaskEditor}>
+          <Pressable style={styles.actionContainer} onPress={goToEditTask}>
             <TaskEditSvgImage />
           </Pressable>
         </View>
