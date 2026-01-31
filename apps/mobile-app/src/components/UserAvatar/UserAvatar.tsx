@@ -1,17 +1,13 @@
 import React from 'react';
-import { Alert, Image, Platform, Pressable, View } from 'react-native';
+import { Alert, Image, Pressable, View } from 'react-native';
 import TaskDeleteSvgImage from '../../assets/icons/TaskDeleteSvgImage';
 import TaskEditSvgImage from '../../assets/icons/TaskEditSvgImage';
+import { EMPTY_PHOTO_URL, IMAGE_BASE_URL } from '../../constants/images';
 import useCamera from '../../hooks/useCamera';
 import useGallery from '../../hooks/useGallery';
 import { INewFile } from '../../interfaces/general';
 import styles from './UserAvatar.styles';
 import { IProps } from './UserAvatar.types';
-
-export const IMAGE_BASE_URL =
-  Platform.OS === 'android' ? 'http://10.0.2.2:4000' : 'http://localhost:4000';
-const EMPTY_PHOTO_URL =
-  'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg';
 
 const UserAvatar = ({ avatar, setAvatar }: IProps) => {
   const { pickPhoto } = useGallery();

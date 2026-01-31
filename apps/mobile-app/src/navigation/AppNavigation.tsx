@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { SafeAreaView } from 'react-native';
+import { SCREEN_OPTIONS } from '../constants/navigation';
 import { ERouteNames } from '../interfaces/navigation/routeNames';
 import {
   AppStackParamList,
@@ -26,7 +27,7 @@ const AppNavigation = () => {
     <SafeAreaView style={styles.safeAreaContainer}>
       <NavigationContainer>
         {!accessToken ? (
-          <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+          <AuthStack.Navigator screenOptions={SCREEN_OPTIONS}>
             <AuthStack.Screen
               name={ERouteNames.SIGN_IN_SCREEN}
               component={SignInScreen}
@@ -37,7 +38,7 @@ const AppNavigation = () => {
             />
           </AuthStack.Navigator>
         ) : (
-          <AppStack.Navigator screenOptions={{ headerShown: false }}>
+          <AppStack.Navigator screenOptions={SCREEN_OPTIONS}>
             <AppStack.Screen name={ERouteNames.TABS} component={Tabs} />
             <AppStack.Screen
               name={ERouteNames.TASK_DETAILS}

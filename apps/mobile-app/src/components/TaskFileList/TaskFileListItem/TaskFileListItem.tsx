@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 import TaskDeleteSvgImage from '../../../assets/icons/TaskDeleteSvgImage';
-import { IMAGE_BASE_URL } from '../../UserAvatar/UserAvatar';
+import { IMAGE_BASE_URL } from '../../../constants/images';
 import styles from './TaskFileListItem.styles';
 import { IProps } from './TaskFileListItem.types';
 import TaskFileListItemModal from './TaskFileListItemModal';
