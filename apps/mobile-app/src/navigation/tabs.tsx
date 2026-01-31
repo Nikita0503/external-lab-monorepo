@@ -8,9 +8,9 @@ import TasksScreenTabActive from '../assets/icons/tabs/TasksScreenTabActive';
 import TasksScreenTabInactive from '../assets/icons/tabs/TasksScreenTabInactive';
 import { ERouteNames } from '../interfaces/navigation/routeNames';
 import { TabsStackParamList } from '../interfaces/navigation/routeParams';
-import CommonTasksContainer from '../screens/app/CommonTasks/CommonTasksContainer';
-import ProfileContainer from '../screens/app/Profile/ProfileContainer';
-import TasksContainer from '../screens/app/Tasks/TasksContainer';
+import CommonTasksScreen from '../screens/app/CommonTasks';
+import ProfileScreen from '../screens/app/Profile';
+import TasksScreen from '../screens/app/Tasks';
 
 const TabsStack = createBottomTabNavigator<TabsStackParamList>();
 
@@ -19,7 +19,7 @@ const Tabs = () => {
     <TabsStack.Navigator>
       <TabsStack.Screen
         name={ERouteNames.TASKS_SCREEN}
-        component={TasksContainer}
+        component={TasksScreen}
         options={{
           tabBarLabel: 'Tasks',
           tabBarIcon: ({ focused }) =>
@@ -28,7 +28,7 @@ const Tabs = () => {
       />
       <TabsStack.Screen
         name={ERouteNames.CURRENT_USER}
-        component={ProfileContainer}
+        component={ProfileScreen}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ focused }) =>
@@ -37,7 +37,7 @@ const Tabs = () => {
       />
       <TabsStack.Screen
         name={ERouteNames.COMMON_TASKS_SCREEN}
-        component={CommonTasksContainer}
+        component={CommonTasksScreen}
         options={{
           tabBarLabel: 'Common Tasks',
           tabBarIcon: ({ focused }) =>
