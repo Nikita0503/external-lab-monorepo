@@ -16,7 +16,7 @@ const CommonTasksScreen = ({
 }: IProps) => {
   React.useEffect(() => {
     fetchCommonTasks();
-  }, []);
+  }, [fetchCommonTasks]);
 
   return (
     <View style={styles.container}>

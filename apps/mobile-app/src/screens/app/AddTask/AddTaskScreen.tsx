@@ -18,11 +18,11 @@ const AddTaskScreen = ({ createTask }: IProps) => {
 
   const goToTasks = React.useCallback(() => {
     navigation.goBack();
-  }, []);
+  }, [navigation]);
 
   const onCreateTaskPress = React.useCallback(() => {
     createTask(title, description, files, goToTasks);
-  }, [title, description, files]);
+  }, [createTask, title, description, files, goToTasks]);
 
   const onAddFile = React.useCallback(
     (file: IFile | INewFile) => {

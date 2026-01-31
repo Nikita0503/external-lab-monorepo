@@ -23,14 +23,14 @@ const SignInScreen = ({ signIn }: IProps) => {
 
   const onLoginPress = React.useCallback(() => {
     signIn(email, password);
-  }, [email, password]);
+  }, [email, password, signIn]);
 
   const goToSignUp = React.useCallback(() => {
     navigation.reset({
       index: 0,
       routes: [{ name: ERouteNames.SIGN_UP_SCREEN }],
     });
-  }, []);
+  }, [navigation]);
 
   return (
     <KeyboardAvoidingView

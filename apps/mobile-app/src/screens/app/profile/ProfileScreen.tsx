@@ -29,7 +29,7 @@ const ProfileScreen = ({
 
   React.useEffect(() => {
     fetchCurrentUser();
-  }, []);
+  }, [fetchCurrentUser]);
 
   React.useEffect(() => {
     if (currentUser) {
@@ -51,7 +51,7 @@ const ProfileScreen = ({
 
   const onUpdateCurrentUserPress = React.useCallback(() => {
     updateCurrentUser(name, avatar, showCongratulations);
-  }, [name, avatar]);
+  }, [updateCurrentUser, name, avatar, showCongratulations]);
 
   return (
     <KeyboardAvoidingView

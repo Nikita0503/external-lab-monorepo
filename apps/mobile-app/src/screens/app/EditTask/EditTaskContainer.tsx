@@ -17,7 +17,7 @@ const EditTaskContainer = () => {
 
   React.useEffect(() => {
     fetchTaskData();
-  }, []);
+  }, [fetchTaskData]);
 
   const navigation = useNavigation();
 

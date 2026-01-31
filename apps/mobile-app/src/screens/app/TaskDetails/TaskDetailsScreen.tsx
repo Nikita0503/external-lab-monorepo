@@ -21,7 +21,7 @@ const TaskDetailsScreen = ({ task, deleteTask }: IProps) => {
 
   const goToTasks = React.useCallback(() => {
     navigation.goBack();
-  }, []);
+  }, [navigation]);
 
   const onDeleteTaskPress = React.useCallback(() => {
     Alert.alert('Are you sure?', 'Do you wanna delete the task?', [
@@ -36,14 +36,14 @@ const TaskDetailsScreen = ({ task, deleteTask }: IProps) => {
         },
       },
     ]);
-  }, [task]);
+  }, [deleteTask, goToTasks, task.id]);
 
   const goToEditTask = React.useCallback(() => {
     navigation.goBack();
     navigation.navigate(ERouteNames.EDIT_TASK, {
       taskId: task.id,
     });
-  }, [task]);
+  }, [navigation, task.id]);
 
   return (
     <KeyboardAvoidingView

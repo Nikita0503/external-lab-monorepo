@@ -36,11 +36,11 @@ const EditTaskScreen = ({ task, updateTask, deleteTask }: IProps) => {
 
   const onSwitchDonePress = React.useCallback(() => {
     setDone(!done);
-  }, [task, done]);
+  }, [done]);
 
   const goToTasks = React.useCallback(() => {
     navigation.goBack();
-  }, []);
+  }, [navigation]);
 
   const onUpdateTaskPress = React.useCallback(() => {
     updateTask(
@@ -52,7 +52,16 @@ const EditTaskScreen = ({ task, updateTask, deleteTask }: IProps) => {
       oldFiles,
       goToTasks,
     );
-  }, [task, title, description, done, newFiles, oldFiles]);
+  }, [
+    updateTask,
+    task.id,
+    title,
+    description,
+    done,
+    newFiles,
+    oldFiles,
+    goToTasks,
+  ]);
 
   const onDeleteTaskPress = React.useCallback(() => {
     Alert.alert('Are you sure?', 'Do you wanna delete the task?', [
@@ -67,7 +76,7 @@ const EditTaskScreen = ({ task, updateTask, deleteTask }: IProps) => {
         },
       },
     ]);
-  }, [task]);
+  }, [deleteTask, goToTasks, task.id]);
 
   const onAddFile = React.useCallback(
     (file: INewFile) => {
