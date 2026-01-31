@@ -5,12 +5,8 @@ import TaskEditSvgImage from '../../assets/icons/TaskEditSvgImage';
 import useCamera from '../../hooks/useCamera';
 import useGallery from '../../hooks/useGallery';
 import { INewFile } from '../../interfaces/general';
-import styles from './styles';
-
-interface IProps {
-  avatar: INewFile | string | undefined | null;
-  setAvatar: (avatar: INewFile | undefined) => void;
-}
+import styles from './UserAvatar.styles';
+import { IProps } from './UserAvatar.types';
 
 export const IMAGE_BASE_URL =
   Platform.OS === 'android' ? 'http://10.0.2.2:4000' : 'http://localhost:4000';

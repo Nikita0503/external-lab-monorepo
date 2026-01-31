@@ -1,13 +1,8 @@
 import React from 'react';
 import { ActivityIndicator, Image, Text, View } from 'react-native';
 import CustomButton from '../CustomButton';
-import styles from './styles';
-
-interface IProps {
-  loadingText: string;
-  buttonText?: string;
-  onHandleLoading?: () => void;
-}
+import styles from './UniversalLoading.styles';
+import { IProps } from './UniversalLoading.types';
 
 const UniversalLoading = ({
   loadingText,

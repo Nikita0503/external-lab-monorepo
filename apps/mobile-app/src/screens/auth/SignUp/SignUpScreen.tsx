@@ -3,7 +3,7 @@ import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithHint from '../../../components/TextInputWithHint';
-import UserAvatar from '../../../components/UserAvatar';
+import UserAvatar from '../../../components/UserAvatar/UserAvatar';
 import { INewFile } from '../../../interfaces/general';
 import { ERouteNames } from '../../../interfaces/navigation/routeNames';
 import { AuthStackParamList } from '../../../interfaces/navigation/routeParams';
