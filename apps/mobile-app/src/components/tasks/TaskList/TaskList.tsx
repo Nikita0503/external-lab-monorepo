@@ -7,7 +7,15 @@ import { IProps } from './TaskList.types';
 import TaskListItem from './TaskListItem';
 import TaskListSeparator from './TaskListSeparator';
 
-const TaskList = ({ tasks, error, fetchTasks }: IProps) => {
+const TaskList = ({
+  tasks,
+  error,
+  fetchTasks,
+  goToTaskDetails,
+  goToEditTask,
+  onDeleteTaskPress,
+  onSwitchDonePress,
+}: IProps) => {
   if (error) {
     return (
       <UniversalError
@@ -27,7 +35,15 @@ const TaskList = ({ tasks, error, fetchTasks }: IProps) => {
       data={tasks}
       ItemSeparatorComponent={TaskListSeparator}
       keyExtractor={(item: Task) => item.id.toString()}
-      renderItem={({ item }) => <TaskListItem task={item} />}
+      renderItem={({ item }) => (
+        <TaskListItem
+          task={item}
+          goToTaskDetails={goToTaskDetails}
+          goToEditTask={goToEditTask}
+          onDeleteTaskPress={onDeleteTaskPress}
+          onSwitchDonePress={onSwitchDonePress}
+        />
+      )}
     />
   );
 };

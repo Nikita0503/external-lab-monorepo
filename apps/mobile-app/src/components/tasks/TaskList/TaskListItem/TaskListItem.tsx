@@ -1,51 +1,41 @@
-import { useTasks } from '@external-lab-monorepo/hooks';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Alert, Pressable, Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, Text, TouchableOpacity, View } from 'react-native';
 import TaskActiveSvgImage from '../../../../assets/icons/TaskActiveSvgImage';
 import TaskCompletedSvgImage from '../../../../assets/icons/TaskCompletedSvgImage';
 import TaskDeleteSvgImage from '../../../../assets/icons/TaskDeleteSvgImage';
 import TaskEditSvgImage from '../../../../assets/icons/TaskEditSvgImage';
-import { ERouteNames } from '../../../../interfaces/navigation/routeNames';
-import { AppStackParamList } from '../../../../interfaces/navigation/routeParams';
 import styles from './TaskListItem.styles';
 import { IProps } from './TaskListItem.types';
 
-const TaskListItem = ({ task }: IProps) => {
-  const { deleteTask, patchTask } = useTasks();
+const TaskListItem = ({
+  task,
+  goToTaskDetails,
+  goToEditTask,
+  onDeleteTaskPress,
+  onSwitchDonePress,
+}: IProps) => {
+  const handleSwitchDonePress = () => {
+    onSwitchDonePress(task);
+  };
 
-  const navigation = useNavigation<NavigationProp<AppStackParamList>>();
+  const handleGoToTaskDetails = () => {
+    goToTaskDetails(task);
+  };
 
-  const onSwitchDonePress = React.useCallback(() => {
-    patchTask(task.id, undefined, undefined, !task.done, [], task.files);
-  }, [patchTask, task.done, task.files, task.id]);
+  const handleGoToEditTask = () => {
+    goToEditTask(task);
+  };
 
-  const goToTaskDetails = React.useCallback(() => {
-    navigation.navigate(ERouteNames.TASK_DETAILS, { taskId: task.id });
-  }, [navigation, task.id]);
-
-  const goToEditTask = React.useCallback(() => {
-    navigation.navigate(ERouteNames.EDIT_TASK, { taskId: task.id });
-  }, [navigation, task.id]);
-
-  const onDeleteTaskPress = React.useCallback(() => {
-    Alert.alert('Are you sure?', 'Do you wanna delete the task?', [
-      {
-        text: 'Cancel',
-        style: 'cancel',
-      },
-      {
-        text: 'OK',
-        onPress: () => {
-          deleteTask(task.id);
-        },
-      },
-    ]);
-  }, [deleteTask, task.id]);
+  const handleDeleteTaskPress = () => {
+    onDeleteTaskPress(task);
+  };
 
   return (
-    <TouchableOpacity onPress={goToTaskDetails} style={styles.container}>
-      <Pressable style={styles.taskStatusContainer} onPress={onSwitchDonePress}>
+    <TouchableOpacity onPress={handleGoToTaskDetails} style={styles.container}>
+      <Pressable
+        style={styles.taskStatusContainer}
+        onPress={handleSwitchDonePress}
+      >
         {task.done ? <TaskCompletedSvgImage /> : <TaskActiveSvgImage />}
       </Pressable>
       <View style={styles.content}>
@@ -58,10 +48,16 @@ const TaskListItem = ({ task }: IProps) => {
         </Text>
 
         <View style={styles.actionsContainer}>
-          <Pressable style={styles.actionContainer} onPress={onDeleteTaskPress}>
+          <Pressable
+            style={styles.actionContainer}
+            onPress={handleDeleteTaskPress}
+          >
             <TaskDeleteSvgImage />
           </Pressable>
-          <Pressable style={styles.actionContainer} onPress={goToEditTask}>
+          <Pressable
+            style={styles.actionContainer}
+            onPress={handleGoToEditTask}
+          >
             <TaskEditSvgImage />
           </Pressable>
         </View>

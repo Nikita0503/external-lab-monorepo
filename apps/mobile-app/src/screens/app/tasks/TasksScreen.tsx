@@ -5,10 +5,19 @@ import TaskList from '../../../components/tasks/TaskList';
 import styles from './TasksScreen.styles';
 import { IProps } from './TasksScreen.types';
 
-const TasksScreen = ({ tasks, error, loading, fetchTasks }: IProps) => {
+const TasksScreen = ({
+  tasks,
+  error,
+  loading,
+  fetchTasks,
+  goToTaskDetails,
+  goToEditTask,
+  onDeleteTaskPress,
+  onSwitchDonePress,
+}: IProps) => {
   React.useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [fetchTasks]);
 
   return (
     <View style={styles.container}>
@@ -18,6 +27,10 @@ const TasksScreen = ({ tasks, error, loading, fetchTasks }: IProps) => {
         error={error}
         loading={loading}
         fetchTasks={fetchTasks}
+        goToTaskDetails={goToTaskDetails}
+        goToEditTask={goToEditTask}
+        onDeleteTaskPress={onDeleteTaskPress}
+        onSwitchDonePress={onSwitchDonePress}
       />
     </View>
   );
