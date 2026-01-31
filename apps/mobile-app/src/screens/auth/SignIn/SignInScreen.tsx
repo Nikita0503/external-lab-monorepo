@@ -3,6 +3,7 @@ import React from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
+  Pressable,
   ScrollView,
   Text,
   View,
@@ -10,6 +11,7 @@ import {
 import AppLogoSvgImage from '../../../assets/AppLogoSvgImage';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithHint from '../../../components/TextInputWithHint';
+import { useDevMenu } from '../../../contexts/DevMenuContext';
 import { ERouteNames } from '../../../interfaces/navigation/routeNames';
 import { AuthStackParamList } from '../../../interfaces/navigation/routeParams';
 import styles from './SignInScreen.styles';
@@ -32,6 +34,8 @@ const SignInScreen = ({ signIn }: IProps) => {
     });
   }, [navigation]);
 
+  const { setShowDevMenu } = useDevMenu();
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -42,7 +46,9 @@ const SignInScreen = ({ signIn }: IProps) => {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.appLogoContainer}>
-          <AppLogoSvgImage />
+          <Pressable onPress={() => setShowDevMenu(true)}>
+            <AppLogoSvgImage />
+          </Pressable>
           <Text style={styles.appLogoText}>Welcome!</Text>
         </View>
         <View style={styles.textInputsContainer}>

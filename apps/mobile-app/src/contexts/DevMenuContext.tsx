@@ -4,14 +4,19 @@ import React, { createContext, ReactNode, useContext, useState } from 'react';
 type DevMenuContextType = {
   sprint: SPRINTS;
   setSprint: (sprint: SPRINTS) => void;
+  showDevMenu: boolean;
+  setShowDevMenu: (show: boolean) => void;
 };
 
 const DevMenuContext = createContext<DevMenuContextType | undefined>(undefined);
 
 export const DevMenuProvider = ({ children }: { children: ReactNode }) => {
+  const [showDevMenu, setShowDevMenu] = useState<boolean>(false);
   const [sprint, setSprint] = useState<SPRINTS>(SPRINTS.SPRINT_1);
   return (
-    <DevMenuContext.Provider value={{ sprint, setSprint }}>
+    <DevMenuContext.Provider
+      value={{ sprint, setSprint, showDevMenu, setShowDevMenu }}
+    >
       {children}
     </DevMenuContext.Provider>
   );
