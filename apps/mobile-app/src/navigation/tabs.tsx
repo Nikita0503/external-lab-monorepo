@@ -1,3 +1,4 @@
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import CommonTasksScreenTabActive from '../assets/icons/tabs/CommonTasksScreenTabActive';
@@ -6,11 +7,13 @@ import ProfileScreenTabActive from '../assets/icons/tabs/ProfileScreenTabActive'
 import ProfileScreenTabInactive from '../assets/icons/tabs/ProfileScreenTabInactive';
 import TasksScreenTabActive from '../assets/icons/tabs/TasksScreenTabActive';
 import TasksScreenTabInactive from '../assets/icons/tabs/TasksScreenTabInactive';
+import { useDevMenu } from '../contexts/DevMenuContext';
 import { ERouteNames } from '../interfaces/navigation/routeNames';
 import { TabsStackParamList } from '../interfaces/navigation/routeParams';
 import CommonTasksScreen from '../screens/app/CommonTasks';
 import ProfileScreen from '../screens/app/Profile';
 import TasksScreen from '../screens/app/Tasks';
+import StubScreen from '../screens/stubs/Stub';
 
 const TabsStack = createBottomTabNavigator<TabsStackParamList>();
 
@@ -20,6 +23,15 @@ const renderTabIcon =
     focused ? <ActiveIcon /> : <InactiveIcon />;
 
 const Tabs = () => {
+  const { sprint } = useDevMenu();
+
+  const CommonTasksScreenContent = React.useMemo(() => {
+    if (sprint === SPRINTS.SPRINT_1 || sprint === SPRINTS.SPRINT_2) {
+      return StubScreen;
+    }
+    return CommonTasksScreen;
+  }, [sprint]);
+
   return (
     <TabsStack.Navigator>
       <TabsStack.Screen
@@ -46,7 +58,7 @@ const Tabs = () => {
       />
       <TabsStack.Screen
         name={ERouteNames.COMMON_TASKS_SCREEN}
-        component={CommonTasksScreen}
+        component={CommonTasksScreenContent}
         options={{
           tabBarLabel: 'Common Tasks',
           tabBarIcon: renderTabIcon(
