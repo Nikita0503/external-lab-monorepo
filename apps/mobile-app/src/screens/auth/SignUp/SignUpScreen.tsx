@@ -3,6 +3,7 @@ import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithHint from '../../../components/TextInputWithHint';
 import UserAvatar from '../../../components/UserAvatar/UserAvatar';
+import { PasswordDisplayMode } from '../../../constants/general';
 import styles from './SignUpScreen.styles';
 import { IProps } from './SignUpScreen.types';
 
@@ -12,11 +13,13 @@ const SignUpScreen = ({
   password,
   repeatPassword,
   avatar,
+  passwordDisplayMode,
   setEmail,
   setName,
   setPassword,
   setRepeatPassword,
   setAvatar,
+  togglePasswordDisplayMode,
   onSignUpPress,
   goToSignIn,
 }: IProps) => {
@@ -58,7 +61,11 @@ const SignUpScreen = ({
               onChangeText={setPassword}
               hintTextStyle={styles.textInputTitle}
               textInputStyle={styles.textInput}
-              secureTextEntry={true}
+              secureTextEntry={
+                passwordDisplayMode === PasswordDisplayMode.HIDDEN
+              }
+              passwordDisplayMode={passwordDisplayMode}
+              togglePasswordDisplayMode={togglePasswordDisplayMode}
             />
           </View>
           <View style={styles.textInputContainer}>
@@ -68,7 +75,9 @@ const SignUpScreen = ({
               onChangeText={setRepeatPassword}
               hintTextStyle={styles.textInputTitle}
               textInputStyle={styles.textInput}
-              secureTextEntry={true}
+              secureTextEntry={
+                passwordDisplayMode === PasswordDisplayMode.HIDDEN
+              }
             />
           </View>
         </View>

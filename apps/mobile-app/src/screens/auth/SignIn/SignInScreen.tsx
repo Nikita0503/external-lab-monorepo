@@ -10,14 +10,17 @@ import {
 import AppLogoSvgImage from '../../../assets/AppLogoSvgImage';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithHint from '../../../components/TextInputWithHint';
+import { PasswordDisplayMode } from '../../../constants/general';
 import styles from './SignInScreen.styles';
 import { IProps } from './SignInScreen.types';
 
 const SignInScreen = ({
   email,
   password,
+  passwordDisplayMode,
   setEmail,
   setPassword,
+  togglePasswordDisplayMode,
   onLoginPress,
   goToSignUp,
   showDevMenu,
@@ -54,7 +57,11 @@ const SignInScreen = ({
               onChangeText={setPassword}
               hintTextStyle={styles.textInputTitle}
               textInputStyle={styles.textInput}
-              secureTextEntry={true}
+              secureTextEntry={
+                passwordDisplayMode === PasswordDisplayMode.HIDDEN
+              }
+              passwordDisplayMode={passwordDisplayMode}
+              togglePasswordDisplayMode={togglePasswordDisplayMode}
             />
           </View>
         </View>

@@ -1,3 +1,4 @@
+import { PasswordDisplayMode } from '../../../constants/general';
 import { INewFile } from '../../../interfaces/general';
 
 export interface IProps {
@@ -6,11 +7,13 @@ export interface IProps {
   name: string;
   repeatPassword: string;
   avatar: INewFile | undefined;
+  passwordDisplayMode: PasswordDisplayMode;
   setEmail: (email: string) => void;
   setPassword: (password: string) => void;
   setName: (name: string) => void;
   setRepeatPassword: (repeatPassword: string) => void;
   setAvatar: (avatar: INewFile | undefined) => void;
+  togglePasswordDisplayMode: () => void;
   onSignUpPress: () => void;
   goToSignIn: () => void;
 }

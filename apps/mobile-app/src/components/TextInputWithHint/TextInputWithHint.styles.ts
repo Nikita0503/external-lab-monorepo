@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
     height: 50,
     color: COLORS.black,
   },
+  eyeIconContainer: {
+    position: 'absolute',
+    right: 12,
+    top: 35,
+  },
 });
 
 export default styles;

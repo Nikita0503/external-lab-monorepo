@@ -1,6 +1,7 @@
 import { useAuth } from '@external-lab-monorepo/hooks';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
+import usePasswordDisplayMode from '../../../hooks/usePasswordDisplayMode';
 import { INewFile } from '../../../interfaces/general';
 import { ERouteNames } from '../../../interfaces/navigation/routeNames';
 import { AuthStackParamList } from '../../../interfaces/navigation/routeParams';
@@ -13,6 +14,8 @@ const SignUpContainer = () => {
   const [repeatPassword, setRepeatPassword] =
     React.useState<string>('Password12345');
   const [avatar, setAvatar] = React.useState<INewFile | undefined>(undefined);
+  const { passwordDisplayMode, togglePasswordDisplayMode } =
+    usePasswordDisplayMode();
 
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const { signUp } = useAuth();
@@ -34,11 +37,13 @@ const SignUpContainer = () => {
       password={password}
       repeatPassword={repeatPassword}
       avatar={avatar}
+      passwordDisplayMode={passwordDisplayMode}
       setEmail={setEmail}
       setName={setName}
       setPassword={setPassword}
       setRepeatPassword={setRepeatPassword}
       setAvatar={setAvatar}
+      togglePasswordDisplayMode={togglePasswordDisplayMode}
       onSignUpPress={onSignUpPress}
       goToSignIn={goToSignIn}
     />
