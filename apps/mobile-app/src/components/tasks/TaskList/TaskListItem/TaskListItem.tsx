@@ -6,6 +6,7 @@ import TaskDeleteSvgImage from '../../../../assets/icons/TaskDeleteSvgImage';
 import TaskEditSvgImage from '../../../../assets/icons/TaskEditSvgImage';
 import styles from './TaskListItem.styles';
 import { IProps } from './TaskListItem.types';
+import TaskListItemPriority from './TaskListItemPriority';
 
 const TaskListItem = ({
   task,
@@ -38,6 +39,7 @@ const TaskListItem = ({
       >
         {task.done ? <TaskCompletedSvgImage /> : <TaskActiveSvgImage />}
       </Pressable>
+      {task.priority && <TaskListItemPriority priority={task.priority} />}
       <View style={styles.content}>
         <Text
           numberOfLines={1}
@@ -46,7 +48,6 @@ const TaskListItem = ({
         >
           {task.title}
         </Text>
-
         <View style={styles.actionsContainer}>
           <Pressable
             style={styles.actionContainer}
