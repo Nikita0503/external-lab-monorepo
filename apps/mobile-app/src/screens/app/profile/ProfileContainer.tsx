@@ -1,10 +1,12 @@
 import { useAuth, useCurrentUser } from '@external-lab-monorepo/hooks';
 import React from 'react';
 import { Alert } from 'react-native';
+import { useDevMenu } from '../../../contexts/DevMenuContext';
 import { INewFile } from '../../../interfaces/general';
 import ProfileScreen from './ProfileScreen';
 
 const ProfileContainer = () => {
+  const { sprint } = useDevMenu();
   const [email, setEmail] = React.useState<string>('');
   const [name, setName] = React.useState<string>('');
   const [avatar, setAvatar] = React.useState<
@@ -52,6 +54,7 @@ const ProfileContainer = () => {
 
   return (
     <ProfileScreen
+      sprint={sprint}
       currentUser={currentUser}
       error={error}
       loading={loading}

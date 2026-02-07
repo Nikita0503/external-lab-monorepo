@@ -43,14 +43,21 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     width: '100%',
   },
+  buttonsContainer: {
+    gap: 8,
+    flexDirection: 'column',
+    marginBottom: 8,
+  },
+  buttonsContainerHorizontal: {
+    flexDirection: 'row-reverse',
+  },
   button: {
     backgroundColor: COLORS.yellow,
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+    flex: 1,
     height: 60,
     borderRadius: 12,
-    marginBottom: 12,
   },
   buttonText: {
     color: COLORS.darkBlue,

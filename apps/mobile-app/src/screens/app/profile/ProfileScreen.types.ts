@@ -1,6 +1,8 @@
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import { User } from '@external-lab-monorepo/types';
 
 export interface IProps {
+  sprint: SPRINTS;
   currentUser?: User;
   error: any;
   loading: boolean;

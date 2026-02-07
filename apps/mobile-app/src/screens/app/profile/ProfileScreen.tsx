@@ -1,3 +1,4 @@
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import React from 'react';
 import {
   KeyboardAvoidingView,
@@ -16,6 +17,7 @@ import styles from './ProfileScreen.styles';
 import { IProps } from './ProfileScreen.types';
 
 const ProfileScreen = ({
+  sprint,
   currentUser,
   error,
   loading,
@@ -70,7 +72,13 @@ const ProfileScreen = ({
                 />
               </View>
             </View>
-            <View>
+            <View
+              style={[
+                styles.buttonsContainer,
+                sprint === SPRINTS.SPRINT_4 &&
+                  styles.buttonsContainerHorizontal,
+              ]}
+            >
               <CustomButton
                 buttonStyle={styles.button}
                 onPress={onUpdateCurrentUserPress}
