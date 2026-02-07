@@ -22,6 +22,11 @@ const styles = StyleSheet.create({
     color: COLORS.darkGray,
     marginBottom: 8,
   },
+  additionalInfoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
   buttonsContainer: {
     flexDirection: 'row',
     paddingHorizontal: 12,
@@ -40,25 +45,6 @@ const styles = StyleSheet.create({
     color: COLORS.darkBlue,
     fontSize: 18,
     fontWeight: '600',
-  },
-  taskStatusContainer: {
-    alignSelf: 'flex-start',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 6,
-    paddingVertical: 6,
-    paddingHorizontal: 8,
-    marginBottom: 8,
-  },
-  taskStatusContainerDone: {
-    backgroundColor: COLORS.green,
-  },
-  taskStatusContainerInProgress: {
-    backgroundColor: COLORS.blue,
-  },
-  taskStatusText: {
-    fontSize: 14,
-    color: COLORS.white,
   },
 });
 

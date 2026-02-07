@@ -1,3 +1,4 @@
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import React from 'react';
 import {
   KeyboardAvoidingView,
@@ -9,6 +10,9 @@ import {
 import CustomButton from '../../../components/CustomButton';
 import Header from '../../../components/headers/Header';
 import TaskFileList from '../../../components/TaskFileList';
+import TaskPriority from '../../../components/tasks/TaskPriority';
+import TaskStatus from '../../../components/tasks/TaskStatus';
+import { useDevMenu } from '../../../contexts/DevMenuContext';
 import styles from './TaskDetailsScreen.styles';
 import { IProps } from './TaskDetailsScreen.types';
 
@@ -17,6 +21,8 @@ const TaskDetailsScreen = ({
   onDeleteTaskPress,
   goToEditTask,
 }: IProps) => {
+  const { sprint } = useDevMenu();
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -29,18 +35,13 @@ const TaskDetailsScreen = ({
       >
         <Text style={styles.title}>{task.title}</Text>
         <Text style={styles.description}>{task.description}</Text>
-        <View
-          style={[
-            styles.taskStatusContainer,
-            task.done
-              ? styles.taskStatusContainerDone
-              : styles.taskStatusContainerInProgress,
-          ]}
-        >
-          <Text style={styles.taskStatusText}>
-            {task.done ? 'DONE' : 'IN PROGRESS'}
-          </Text>
+        <View style={styles.additionalInfoContainer}>
+          <TaskStatus done={task.done} />
+          {sprint === SPRINTS.SPRINT_4 && task.priority && (
+            <TaskPriority priority={task.priority} showTitle />
+          )}
         </View>
+
         <TaskFileList files={task.files} />
       </ScrollView>
       <View style={styles.buttonsContainer}>
