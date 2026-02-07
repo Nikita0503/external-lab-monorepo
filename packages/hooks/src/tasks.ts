@@ -1,5 +1,5 @@
 import { actions, AppDispatch, RootState } from "@external-lab-monorepo/store";
-import { Task } from "@external-lab-monorepo/types";
+import { Task, TaskPriority } from "@external-lab-monorepo/types";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -35,6 +35,7 @@ export const useTasks = () => {
       title: string,
       description: string,
       files: any[],
+      priority?: TaskPriority,
       onSuccess?: () => void,
       onError?: (error: any) => void
     ) => {
@@ -43,6 +44,7 @@ export const useTasks = () => {
           title: title,
           description: description,
           files: files,
+          priority: priority,
           onSuccess: onSuccess,
           onError: onError,
         })
@@ -59,6 +61,7 @@ export const useTasks = () => {
       done: boolean,
       files: any[],
       oldFiles: any[],
+      priority?: TaskPriority,
       onSuccess?: () => void,
       onError?: (error: any) => void
     ) => {
@@ -70,6 +73,7 @@ export const useTasks = () => {
           done: done,
           files: files,
           oldFiles: oldFiles,
+          priority: priority,
           onSuccess: onSuccess,
           onError: onError,
         })

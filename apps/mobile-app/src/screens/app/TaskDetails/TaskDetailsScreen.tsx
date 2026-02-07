@@ -12,17 +12,15 @@ import Header from '../../../components/headers/Header';
 import TaskFileList from '../../../components/tasks/TaskFileList';
 import TaskPriority from '../../../components/tasks/TaskPriority';
 import TaskStatus from '../../../components/tasks/TaskStatus';
-import { useDevMenu } from '../../../contexts/DevMenuContext';
 import styles from './TaskDetailsScreen.styles';
 import { IProps } from './TaskDetailsScreen.types';
 
 const TaskDetailsScreen = ({
+  sprint,
   task,
   onDeleteTaskPress,
   goToEditTask,
 }: IProps) => {
-  const { sprint } = useDevMenu();
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

@@ -1,21 +1,26 @@
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import Header from '../../../components/headers/Header';
 import TaskFileList from '../../../components/tasks/TaskFileList';
+import TaskPrioritySelector from '../../../components/tasks/TaskPrioritySelector';
 import TextInputWithHint from '../../../components/TextInputWithHint';
 import styles from './AddTaskScreen.styles';
 import { IProps } from './AddTaskScreen.types';
 
 const AddTaskScreen = ({
+  sprint,
   title,
   description,
   files,
+  priority,
   setTitle,
   setDescription,
   onCreateTaskPress,
   onAddFile,
   onDeleteFile,
+  setPriority,
 }: IProps) => {
   return (
     <KeyboardAvoidingView
@@ -43,6 +48,14 @@ const AddTaskScreen = ({
                 onChangeText={setDescription}
               />
             </View>
+            {sprint === SPRINTS.SPRINT_4 && (
+              <View style={styles.infoItemContainer}>
+                <TaskPrioritySelector
+                  priority={priority}
+                  selectPriority={setPriority}
+                />
+              </View>
+            )}
             <View style={styles.infoItemContainer}>
               <TaskFileList
                 files={files}

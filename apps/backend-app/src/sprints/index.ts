@@ -19,7 +19,7 @@ const sprintRouter = (req: Request, res: Response, next: NextFunction) => {
     case SPRINTS.SPRINT_4:
       return sprint4Router(req, res, next);
     default:
-      return sprint3Router(req, res, next);
+      return sprint4Router(req, res, next);
   }
 };
 

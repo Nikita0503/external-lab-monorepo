@@ -10,9 +10,10 @@ import { AppStackParamList } from '../../../interfaces/navigation/routeParams';
 import TasksScreen from './TasksScreen';
 
 const TasksContainer = () => {
+  const { sprint } = useDevMenu();
+
   const { tasks, error, loading, fetchTasks, patchTask, deleteTask } =
     useTasks();
-  const { sprint } = useDevMenu();
 
   const navigation = useNavigation<NavigationProp<AppStackParamList>>();
 

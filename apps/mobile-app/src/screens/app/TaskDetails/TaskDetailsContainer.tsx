@@ -9,11 +9,14 @@ import React from 'react';
 import { Alert } from 'react-native';
 import UniversalError from '../../../components/UniversalError';
 import UniversalLoading from '../../../components/UniversalLoading';
+import { useDevMenu } from '../../../contexts/DevMenuContext';
 import { ERouteNames } from '../../../interfaces/navigation/routeNames';
 import { AppStackParamList } from '../../../interfaces/navigation/routeParams';
 import TaskDetailsScreen from './TaskDetailsScreen';
 
 const TaskDetailsContainer = () => {
+  const { sprint } = useDevMenu();
+
   const {
     params: { taskId },
   } = useRoute<RouteProp<AppStackParamList, ERouteNames.TASK_DETAILS>>();
@@ -78,6 +81,7 @@ const TaskDetailsContainer = () => {
 
   return (
     <TaskDetailsScreen
+      sprint={sprint}
       task={task!}
       goToTasks={goToTasks}
       goToEditTask={goToEditTask}

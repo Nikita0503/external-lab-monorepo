@@ -1,15 +1,20 @@
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import { useTask, useTasks } from '@external-lab-monorepo/hooks';
+import { TaskPriority } from '@external-lab-monorepo/types';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
 import { Alert } from 'react-native';
 import UniversalError from '../../../components/UniversalError';
 import UniversalLoading from '../../../components/UniversalLoading';
+import { useDevMenu } from '../../../contexts/DevMenuContext';
 import { IFile, INewFile } from '../../../interfaces/general';
 import { ERouteNames } from '../../../interfaces/navigation/routeNames';
 import { AppStackParamList } from '../../../interfaces/navigation/routeParams';
 import EditTaskScreen from './EditTaskScreen';
 
 const EditTaskContainer = () => {
+  const { sprint } = useDevMenu();
+
   const {
     params: { taskId },
   } = useRoute<RouteProp<AppStackParamList, ERouteNames.EDIT_TASK>>();
@@ -28,6 +33,7 @@ const EditTaskContainer = () => {
       setDone(task.done);
       setOldFiles(task.files);
       setNewFiles([]);
+      setPriority(task.priority!);
     }
   }, [task]);
 
@@ -38,6 +44,7 @@ const EditTaskContainer = () => {
   const [done, setDone] = React.useState<boolean>(false);
   const [oldFiles, setOldFiles] = React.useState<IFile[]>([]);
   const [newFiles, setNewFiles] = React.useState<INewFile[]>([]);
+  const [priority, setPriority] = React.useState<TaskPriority>('low');
 
   const files = React.useMemo(() => {
     return [...oldFiles, ...newFiles];
@@ -52,6 +59,10 @@ const EditTaskContainer = () => {
   }, [navigation]);
 
   const onUpdateTaskPress = React.useCallback(() => {
+    let selectedPriority: TaskPriority | undefined;
+    if (sprint === SPRINTS.SPRINT_4) {
+      selectedPriority = priority;
+    }
     updateTask(
       task!.id,
       title,
@@ -59,9 +70,11 @@ const EditTaskContainer = () => {
       done,
       newFiles,
       oldFiles,
+      selectedPriority,
       goToTasks,
     );
   }, [
+    sprint,
     updateTask,
     task,
     title,
@@ -69,6 +82,7 @@ const EditTaskContainer = () => {
     done,
     newFiles,
     oldFiles,
+    priority,
     goToTasks,
   ]);
 
@@ -136,10 +150,12 @@ const EditTaskContainer = () => {
 
   return (
     <EditTaskScreen
+      sprint={sprint}
       title={title}
       description={description}
       done={done}
       files={files}
+      priority={priority}
       setTitle={setTitle}
       setDescription={setDescription}
       onSwitchDonePress={onSwitchDonePress}
@@ -147,6 +163,7 @@ const EditTaskContainer = () => {
       onDeleteTaskPress={onDeleteTaskPress}
       onAddFile={onAddFile}
       onDeleteFile={onDeleteFile}
+      setPriority={setPriority}
     />
   );
 };

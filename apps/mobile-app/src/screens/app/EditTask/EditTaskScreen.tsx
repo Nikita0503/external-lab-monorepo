@@ -1,3 +1,4 @@
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import React from 'react';
 import {
   KeyboardAvoidingView,
@@ -12,15 +13,18 @@ import TaskCompletedSvgImage from '../../../assets/icons/TaskCompletedSvgImage';
 import CustomButton from '../../../components/CustomButton';
 import Header from '../../../components/headers/Header';
 import TaskFileList from '../../../components/tasks/TaskFileList';
+import TaskPrioritySelector from '../../../components/tasks/TaskPrioritySelector';
 import TextInputWithHint from '../../../components/TextInputWithHint';
 import styles from './EditTaskScreen.styles';
 import { IProps } from './EditTaskScreen.types';
 
 const EditTaskScreen = ({
+  sprint,
   title,
   description,
   done,
   files,
+  priority,
   setTitle,
   setDescription,
   onUpdateTaskPress,
@@ -28,6 +32,7 @@ const EditTaskScreen = ({
   onDeleteFile,
   onSwitchDonePress,
   onDeleteTaskPress,
+  setPriority,
 }: IProps) => {
   return (
     <KeyboardAvoidingView
@@ -58,6 +63,14 @@ const EditTaskScreen = ({
                 onChangeText={setDescription}
               />
             </View>
+            {sprint === SPRINTS.SPRINT_4 && (
+              <View style={styles.infoItemContainer}>
+                <TaskPrioritySelector
+                  priority={priority}
+                  selectPriority={setPriority}
+                />
+              </View>
+            )}
             <Pressable
               style={styles.taskStatusContainer}
               onPress={onSwitchDonePress}
