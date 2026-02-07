@@ -132,7 +132,8 @@ export const updateTaskAsyncAction = createAsyncThunk<
       const taskInfo: Task | undefined = taskInfoSelector(taskId)(state);
       if (taskInfo) {
         const deletedFiles = taskInfo.files.filter(
-          (file: any) => !oldFiles.some((oldFile) => oldFile.name === file.name)
+          (file: any) =>
+            !oldFiles.some((oldFile) => oldFile.image === file.image)
         );
         for (let i = 0; i < deletedFiles.length; i++) {
           await deleteTaskAttachmentApi(taskId, deletedFiles[i].id);
