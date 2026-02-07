@@ -3,6 +3,7 @@ import { COLORS } from '../../../theme/colors';
 
 const styles = StyleSheet.create({
   taskStatusContainer: {
+    flexDirection: 'row',
     alignSelf: 'flex-start',
     alignItems: 'center',
     justifyContent: 'center',
@@ -15,6 +16,9 @@ const styles = StyleSheet.create({
   },
   taskStatusContainerInProgress: {
     backgroundColor: COLORS.blue,
+  },
+  taskStatusIconContainer: {
+    marginRight: 4,
   },
   taskStatusText: {
     fontSize: 14,
