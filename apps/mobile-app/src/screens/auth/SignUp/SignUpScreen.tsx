@@ -1,3 +1,4 @@
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
@@ -8,6 +9,7 @@ import styles from './SignUpScreen.styles';
 import { IProps } from './SignUpScreen.types';
 
 const SignUpScreen = ({
+  sprint,
   email,
   name,
   password,
@@ -64,7 +66,9 @@ const SignUpScreen = ({
               secureTextEntry={
                 passwordDisplayMode === PasswordDisplayMode.HIDDEN
               }
-              passwordDisplayMode={passwordDisplayMode}
+              passwordDisplayMode={
+                sprint === SPRINTS.SPRINT_4 ? passwordDisplayMode : undefined
+              }
               togglePasswordDisplayMode={togglePasswordDisplayMode}
             />
           </View>

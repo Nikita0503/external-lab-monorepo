@@ -1,3 +1,4 @@
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import React from 'react';
 import {
   KeyboardAvoidingView,
@@ -15,6 +16,7 @@ import styles from './SignInScreen.styles';
 import { IProps } from './SignInScreen.types';
 
 const SignInScreen = ({
+  sprint,
   email,
   password,
   passwordDisplayMode,
@@ -60,7 +62,9 @@ const SignInScreen = ({
               secureTextEntry={
                 passwordDisplayMode === PasswordDisplayMode.HIDDEN
               }
-              passwordDisplayMode={passwordDisplayMode}
+              passwordDisplayMode={
+                sprint === SPRINTS.SPRINT_4 ? passwordDisplayMode : undefined
+              }
               togglePasswordDisplayMode={togglePasswordDisplayMode}
             />
           </View>

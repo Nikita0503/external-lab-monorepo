@@ -1,7 +1,9 @@
+import { SPRINTS } from '@external-lab-monorepo/constants';
 import { PasswordDisplayMode } from '../../../constants/general';
 import { INewFile } from '../../../interfaces/general';
 
 export interface IProps {
+  sprint: SPRINTS;
   email: string;
   password: string;
   name: string;

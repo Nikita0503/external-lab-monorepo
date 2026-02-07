@@ -8,6 +8,7 @@ import { AuthStackParamList } from '../../../interfaces/navigation/routeParams';
 import SignInScreen from './SignInScreen';
 
 const SignInContainer = () => {
+  const { sprint, setShowDevMenu } = useDevMenu();
   const [email, setEmail] = React.useState<string>('example@gmail.com');
   const [password, setPassword] = React.useState<string>('Password12345');
   const { passwordDisplayMode, togglePasswordDisplayMode } =
@@ -15,7 +16,6 @@ const SignInContainer = () => {
 
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
 
-  const { setShowDevMenu } = useDevMenu();
   const { signIn } = useAuth();
 
   const onLoginPress = React.useCallback(() => {
@@ -35,6 +35,7 @@ const SignInContainer = () => {
 
   return (
     <SignInScreen
+      sprint={sprint}
       email={email}
       password={password}
       passwordDisplayMode={passwordDisplayMode}
