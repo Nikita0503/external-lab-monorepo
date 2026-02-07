@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { COLORS } from '../../../../theme/colors';
+import { COLORS } from '../../../../../theme/colors';
 
 const IMAGE_SIZE = Dimensions.get('screen').width * 0.9;
 

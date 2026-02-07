@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import { IFile, INewFile } from '../../interfaces/general';
+import { IFile, INewFile } from '../../../interfaces/general';
 import AddFileListItem from './AddFileListItem';
 import { IAddFileListHeaderProps, IProps } from './TaskFileList.types';
 import TaskFileListItem from './TaskFileListItem';

@@ -1,4 +1,4 @@
-import { IFile, INewFile } from '../../interfaces/general';
+import { IFile, INewFile } from '../../../interfaces/general';
 
 export interface IProps {
   files: (IFile | INewFile)[];

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import Header from '../../../components/headers/Header';
-import TaskFileList from '../../../components/TaskFileList';
+import TaskFileList from '../../../components/tasks/TaskFileList';
 import TaskPriority from '../../../components/tasks/TaskPriority';
 import TaskStatus from '../../../components/tasks/TaskStatus';
 import { useDevMenu } from '../../../contexts/DevMenuContext';

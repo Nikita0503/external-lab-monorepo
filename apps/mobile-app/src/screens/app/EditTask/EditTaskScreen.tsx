@@ -11,7 +11,7 @@ import TaskActiveSvgImage from '../../../assets/icons/TaskActiveSvgImage';
 import TaskCompletedSvgImage from '../../../assets/icons/TaskCompletedSvgImage';
 import CustomButton from '../../../components/CustomButton';
 import Header from '../../../components/headers/Header';
-import TaskFileList from '../../../components/TaskFileList';
+import TaskFileList from '../../../components/tasks/TaskFileList';
 import TextInputWithHint from '../../../components/TextInputWithHint';
 import styles from './EditTaskScreen.styles';
 import { IProps } from './EditTaskScreen.types';

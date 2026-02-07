@@ -2,7 +2,7 @@ import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import Header from '../../../components/headers/Header';
-import TaskFileList from '../../../components/TaskFileList';
+import TaskFileList from '../../../components/tasks/TaskFileList';
 import TextInputWithHint from '../../../components/TextInputWithHint';
 import styles from './AddTaskScreen.styles';
 import { IProps } from './AddTaskScreen.types';

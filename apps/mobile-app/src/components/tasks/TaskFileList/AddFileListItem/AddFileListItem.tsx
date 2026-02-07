@@ -1,8 +1,8 @@
 import React from 'react';
 import { Alert, Pressable, Text } from 'react-native';
-import useCamera from '../../../hooks/useCamera';
-import useGallery from '../../../hooks/useGallery';
-import { INewFile } from '../../../interfaces/general';
+import useCamera from '../../../../hooks/useCamera';
+import useGallery from '../../../../hooks/useGallery';
+import { INewFile } from '../../../../interfaces/general';
 import styles from './AddFileListItem.styles';
 import { IProps } from './AddFileListItem.types';
 
