@@ -2,7 +2,7 @@ import { useTasks } from '@external-lab-monorepo/hooks';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { IFile, INewFile } from '../../../interfaces/general';
-import TasksScreen from './AddTaskScreen';
+import AddTaskScreen from './AddTaskScreen';
 
 const AddTaskContainer = () => {
   const [title, setTitle] = React.useState<string>('');
@@ -40,7 +40,7 @@ const AddTaskContainer = () => {
   );
 
   return (
-    <TasksScreen
+    <AddTaskScreen
       title={title}
       description={description}
       files={files}
