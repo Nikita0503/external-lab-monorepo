@@ -41,7 +41,6 @@ const TaskDetailsScreen = ({
             <TaskPriority priority={task.priority} showTitle />
           )}
         </View>
-
         <TaskFileList files={task.files} />
       </ScrollView>
       <View style={styles.buttonsContainer}>
