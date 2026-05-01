@@ -23,7 +23,44 @@
   font-size: 26px;
   font-weight: 700;
   text-align: center;
-  margin: 0 0 28px;
+  margin: 0 0 24px;
+}
+
+.sign-up-avatar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.sign-up-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.sign-up-avatar:hover {
+  border-color: var(--color-white);
+}
+
+.sign-up-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sign-up-avatar-placeholder {
+  font-size: 28px;
+}
+
+.sign-up-avatar-input {
+  display: none;
 }
 
 .sign-up-inputs {

@@ -12,13 +12,15 @@ const SignUpContainer = () => {
   const [password, setPassword] = useState("Password12345");
   const [repeatPassword, setRepeatPassword] = useState("Password12345");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [avatar, setAvatar] = useState<File | undefined>(undefined);
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
 
   const navigate = useNavigate();
   const { signUp } = useAuth();
 
   const onSignUpPress = useCallback(() => {
-    signUp(email, name, password, repeatPassword, undefined);
-  }, [signUp, email, name, password, repeatPassword]);
+    signUp(email, name, password, repeatPassword, avatar);
+  }, [signUp, email, name, password, repeatPassword, avatar]);
 
   const goToSignIn = useCallback(() => {
     navigate(ROUTES.SIGN_IN, { replace: true });
@@ -28,6 +30,17 @@ const SignUpContainer = () => {
     setPasswordVisible((prev) => !prev);
   }, []);
 
+  const onAvatarChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (file) {
+        setAvatar(file);
+        setAvatarPreview(URL.createObjectURL(file));
+      }
+    },
+    []
+  );
+
   return (
     <SignUpPage
       sprint={sprint}
@@ -36,11 +49,13 @@ const SignUpContainer = () => {
       password={password}
       repeatPassword={repeatPassword}
       passwordVisible={passwordVisible}
+      avatarPreview={avatarPreview}
       setEmail={setEmail}
       setName={setName}
       setPassword={setPassword}
       setRepeatPassword={setRepeatPassword}
       togglePasswordVisibility={togglePasswordVisibility}
+      onAvatarChange={onAvatarChange}
       onSignUpPress={onSignUpPress}
       goToSignIn={goToSignIn}
     />

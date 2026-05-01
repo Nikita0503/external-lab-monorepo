@@ -7,11 +7,13 @@ export interface IProps {
   password: string;
   repeatPassword: string;
   passwordVisible: boolean;
+  avatarPreview: string | null;
   setEmail: (email: string) => void;
   setName: (name: string) => void;
   setPassword: (password: string) => void;
   setRepeatPassword: (repeatPassword: string) => void;
   togglePasswordVisibility: () => void;
+  onAvatarChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSignUpPress: () => void;
   goToSignIn: () => void;
 }

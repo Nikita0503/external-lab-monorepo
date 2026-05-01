@@ -1,5 +1,5 @@
 import { SPRINTS } from "@external-lab-monorepo/constants";
-import { memo } from "react";
+import { memo, useRef } from "react";
 import "./SignUpPage.css";
 import type { IProps } from "./SignUpPage.types";
 
@@ -10,18 +10,46 @@ const SignUpPage = ({
   password,
   repeatPassword,
   passwordVisible,
+  avatarPreview,
   setEmail,
   setName,
   setPassword,
   setRepeatPassword,
   togglePasswordVisibility,
+  onAvatarChange,
   onSignUpPress,
   goToSignIn,
 }: IProps) => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   return (
     <div className="sign-up-page">
       <div className="sign-up-card">
         <h1 className="sign-up-title">Create Account</h1>
+
+        <div className="sign-up-avatar-container">
+          <div
+            className="sign-up-avatar"
+            onClick={() => fileInputRef.current?.click()}
+          >
+            {avatarPreview ? (
+              <img
+                src={avatarPreview}
+                alt="Avatar"
+                className="sign-up-avatar-img"
+              />
+            ) : (
+              <span className="sign-up-avatar-placeholder">📷</span>
+            )}
+          </div>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            onChange={onAvatarChange}
+            className="sign-up-avatar-input"
+          />
+        </div>
 
         <div className="sign-up-inputs">
           <div className="sign-up-field">
