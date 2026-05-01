@@ -1,0 +1,16 @@
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-violet: #6871ee;
+  --color-yellow: #f8d94f;
+  --color-blue: #3d78f0;
+  --color-green: #008001;
+  --color-light-gray: #f0f0f0;
+  --color-dark-blue: #262b4f;
+  --color-gray: #f0f0f0;
+  --color-dark-gray: #5e6178;
+  --color-urgent-task-type: #df7e8d;
+  --color-regular-task-type: #f8d94f;
+  --color-low-task-type: #77d4bd;
+  --color-red: #ff0000;
+}
