@@ -11,10 +11,10 @@
 
 .sign-in-card {
   width: 100%;
-  max-width: 480px;
+  max-width: 380px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 48px 40px;
+  padding: 36px 32px;
   backdrop-filter: blur(8px);
 }
 
@@ -23,27 +23,27 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 
 .sign-in-logo {
-  font-size: 64px;
+  font-size: 48px;
 }
 
 .sign-in-welcome {
   color: var(--color-white);
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 700;
-  margin: 16px 0 0;
+  margin: 12px 0 0;
 }
 
 .sign-in-inputs {
   width: 100%;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .sign-in-field {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .sign-in-field:last-child {
@@ -59,13 +59,13 @@
 
 .sign-in-input {
   width: 100%;
-  height: 48px;
+  height: 42px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 10px;
   color: var(--color-white);
   background: transparent;
   padding: 0 14px;
-  font-size: 16px;
+  font-size: 14px;
   box-sizing: border-box;
   outline: none;
   transition: border-color 0.2s;
@@ -109,12 +109,12 @@
 
 .sign-in-button {
   width: 100%;
-  height: 52px;
+  height: 44px;
   background-color: var(--color-yellow);
   color: var(--color-dark-blue);
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: opacity 0.2s;
