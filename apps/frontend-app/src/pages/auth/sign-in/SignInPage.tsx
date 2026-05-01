@@ -1,5 +1,7 @@
+import "./SignInPage.css";
+
 const SignInPage = () => {
-  return <div>SignIn — TODO</div>;
+  return <div className="sign-in-page">SignIn — TODO</div>;
 };
 
 export default SignInPage;

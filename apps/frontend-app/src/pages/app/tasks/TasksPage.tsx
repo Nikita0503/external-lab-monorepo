@@ -1,5 +1,7 @@
+import "./TasksPage.css";
+
 const TasksPage = () => {
-  return <div>Tasks — TODO</div>;
+  return <div className="tasks-page">Tasks — TODO</div>;
 };
 
 export default TasksPage;

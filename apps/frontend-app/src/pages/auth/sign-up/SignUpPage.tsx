@@ -1,5 +1,7 @@
+import "./SignUpPage.css";
+
 const SignUpPage = () => {
-  return <div>SignUp — TODO</div>;
+  return <div className="sign-up-page">SignUp — TODO</div>;
 };
 
 export default SignUpPage;

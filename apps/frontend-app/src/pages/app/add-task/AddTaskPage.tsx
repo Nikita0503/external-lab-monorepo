@@ -1,5 +1,7 @@
+import "./AddTaskPage.css";
+
 const AddTaskPage = () => {
-  return <div>Add Task — TODO</div>;
+  return <div className="add-task-page">Add Task — TODO</div>;
 };
 
 export default AddTaskPage;
