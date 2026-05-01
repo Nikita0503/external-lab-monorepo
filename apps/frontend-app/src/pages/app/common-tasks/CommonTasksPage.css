@@ -1,1 +1,46 @@
-/* TODO */
+.common-tasks-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.common-tasks-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  margin: 0 0 20px;
+}
+
+.common-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.common-task-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: var(--color-white);
+  border-radius: 8px;
+}
+
+.common-task-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-dark-blue);
+}
+
+.common-tasks-empty {
+  text-align: center;
+  color: var(--color-dark-gray);
+  font-size: 14px;
+  padding: 40px 0;
+  margin: 0;
+}
+
+.common-tasks-load-more {
+  margin-top: 16px;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
