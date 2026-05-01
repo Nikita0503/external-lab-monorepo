@@ -5,7 +5,7 @@
   justify-content: center;
   width: 100%;
   min-height: 100vh;
-  padding: 40px 24px;
+  padding: 24px;
   box-sizing: border-box;
 }
 
@@ -14,27 +14,27 @@
   max-width: 380px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 36px 32px;
+  padding: 28px 32px;
   backdrop-filter: blur(8px);
 }
 
 .sign-up-title {
   color: var(--color-white);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
   text-align: center;
-  margin: 0 0 24px;
+  margin: 0 0 16px;
 }
 
 .sign-up-avatar-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .sign-up-avatar {
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   border: 2px dashed rgba(255, 255, 255, 0.5);
   display: flex;
@@ -56,7 +56,7 @@
 }
 
 .sign-up-avatar-placeholder {
-  font-size: 28px;
+  font-size: 22px;
 }
 
 .sign-up-avatar-input {
@@ -65,11 +65,11 @@
 
 .sign-up-inputs {
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .sign-up-field {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .sign-up-field:last-child {
@@ -79,18 +79,18 @@
 .sign-up-label {
   display: block;
   color: rgba(255, 255, 255, 0.56);
-  font-size: 14px;
-  margin-bottom: 6px;
+  font-size: 13px;
+  margin-bottom: 4px;
 }
 
 .sign-up-input {
   width: 100%;
-  height: 42px;
+  height: 38px;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 10px;
+  border-radius: 8px;
   color: var(--color-white);
   background: transparent;
-  padding: 0 14px;
+  padding: 0 12px;
   font-size: 14px;
   box-sizing: border-box;
   outline: none;
@@ -110,18 +110,18 @@
 }
 
 .sign-up-password-wrapper .sign-up-input {
-  padding-right: 48px;
+  padding-right: 42px;
 }
 
 .sign-up-eye-button {
   position: absolute;
-  right: 14px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   padding: 0;
   line-height: 1;
 }
@@ -130,17 +130,17 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .sign-up-button {
   width: 100%;
-  height: 44px;
+  height: 40px;
   background-color: var(--color-yellow);
   color: var(--color-dark-blue);
   border: none;
-  border-radius: 10px;
-  font-size: 15px;
+  border-radius: 8px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: opacity 0.2s;
