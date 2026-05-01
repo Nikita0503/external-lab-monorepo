@@ -1,5 +1,7 @@
 import { SPRINTS } from "@external-lab-monorepo/constants";
 import { memo } from "react";
+import CustomButton from "../../../components/CustomButton/CustomButton";
+import TextInputWithHint from "../../../components/TextInputWithHint/TextInputWithHint";
 import "./SignInPage.css";
 import type { IProps } from "./SignInPage.types";
 
@@ -24,45 +26,25 @@ const SignInPage = ({
         </div>
 
         <div className="sign-in-inputs">
-          <div className="sign-in-field">
-            <label className="sign-in-label">Email</label>
-            <input
-              className="sign-in-input"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-
-          <div className="sign-in-field">
-            <label className="sign-in-label">Password</label>
-            <div className="sign-in-password-wrapper">
-              <input
-                className="sign-in-input"
-                type={passwordVisible ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {sprint === SPRINTS.SPRINT_4 && (
-                <button
-                  type="button"
-                  className="sign-in-eye-button"
-                  onClick={togglePasswordVisibility}
-                >
-                  {passwordVisible ? "👁" : "👁‍🗨"}
-                </button>
-              )}
-            </div>
-          </div>
+          <TextInputWithHint
+            hint="Email"
+            value={email}
+            onChange={setEmail}
+            type="email"
+          />
+          <TextInputWithHint
+            hint="Password"
+            value={password}
+            onChange={setPassword}
+            showPasswordToggle={sprint === SPRINTS.SPRINT_4}
+            passwordVisible={passwordVisible}
+            onTogglePassword={togglePasswordVisibility}
+          />
         </div>
 
         <div className="sign-in-buttons">
-          <button className="sign-in-button" onClick={onLoginPress}>
-            Log in
-          </button>
-          <button className="sign-in-button" onClick={goToSignUp}>
-            Go to Sign Up
-          </button>
+          <CustomButton onClick={onLoginPress}>Log in</CustomButton>
+          <CustomButton onClick={goToSignUp}>Go to Sign Up</CustomButton>
         </div>
       </div>
     </div>
