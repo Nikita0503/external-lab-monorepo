@@ -12,10 +12,12 @@
   "dependencies": {
     "@external-lab-monorepo/api": "*",
     "@external-lab-monorepo/constants": "*",
+    "@external-lab-monorepo/hooks": "*",
     "@external-lab-monorepo/store": "*",
     "@external-lab-monorepo/types": "*",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
