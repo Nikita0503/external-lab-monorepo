@@ -1,0 +1,38 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-gray);
+}
+
+.app-nav {
+  display: flex;
+  gap: 0;
+  background-color: var(--color-white);
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 16px;
+}
+
+.app-nav-link {
+  padding: 14px 20px;
+  text-decoration: none;
+  color: var(--color-dark-gray);
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.app-nav-link:hover {
+  color: var(--color-violet);
+}
+
+.app-nav-link.active {
+  color: var(--color-violet);
+  border-bottom-color: var(--color-violet);
+}
+
+.app-main {
+  flex: 1;
+  padding: 16px;
+}
