@@ -1,6 +1,7 @@
 import { SPRINTS } from "@external-lab-monorepo/constants";
 import { memo } from "react";
 import CustomButton from "../../../components/CustomButton/CustomButton";
+import TaskFileEditor from "../../../components/tasks/TaskFileEditor/TaskFileEditor";
 import TaskPrioritySelector from "../../../components/tasks/TaskPrioritySelector/TaskPrioritySelector";
 import TextInputWithHint from "../../../components/TextInputWithHint/TextInputWithHint";
 import UniversalError from "../../../components/UniversalError/UniversalError";
@@ -16,12 +17,17 @@ const EditTaskPage = ({
   priority,
   error,
   loading,
+  existingFiles,
+  newFiles,
   setTitle,
   setDescription,
   setPriority,
   onSwitchDonePress,
   onUpdateTaskPress,
   onDeleteTaskPress,
+  onAddFile,
+  onDeleteExistingFile,
+  onDeleteNewFile,
 }: IProps) => {
   return (
     <div className="edit-task-page">
@@ -67,6 +73,14 @@ const EditTaskPage = ({
             <span className="edit-task-done-label">Done</span>
             <span className="edit-task-done-icon">{done ? "✅" : "⬜"}</span>
           </div>
+
+          <TaskFileEditor
+            existingFiles={existingFiles}
+            newFiles={newFiles}
+            onAddFile={onAddFile}
+            onDeleteExistingFile={onDeleteExistingFile}
+            onDeleteNewFile={onDeleteNewFile}
+          />
 
           <div className="edit-task-button">
             <CustomButton onClick={onUpdateTaskPress}>Save</CustomButton>

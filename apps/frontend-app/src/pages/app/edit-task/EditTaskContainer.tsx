@@ -7,6 +7,11 @@ import { useDevMenu } from "../../../contexts/DevMenuContext";
 import { ROUTES } from "../../../router/routes";
 import EditTaskPage from "./EditTaskPage";
 
+interface IExistingFile {
+  id: number;
+  image: string;
+}
+
 const EditTaskContainer = () => {
   const { sprint } = useDevMenu();
   const { taskId } = useParams<{ taskId: string }>();
@@ -18,6 +23,8 @@ const EditTaskContainer = () => {
   const [description, setDescription] = useState("");
   const [done, setDone] = useState(false);
   const [priority, setPriority] = useState<TaskPriority>("low");
+  const [existingFiles, setExistingFiles] = useState<IExistingFile[]>([]);
+  const [newFiles, setNewFiles] = useState<File[]>([]);
 
   useEffect(() => {
     fetchTaskData();
@@ -29,6 +36,8 @@ const EditTaskContainer = () => {
       setDescription(task.description);
       setDone(task.done);
       setPriority(task.priority ?? "low");
+      setExistingFiles(task.files);
+      setNewFiles([]);
     }
   }, [task]);
 
@@ -40,6 +49,18 @@ const EditTaskContainer = () => {
     setDone((prev) => !prev);
   }, []);
 
+  const onAddFile = useCallback((file: File) => {
+    setNewFiles((prev) => [...prev, file]);
+  }, []);
+
+  const onDeleteExistingFile = useCallback((toDelete: IExistingFile) => {
+    setExistingFiles((prev) => prev.filter((f) => f.id !== toDelete.id));
+  }, []);
+
+  const onDeleteNewFile = useCallback((toDelete: File) => {
+    setNewFiles((prev) => prev.filter((f) => f !== toDelete));
+  }, []);
+
   const onUpdateTaskPress = useCallback(() => {
     const selectedPriority =
       sprint === SPRINTS.SPRINT_4 ? priority : undefined;
@@ -48,12 +69,23 @@ const EditTaskContainer = () => {
       title,
       description,
       done,
-      [],
-      task!.files,
+      newFiles,
+      existingFiles,
       selectedPriority,
       goBack
     );
-  }, [sprint, updateTask, task, title, description, done, priority, goBack]);
+  }, [
+    sprint,
+    updateTask,
+    task,
+    title,
+    description,
+    done,
+    newFiles,
+    existingFiles,
+    priority,
+    goBack,
+  ]);
 
   const onDeleteTaskPress = useCallback(() => {
     if (window.confirm("Are you sure? Do you wanna delete the task?")) {
@@ -70,12 +102,17 @@ const EditTaskContainer = () => {
       priority={priority}
       error={error}
       loading={loading}
+      existingFiles={existingFiles}
+      newFiles={newFiles}
       setTitle={setTitle}
       setDescription={setDescription}
       setPriority={setPriority}
       onSwitchDonePress={onSwitchDonePress}
       onUpdateTaskPress={onUpdateTaskPress}
       onDeleteTaskPress={onDeleteTaskPress}
+      onAddFile={onAddFile}
+      onDeleteExistingFile={onDeleteExistingFile}
+      onDeleteNewFile={onDeleteNewFile}
     />
   );
 };

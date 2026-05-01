@@ -11,6 +11,7 @@ const AddTaskContainer = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState<TaskPriority>("low");
+  const [newFiles, setNewFiles] = useState<File[]>([]);
 
   const navigate = useNavigate();
   const { createTask } = useTasks();
@@ -19,11 +20,19 @@ const AddTaskContainer = () => {
     navigate(-1);
   }, [navigate]);
 
+  const onAddFile = useCallback((file: File) => {
+    setNewFiles((prev) => [...prev, file]);
+  }, []);
+
+  const onDeleteNewFile = useCallback((toDelete: File) => {
+    setNewFiles((prev) => prev.filter((f) => f !== toDelete));
+  }, []);
+
   const onCreateTaskPress = useCallback(() => {
     const selectedPriority =
       sprint === SPRINTS.SPRINT_4 ? priority : undefined;
-    createTask(title, description, [], selectedPriority, goBack);
-  }, [sprint, createTask, title, description, priority, goBack]);
+    createTask(title, description, newFiles, selectedPriority, goBack);
+  }, [sprint, createTask, title, description, newFiles, priority, goBack]);
 
   return (
     <AddTaskPage
@@ -31,9 +40,12 @@ const AddTaskContainer = () => {
       title={title}
       description={description}
       priority={priority}
+      newFiles={newFiles}
       setTitle={setTitle}
       setDescription={setDescription}
       setPriority={setPriority}
+      onAddFile={onAddFile}
+      onDeleteNewFile={onDeleteNewFile}
       onCreateTaskPress={onCreateTaskPress}
     />
   );

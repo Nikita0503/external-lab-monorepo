@@ -1,6 +1,7 @@
 import { SPRINTS } from "@external-lab-monorepo/constants";
 import { memo } from "react";
 import CustomButton from "../../../components/CustomButton/CustomButton";
+import TaskFileEditor from "../../../components/tasks/TaskFileEditor/TaskFileEditor";
 import TaskPrioritySelector from "../../../components/tasks/TaskPrioritySelector/TaskPrioritySelector";
 import TextInputWithHint from "../../../components/TextInputWithHint/TextInputWithHint";
 import "./AddTaskPage.css";
@@ -11,9 +12,12 @@ const AddTaskPage = ({
   title,
   description,
   priority,
+  newFiles,
   setTitle,
   setDescription,
   setPriority,
+  onAddFile,
+  onDeleteNewFile,
   onCreateTaskPress,
 }: IProps) => {
   return (
@@ -39,6 +43,12 @@ const AddTaskPage = ({
             selectPriority={setPriority}
           />
         )}
+
+        <TaskFileEditor
+          newFiles={newFiles}
+          onAddFile={onAddFile}
+          onDeleteNewFile={onDeleteNewFile}
+        />
 
         <div className="add-task-button">
           <CustomButton onClick={onCreateTaskPress}>Save</CustomButton>
