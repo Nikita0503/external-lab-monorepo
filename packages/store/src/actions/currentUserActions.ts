@@ -73,7 +73,7 @@ export const updateCurrentUserAsyncAction = createAsyncThunk<
         avatar !== null &&
         typeof avatar !== "string" &&
         "type" in avatar &&
-        "uri" in avatar
+        ("uri" in avatar || "name" in avatar)
       ) {
         newAvatar = avatar;
       }
