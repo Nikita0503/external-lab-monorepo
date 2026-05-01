@@ -4,6 +4,7 @@ export interface IProps {
   allTasks: CommonTask[];
   error: unknown;
   loading: boolean;
+  hasMore: boolean;
   moreCommonTasksError: unknown;
   moreCommonTasksLoading: boolean;
   fetchCommonTasks: () => void;

@@ -9,6 +9,7 @@ const CommonTasksPage = ({
   allTasks,
   error,
   loading,
+  hasMore,
   moreCommonTasksError: _moreCommonTasksError,
   moreCommonTasksLoading,
   fetchCommonTasks,
@@ -41,11 +42,13 @@ const CommonTasksPage = ({
             )}
           </div>
 
-          <div className="common-tasks-load-more">
-            <CustomButton onClick={fetchMoreCommonTasks}>
-              {moreCommonTasksLoading ? "Loading..." : "Load more"}
-            </CustomButton>
-          </div>
+          {hasMore && (
+            <div className="common-tasks-load-more">
+              <CustomButton onClick={fetchMoreCommonTasks}>
+                {moreCommonTasksLoading ? "Loading..." : "Load more"}
+              </CustomButton>
+            </div>
+          )}
         </>
       )}
     </div>
