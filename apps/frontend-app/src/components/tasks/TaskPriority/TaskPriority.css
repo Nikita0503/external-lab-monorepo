@@ -1,0 +1,11 @@
+.task-priority {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.task-priority-label {
+  font-weight: 500;
+  color: var(--color-dark-gray);
+}

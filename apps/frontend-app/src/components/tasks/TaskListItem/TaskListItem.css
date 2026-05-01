@@ -1,0 +1,70 @@
+.task-list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  background-color: var(--color-white);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+
+.task-list-item:hover {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-list-item-checkbox {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  margin-right: 10px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.task-list-item-priority {
+  margin-right: 8px;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.task-list-item-title {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark-blue);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-list-item-title--done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-list-item-actions {
+  display: flex;
+  gap: 6px;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.task-list-item-action {
+  background-color: var(--color-light-gray);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.15s;
+}
+
+.task-list-item-action:hover {
+  background-color: #e0e0e0;
+}

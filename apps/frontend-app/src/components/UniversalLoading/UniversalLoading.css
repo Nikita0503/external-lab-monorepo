@@ -1,0 +1,12 @@
+.universal-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.universal-loading-text {
+  font-size: 14px;
+  color: var(--color-dark-gray);
+  margin: 0;
+}

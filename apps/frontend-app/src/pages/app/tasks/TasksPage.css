@@ -1,1 +1,44 @@
-/* TODO */
+.tasks-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tasks-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tasks-header-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  margin: 0;
+}
+
+.tasks-header-count {
+  font-size: 13px;
+  color: var(--color-dark-gray);
+  margin: 4px 0 0;
+}
+
+.tasks-add-button {
+  width: auto;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tasks-empty {
+  text-align: center;
+  color: var(--color-dark-gray);
+  font-size: 14px;
+  padding: 40px 0;
+  margin: 0;
+}
