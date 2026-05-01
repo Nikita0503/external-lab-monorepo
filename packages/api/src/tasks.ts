@@ -36,11 +36,7 @@ export const createTaskApi = async (
     }
   }
 
-  return axiosInstance.post("/tasks", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  return axiosInstance.post("/tasks", formData);
 };
 
 export const editTaskApi = async (
@@ -63,11 +59,7 @@ export const editTaskApi = async (
       formData.append("files", files[i]);
     }
   }
-  return axiosInstance.put(`/tasks/${id}`, formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  return axiosInstance.put(`/tasks/${id}`, formData);
 };
 
 export const partialEditTaskApi = async (
@@ -96,11 +88,7 @@ export const partialEditTaskApi = async (
       formData.append("files", files[i]);
     }
   }
-  return axiosInstance.patch(`/tasks/${id}`, formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  return axiosInstance.patch(`/tasks/${id}`, formData);
 };
 
 export const deleteTaskApi = async (id: string) => {

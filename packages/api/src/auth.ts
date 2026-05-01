@@ -17,9 +17,5 @@ export const registrationApi = async (
   if (avatar) {
     formData.append("avatar", avatar);
   }
-  return axiosInstance.post("/auth/registration", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  return axiosInstance.post("/auth/registration", formData);
 };

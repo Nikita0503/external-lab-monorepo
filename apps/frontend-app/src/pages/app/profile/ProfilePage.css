@@ -1,1 +1,36 @@
-/* TODO */
+.profile-page {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.profile-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  margin: 0 0 20px;
+}
+
+.profile-card {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.profile-fields {
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.profile-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-buttons--horizontal {
+  flex-direction: row-reverse;
+}
+
+.profile-buttons--horizontal .custom-button {
+  flex: 1;
+}

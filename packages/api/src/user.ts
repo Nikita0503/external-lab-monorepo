@@ -10,11 +10,7 @@ export const updateCurrentUserApi = async (name: string, avatar?: any) => {
   if (avatar) {
     formData.append("avatar", avatar);
   }
-  return axiosInstance.put("/users/me", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  return axiosInstance.put("/users/me", formData);
 };
 
 export const deleteCurrentUserAvatarApi = async () => {

@@ -44,6 +44,29 @@
   color: rgba(255, 255, 255, 0.4);
 }
 
+/* Dark variant for app pages */
+.text-input-field--dark .text-input-label {
+  color: #464963;
+}
+
+.text-input-field--dark .text-input {
+  border-color: #dadbdd;
+  color: var(--color-black);
+  background: var(--color-white);
+}
+
+.text-input-field--dark .text-input:focus {
+  border-color: var(--color-violet);
+}
+
+.text-input-field--dark .text-input:disabled {
+  background: var(--color-light-gray);
+}
+
+.text-input-field--dark .text-input::placeholder {
+  color: #999;
+}
+
 .text-input--with-toggle {
   padding-right: 42px;
 }

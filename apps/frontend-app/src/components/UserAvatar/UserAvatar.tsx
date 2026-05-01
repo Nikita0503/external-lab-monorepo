@@ -4,13 +4,14 @@ import "./UserAvatar.css";
 interface IProps {
   avatarPreview: string | null;
   onAvatarChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 }
 
-const UserAvatar = ({ avatarPreview, onAvatarChange }: IProps) => {
+const UserAvatar = ({ avatarPreview, onAvatarChange, className }: IProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div className="user-avatar-container">
+    <div className={`user-avatar-container ${className ?? ""}`}>
       <div
         className="user-avatar"
         onClick={() => fileInputRef.current?.click()}

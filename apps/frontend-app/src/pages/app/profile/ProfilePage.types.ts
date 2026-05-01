@@ -8,7 +8,9 @@ export interface IProps {
   loading: boolean;
   email: string;
   name: string;
+  avatarPreview: string | null;
   setName: (name: string) => void;
+  onAvatarChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   fetchCurrentUser: () => void;
   onUpdateCurrentUserPress: () => void;
   onLogoutPress: () => void;
