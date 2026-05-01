@@ -1,1 +1,59 @@
-/* TODO */
+.edit-task-page {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.edit-task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.edit-task-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  margin: 0;
+}
+
+.edit-task-delete-link {
+  background: none;
+  border: none;
+  color: var(--color-red);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-task-delete-link:hover {
+  text-decoration: underline;
+}
+
+.edit-task-card {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.edit-task-done {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.edit-task-done-label {
+  font-size: 14px;
+  color: var(--color-dark-blue);
+}
+
+.edit-task-done-icon {
+  font-size: 18px;
+}
+
+.edit-task-button {
+  margin-top: 24px;
+}
