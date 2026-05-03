@@ -11,6 +11,7 @@ export interface IProps {
   avatarPreview: string | null;
   setName: (name: string) => void;
   onAvatarChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onAvatarDelete: () => void;
   fetchCurrentUser: () => void;
   onUpdateCurrentUserPress: () => void;
   onLogoutPress: () => void;

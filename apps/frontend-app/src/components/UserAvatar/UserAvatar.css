@@ -3,42 +3,56 @@
   justify-content: center;
 }
 
-.user-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 2px dashed rgba(255, 255, 255, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  overflow: hidden;
-  transition: border-color 0.2s;
-}
-
-.user-avatar:hover {
-  border-color: var(--color-white);
-}
-
-/* Dark variant for app pages */
-.user-avatar-container--dark .user-avatar {
-  border-color: #dadbdd;
-}
-
-.user-avatar-container--dark .user-avatar:hover {
-  border-color: var(--color-violet);
+.user-avatar-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
 }
 
 .user-avatar-img {
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   object-fit: cover;
 }
 
-.user-avatar-placeholder {
-  font-size: 22px;
+.user-avatar-action {
+  position: absolute;
+  bottom: 4px;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-light-gray);
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+  transition: background-color 0.15s;
+}
+
+.user-avatar-action:hover {
+  background-color: #e0e0e0;
+}
+
+.user-avatar-action--delete {
+  left: 4px;
+}
+
+.user-avatar-action--edit {
+  right: 4px;
 }
 
 .user-avatar-input {
   display: none;
+}
+
+/* Dark variant for app pages */
+.user-avatar-container--dark .user-avatar-img {
+  border: 2px solid #dadbdd;
 }

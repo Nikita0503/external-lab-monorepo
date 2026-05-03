@@ -18,6 +18,7 @@ const ProfilePage = ({
   avatarPreview,
   setName,
   onAvatarChange,
+  onAvatarDelete,
   fetchCurrentUser,
   onUpdateCurrentUserPress,
   onLogoutPress,
@@ -41,6 +42,7 @@ const ProfilePage = ({
           <UserAvatar
             avatarPreview={avatarPreview}
             onAvatarChange={onAvatarChange}
+            onAvatarDelete={onAvatarDelete}
             className="user-avatar-container--dark"
           />
 

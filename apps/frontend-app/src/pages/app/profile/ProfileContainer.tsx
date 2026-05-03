@@ -39,6 +39,11 @@ const ProfileContainer = () => {
     []
   );
 
+  const onAvatarDelete = useCallback(() => {
+    setAvatar(undefined);
+    setAvatarPreview(null);
+  }, []);
+
   const onUpdateCurrentUserPress = useCallback(() => {
     updateCurrentUser(name, avatar, () => {
       alert("Congratulations! Profile updated successfully");
@@ -62,6 +67,7 @@ const ProfileContainer = () => {
       avatarPreview={avatarPreview}
       setName={setName}
       onAvatarChange={onAvatarChange}
+      onAvatarDelete={onAvatarDelete}
       fetchCurrentUser={fetchCurrentUser}
       onUpdateCurrentUserPress={onUpdateCurrentUserPress}
       onLogoutPress={onLogoutPress}
