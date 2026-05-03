@@ -41,6 +41,11 @@ const SignUpContainer = () => {
     []
   );
 
+  const onAvatarDelete = useCallback(() => {
+    setAvatar(undefined);
+    setAvatarPreview(null);
+  }, []);
+
   return (
     <SignUpPage
       sprint={sprint}
@@ -56,6 +61,7 @@ const SignUpContainer = () => {
       setRepeatPassword={setRepeatPassword}
       togglePasswordVisibility={togglePasswordVisibility}
       onAvatarChange={onAvatarChange}
+      onAvatarDelete={onAvatarDelete}
       onSignUpPress={onSignUpPress}
       goToSignIn={goToSignIn}
     />

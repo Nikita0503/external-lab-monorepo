@@ -20,6 +20,7 @@ const SignUpPage = ({
   setRepeatPassword,
   togglePasswordVisibility,
   onAvatarChange,
+  onAvatarDelete,
   onSignUpPress,
   goToSignIn,
 }: IProps) => {
@@ -31,6 +32,7 @@ const SignUpPage = ({
         <UserAvatar
           avatarPreview={avatarPreview}
           onAvatarChange={onAvatarChange}
+          onAvatarDelete={onAvatarDelete}
         />
 
         <div className="sign-up-inputs">

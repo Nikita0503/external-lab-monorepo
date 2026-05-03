@@ -14,6 +14,7 @@ export interface IProps {
   setRepeatPassword: (repeatPassword: string) => void;
   togglePasswordVisibility: () => void;
   onAvatarChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onAvatarDelete: () => void;
   onSignUpPress: () => void;
   goToSignIn: () => void;
 }
