@@ -1,0 +1,10 @@
+{
+  "name": "docs",
+  "private": true,
+  "scripts": {
+    "generate-png": "node generate-png.js"
+  },
+  "dependencies": {
+    "@mermaid-js/mermaid-cli": "^11.14.0"
+  }
+}
